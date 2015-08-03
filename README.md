@@ -1,14 +1,34 @@
-#Overview
+# ADAppRater
 ADAppRater is a component intended to help you promote your apps in the App Store by targeting satisfied users and asking them to rate your app.
 
-By pinpointing users who regularly engage with and think highly of your app, this approach is one of the best ways to earn positive app reviews.
+By pinpointing users who regularly engage with and think highly of your app, this approach is one of the best ways to earn positive app reviews. Following a simple installation process, you can see drastic improvements in your store rating in a matter of weeks.
+
+* [Overview](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#overview)
+  * [Support](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#support)
+  * [Rater flow](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#rating-flow)
+* [Features](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#features)
+* [Installation](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#installation)
+* [Configuration](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#configuration)
+ * [Advanced Configuration](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#advanced-configuration)
+* [How To Use](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#how-to-use)
+* [Text Customization](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#text-customization)
+ * [Email Recipient for Feedback Form](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#email-recipient-for-feedback-form)
+ * [Text & Localization](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#text--localization)
+* [Delegate Methods](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#delegate-methods)
+ * [ADARDelegate Protocol](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#adardelegate-protocol)
+ * [ADARCustomViewsDelegate Protocol](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#adarcustomviewsdelegate-protocol)
+* [Developer Tools Configuration](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#developer-tools-configuration)
+* [Example Project](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#example-project)
+* [Contributing](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#contributing)
+* [Special Thanks](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#special-thanks)
+* [Contact](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#contact)
 
 ####Support
 * Built for iOS 8
 * Tested on iOS 7 (will most likely work on earlier versions as well)
 * ADAppRater uses ARC
 
-####Rater Flow:
+####Rater flow:
 
 ![](./Screenshots/Screenshot1_Satisfaction.png "Check user satisfaction") ![](./Screenshots/Screenshot2_Rate.png "Prompt app rating") ![](./Screenshots/Screenshot3_Feedback.png "Request user feedback")
 
@@ -21,7 +41,7 @@ By pinpointing users who regularly engage with and think highly of your app, thi
 * Target only satisfied users to achieve a higher App Store rating 
 * Collect valuable feedback and complaints from dissatisfied users
 * Easy to define usage parameters to target only experienced users
-* Supports multiple scenarios of significant events to target users who have to completedd a flow
+* Supports multiple scenarios of significant events to target users who have completed a flow
 * Based on UIAlertController class (iOS 8 and later)
 * Supports fallback to UIAlertView (iOS 7 and earlier)
 * Custom View Delegate to create your own custom UI
@@ -99,6 +119,47 @@ This method also invokes the `startRaterFlowIfCriteriaMetFromViewController:` to
 Immediately prompt user to rate the app, skipping the flow of first checking user satisfaction.
 The only condition checked is that the device is online.
 
+##Text Customization
+ADAppRater is not localized and has only default English strings.
+All strings used for the default UI flow are bundled in an `ADAppRaterTexts` class. You can either access the default instance or create a new instance and override the new one:
+`[ADAppRater sharedInstance].localStrings`
+Or
+
+	ADAppRaterTexts* newStrings = [[ADAppRaterTexts alloc] initWithApplicationName:@"App Name" feedbackRecipientEmail:@"support@your.mail"];
+	[ADAppRater sharedInstance].localStrings = newStrings;
+
+###Email Recipient for Feedback Form
+To set an email address to be used as a recipient in the default feedback form, insert the mail address to `ADAppRaterTexts` property:
+
+	@property (nonatomic, strong) NSString* feedbackFormRecipient;
+
+###Text & Localization
+To customize the texts ADAppRater will display, insert your customized strings to the appropriate `ADAppRaterTexts` property:
+
+	@property (nonatomic, strong) NSString* userSatisfactionAlertTitle;
+	@property (nonatomic, strong) NSString* userSatisfactionAlertMessage;
+	@property (nonatomic, strong) NSString* userSatisfactionAlertAnswerYes;
+	@property (nonatomic, strong) NSString* userSatisfactionAlertAnswerNo;
+	
+	@property (nonatomic, strong) NSString* appRatingAlertTitle;
+	@property (nonatomic, strong) NSString* appRatingAlertMessage;
+	@property (nonatomic, strong) NSString* appRatingAlertAnswerRate;
+	@property (nonatomic, strong) NSString* appRatingAlertAnswerRemindMe;
+	@property (nonatomic, strong) NSString* appRatingAlertAnswerDontRate;
+
+	@property (nonatomic, strong) NSString* userFeedbackAlertTitle;
+	@property (nonatomic, strong) NSString* userFeedbackAlertMessage;
+	@property (nonatomic, strong) NSString* userFeedbackAlertAnswerYes;
+	@property (nonatomic, strong) NSString* userFeedbackAlertAnswerNo;
+	
+	@property (nonatomic, strong) NSString* thankUserAlertTitle;
+	@property (nonatomic, strong) NSString* thankUserAlertMessage;
+	@property (nonatomic, strong) NSString* thankUserAlertDismiss;
+	
+	@property (nonatomic, strong) NSString* feedbackFormRecipient;
+	@property (nonatomic, strong) NSString* feedbackFormSubject;
+	@property (nonatomic, strong) NSString* feedbackFormBody;
+
 ##Delegate Methods
 ADAppRater has two different types of protocols that can implemented.
 - Implement `ADARDelegate` to be notified on every step of the Rater flow.
@@ -135,9 +196,9 @@ If you do not implement this method, the default UI and text will be used.
 
 
     - (void)promptAppRatingAlertFromViewController:(UIViewController *)viewController 
-                               userWillRateAppBlock:(ADAppRaterCustomViewBlock)userWillRateAppBlock 
-                               remindUserLaterBlock:(ADAppRaterCustomViewBlock)remindUserLaterBlock 
-                                   userRefusedBlock:(ADAppRaterCustomViewBlock)userRefusedBlock;
+                              userWillRateAppBlock:(ADAppRaterCustomViewBlock)userWillRateAppBlock 
+                              remindUserLaterBlock:(ADAppRaterCustomViewBlock)remindUserLaterBlock 
+                                  userRefusedBlock:(ADAppRaterCustomViewBlock)userRefusedBlock;
 Implement this method to provide a custom view or custom texts to ask user to rate the app. 
 This method is called if a user answered he is satisfied with app.
 If you do not implement this method, the default UI and text will be used.
@@ -165,11 +226,11 @@ This method is called if a user has agreed to send feedback after answering he i
 If you do not implement this method, the default email app will be used.
 
 
-## Developer Tools configuration
+## Developer Tools Configuration
 ADAppRater supports several properties to help developers debug:
 
     @property (nonatomic) BOOL enableLog;
-ADAppRater has many log messages to track the flow and state. Disabling logging message stops the printoutsending of these logs to the console.
+ADAppRater has many log messages to track the flow and state. Disabling logging message stops the printout of these logs to the console.
 Default is `NO` (for production environments). Set to `YES` to start printing log messages.
 
     @property (nonatomic) BOOL previewMode;
@@ -183,7 +244,7 @@ A developer method to reset saved usage of significant events to start over.
 This method is wrapped with *__`DEBUG`__* compilation flags so it won’t appear in Release compilation.
 __Make sure__ any call your app makes to this method is also wrapped with compilation flags or deleted before submission.
 
-    - (void)appRateLogToConsole:(NSString*)message;
+    - (void)appRaterLogToConsole:(NSString*)message;
 Part of the `ADARDelegate` protocol. Implement this method to provide a custom logging component (instead of `NSLog`). __Optional__
 
 
@@ -197,6 +258,10 @@ Part of the `ADARDelegate` protocol. Implement this method to provide a custom l
   3. Default UI flow with several scenarios of significant events
 
 __Pay attention to the log console to follow the flow__
+
+
+## Contributing
+See [Contributing](./Contributing.md) page.
 
 
 ##Special Thanks
