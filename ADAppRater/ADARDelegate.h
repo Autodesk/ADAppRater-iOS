@@ -1,6 +1,6 @@
 //
 //  ADARDelegate.h
-//  ADAppRating Demo
+//  ADAppRater
 //
 //  Created by Amir Shavit on 6/24/15.
 //  Copyright (c) 2015 Autodesk. All rights reserved.
@@ -12,20 +12,20 @@
 
 @optional
 
-- (void)appRateWillPromptUserSatisfaction;
-- (void)appRateWillPromptUserRating;
-- (void)appRateWillPromptFeedbackRequest;
-- (void)appRateWillDisplayThankYouAlert;
+- (void)appRaterWillPromptUserSatisfaction;
+- (void)appRaterWillPromptUserRating;
+- (void)appRaterWillPromptFeedbackRequest;
+- (void)appRaterWillDisplayThankYouAlert;
 
-- (void)appRateUserDidAgreeToRateApp;
-- (void)appRateUserDidDeclineToRateApp;
-- (void)appRateUserDidRequestReminderToRateApp;
+- (void)appRaterUserDidAgreeToRateApp;
+- (void)appRaterUserDidDeclineToRateApp;
+- (void)appRaterUserDidRequestReminderToRateApp;
 
-- (void)appRateUserDidAgreeToSendFeedback;
-- (void)appRateUserDidDeclineToSendFeedback;
+- (void)appRaterUserDidAgreeToSendFeedback;
+- (void)appRaterUserDidDeclineToSendFeedback;
 
-- (void)appRateAppStoreDidOpen;
-- (void)appRateAppStoreCouldNotConnect:(NSError *)error;
+- (void)appRaterAppStoreDidOpen;
+- (void)appRaterAppStoreCouldNotConnect:(NSError *)error;
 
 
 /**
@@ -34,6 +34,6 @@
  *  @discussion Optional
  *  @param message message to print out to console
  */
-- (void)appRateLogToConsole:(NSString*)message;
+- (void)appRaterLogToConsole:(NSString*)message;
 
 @end

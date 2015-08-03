@@ -1,6 +1,6 @@
 //
-//  ADAppRatingTexts.h
-//  ADAppRating Demo
+//  ADAppRaterTexts.h
+//  ADAppRater
 //
 //  Created by Amir Shavit on 7/20/15.
 //  Copyright (c) 2015 Autodesk. All rights reserved.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ADAppRatingTexts : NSObject
+@interface ADAppRaterTexts : NSObject
 
 @property (nonatomic, strong) NSString* applicationName;
 
@@ -17,11 +17,11 @@
 @property (nonatomic, strong) NSString* userSatisfactionAlertAnswerYes;
 @property (nonatomic, strong) NSString* userSatisfactionAlertAnswerNo;
 
-@property (nonatomic, strong) NSString* userRatingAlertTitle;
-@property (nonatomic, strong) NSString* userRatingAlertMessage;
-@property (nonatomic, strong) NSString* userRatingAlertAnswerRate;
-@property (nonatomic, strong) NSString* userRatingAlertAnswerRemindMe;
-@property (nonatomic, strong) NSString* userRatingAlertAnswerDontRate;
+@property (nonatomic, strong) NSString* appRatingAlertTitle;
+@property (nonatomic, strong) NSString* appRatingAlertMessage;
+@property (nonatomic, strong) NSString* appRatingAlertAnswerRate;
+@property (nonatomic, strong) NSString* appRatingAlertAnswerRemindMe;
+@property (nonatomic, strong) NSString* appRatingAlertAnswerDontRate;
 
 @property (nonatomic, strong) NSString* userFeedbackAlertTitle;
 @property (nonatomic, strong) NSString* userFeedbackAlertMessage;

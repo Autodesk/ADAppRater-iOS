@@ -1,6 +1,6 @@
 //
 //  ADAlertViewRatingDelegate.m
-//  ADAppRating Demo
+//  ADAppRater
 //
 //  Created by Amir Shavit on 6/14/15.
 //  Copyright (c) 2015 Autodesk. All rights reserved.
@@ -16,9 +16,9 @@
 
 @interface ADAlertViewRatingDelegate () <UIAlertViewDelegate>
 
-@property (nonatomic, copy) ADCustomRatingViewCompletionBlock positiveBlock;
-@property (nonatomic, copy) ADCustomRatingViewCompletionBlock negativeBlock;
-@property (nonatomic, copy) ADCustomRatingViewCompletionBlock otherCompletionBlock;
+@property (nonatomic, copy) ADAppRaterCustomViewBlock positiveBlock;
+@property (nonatomic, copy) ADAppRaterCustomViewBlock negativeBlock;
+@property (nonatomic, copy) ADAppRaterCustomViewBlock otherCompletionBlock;
 
 @end
 
@@ -29,8 +29,8 @@
                                              message:(NSString*)message
                                 satisfiedButtonTitle:(NSString*)positiveButton
                              notSatisfiedButtonTitle:(NSString*)negativeButton
-                                  userSatisfiedBlock:(ADCustomRatingViewCompletionBlock)userSatisfiedBlock
-                               userNotSatisfiedBlock:(ADCustomRatingViewCompletionBlock)userNotSatisfiedBlock
+                                  userSatisfiedBlock:(ADAppRaterCustomViewBlock)userSatisfiedBlock
+                               userNotSatisfiedBlock:(ADAppRaterCustomViewBlock)userNotSatisfiedBlock
 {
     self.positiveBlock = userSatisfiedBlock;
     self.negativeBlock = userNotSatisfiedBlock;
@@ -40,15 +40,15 @@
     [userSatisfationAlert show];
 }
 
-- (void)promptUserRatingAlertFromViewController:(UIViewController*)viewController
+- (void)promptAppRatingAlertFromViewController:(UIViewController*)viewController
                                           title:(NSString*)title
                                         message:(NSString*)message
                                 rateButtonTitle:(NSString*)positiveButton
                               remindButtonTitle:(NSString*)remindButton
                               refuseButtonTitle:(NSString*)refuseButton
-                           userWillRateAppBlock:(ADCustomRatingViewCompletionBlock)userWillRateAppBlock
-                           remindUserLaterBlock:(ADCustomRatingViewCompletionBlock)remindUserLaterBlock
-                               userRefusedBlock:(ADCustomRatingViewCompletionBlock)userRefusedBlock
+                           userWillRateAppBlock:(ADAppRaterCustomViewBlock)userWillRateAppBlock
+                           remindUserLaterBlock:(ADAppRaterCustomViewBlock)remindUserLaterBlock
+                               userRefusedBlock:(ADAppRaterCustomViewBlock)userRefusedBlock
 {
     self.positiveBlock = userWillRateAppBlock;
     self.otherCompletionBlock = remindUserLaterBlock;
@@ -65,8 +65,8 @@
                                              message:(NSString*)message
                                      sendButtonTitle:(NSString*)positiveButton
                                   declineButtonTitle:(NSString*)negativeButton
-                           userWillSendFeedbackBlock:(ADCustomRatingViewCompletionBlock)userWillSendFeedbackBlock
-                        userWillNotSendFeedbackBlock:(ADCustomRatingViewCompletionBlock)userWillNotSendFeedbackBlock
+                           userWillSendFeedbackBlock:(ADAppRaterCustomViewBlock)userWillSendFeedbackBlock
+                        userWillNotSendFeedbackBlock:(ADAppRaterCustomViewBlock)userWillNotSendFeedbackBlock
 {
     self.positiveBlock = userWillSendFeedbackBlock;
     self.negativeBlock = userWillNotSendFeedbackBlock;
@@ -80,7 +80,7 @@
                                          title:(NSString*)title
                                        message:(NSString*)message
                             dismissButtonTitle:(NSString*)dismissButton
-                               completionBlock:(ADCustomRatingViewCompletionBlock)completion
+                               completionBlock:(ADAppRaterCustomViewBlock)completion
 {
     self.positiveBlock = completion;
     

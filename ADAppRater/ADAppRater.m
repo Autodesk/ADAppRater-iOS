@@ -1,33 +1,33 @@
 //
-//  ADAppRating.m
-//  ADAppRating
+//  ADAppRater.m
+//  ADAppRater
 //
 //  Created by Amir Shavit on 6/10/15.
 //  Copyright (c) 2015 Autodesk. All rights reserved.
 //
 
-#import "ADAppRating.h"
+#import "ADAppRater.h"
 #import "ADAppStoreConnector.h"
 #import "ADAlertViewRatingDelegate.h"
 
-static NSString *const kADAppRatingLastVersionUsedKey = @"AD_AppRatingLastVersionUsed";
-static NSString *const kADAppRatingVersionFirstUsedKey = @"AD_AppRatingVersionFirstUsed";
-static NSString *const kADAppRatingVersionLaunchCountKey = @"AD_AppRatingVersionLaunchCount";
-static NSString *const kADAppRatingVersionEventCountKey = @"AD_AppRatingVersionEventCount";
-static NSString *const kADAppRatingLastRatedVersionKey = @"AD_AppRatingLastRatedVersion";
-static NSString *const kADAppRatingLastDeclinedVersionKey = @"AD_AppRatingLastDeclinedVersion";
-static NSString *const kADAppRatingLastRemindedKey = @"AD_AppRatingLastReminded";
+static NSString *const kADAppRaterLastVersionUsedKey = @"AD_AppRaterLastVersionUsed";
+static NSString *const kADAppRaterVersionFirstUsedKey = @"AD_AppRaterVersionFirstUsed";
+static NSString *const kADAppRaterVersionLaunchCountKey = @"AD_AppRaterVersionLaunchCount";
+static NSString *const kADAppRaterVersionEventCountKey = @"AD_AppRaterVersionEventCount";
+static NSString *const kADAppRaterLastRatedVersionKey = @"AD_AppRaterLastRatedVersion";
+static NSString *const kADAppRaterLastDeclinedVersionKey = @"AD_AppRaterLastDeclinedVersion";
+static NSString *const kADAppRaterLastRemindedKey = @"AD_AppRaterLastReminded";
 
 #define SECONDS_IN_A_DAY 86400.0
 
-@interface ADAppRating ()
+@interface ADAppRater ()
 
 @property (nonatomic, strong) NSUserDefaults* userDefaults;
 
 @property (nonatomic, strong) UIAlertController* currentAlert;
 @property (nonatomic, strong) ADAppStoreConnector* appStoreConnector;
 @property (nonatomic, strong) ADAlertViewRatingDelegate* olderIosStyleDelegate;
-@property (nonatomic, strong) ADAppRatingTexts* localStrings;
+@property (nonatomic, strong) ADAppRaterTexts* localStrings;
 
 // Extend Capabilities of public read only properties
 @property (nonatomic, strong) NSDate *currentVersionFirstLaunch;
@@ -37,9 +37,9 @@ static NSString *const kADAppRatingLastRemindedKey = @"AD_AppRatingLastReminded"
 
 @end
 
-@implementation ADAppRating
+@implementation ADAppRater
 
-static ADAppRating* sharedAppRating;
+static ADAppRater* sharedAppRater;
 static dispatch_once_t once_token = 0;
 
 // Singleton
@@ -48,13 +48,13 @@ static dispatch_once_t once_token = 0;
     // Only once
     dispatch_once(&once_token,
                   ^{
-                      if (sharedAppRating == nil)
+                      if (sharedAppRater == nil)
                       {
-                          sharedAppRating = [ADAppRating new];
+                          sharedAppRater = [ADAppRater new];
                       }
                   });
     
-    return sharedAppRating;
+    return sharedAppRater;
 }
 
 - (instancetype)init
@@ -94,10 +94,10 @@ static dispatch_once_t once_token = 0;
         [self setDefaultConfiguration];
         
         // Init default texts
-        self.localStrings = [[ADAppRatingTexts alloc] initWithApplicationName:self.applicationName];
+        self.localStrings = [[ADAppRaterTexts alloc] initWithApplicationName:self.applicationName];
 
         // Check if this is a new version
-        NSString *lastUsedVersion = [self.userDefaults objectForKey:kADAppRatingLastVersionUsedKey];
+        NSString *lastUsedVersion = [self.userDefaults objectForKey:kADAppRaterLastVersionUsedKey];
         if (!self.currentVersionFirstLaunch || ![lastUsedVersion isEqualToString:self.applicationVersion])
         {
             // Reset
@@ -105,7 +105,7 @@ static dispatch_once_t once_token = 0;
             
             /// TODO: Inform about app update
 //            [self.delegate appRateDidDetectAppUpdate];
-//            [[NSNotificationCenter defaultCenter] postNotificationName:kADAppRatingDidDetectAppUpdate object:nil];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:kADAppRaterDidDetectAppUpdate object:nil];
         }
         
         // Increment app launch
@@ -131,13 +131,13 @@ static dispatch_once_t once_token = 0;
 
 - (void)initCurrentVersionHistory
 {
-    [self.userDefaults setObject:self.applicationVersion forKey:kADAppRatingLastVersionUsedKey];
-    [self.userDefaults setObject:[NSDate date] forKey:kADAppRatingVersionFirstUsedKey];
-    [self.userDefaults setInteger:0 forKey:kADAppRatingVersionLaunchCountKey];
+    [self.userDefaults setObject:self.applicationVersion forKey:kADAppRaterLastVersionUsedKey];
+    [self.userDefaults setObject:[NSDate date] forKey:kADAppRaterVersionFirstUsedKey];
+    [self.userDefaults setInteger:0 forKey:kADAppRaterVersionLaunchCountKey];
     
     // Reset reminders
-    [self.userDefaults removeObjectForKey:kADAppRatingLastRemindedKey];
-    [self.userDefaults removeObjectForKey:kADAppRatingVersionEventCountKey];
+    [self.userDefaults removeObjectForKey:kADAppRaterLastRemindedKey];
+    [self.userDefaults removeObjectForKey:kADAppRaterVersionEventCountKey];
     
     [self.userDefaults synchronize];
 }
@@ -153,83 +153,83 @@ static dispatch_once_t once_token = 0;
 
 - (NSDate *)currentVersionFirstLaunch
 {
-    return [self.userDefaults objectForKey:kADAppRatingVersionFirstUsedKey];
+    return [self.userDefaults objectForKey:kADAppRaterVersionFirstUsedKey];
 }
 
 - (void)setCurrentVersionFirstLaunch:(NSDate *)date
 {
-    [self.userDefaults setObject:date forKey:kADAppRatingVersionFirstUsedKey];
+    [self.userDefaults setObject:date forKey:kADAppRaterVersionFirstUsedKey];
     [self.userDefaults synchronize];
 }
 
 - (NSUInteger)currentVersionCountLaunches
 {
-    return [self.userDefaults integerForKey:kADAppRatingVersionLaunchCountKey];
+    return [self.userDefaults integerForKey:kADAppRaterVersionLaunchCountKey];
 }
 
 - (void)setCurrentVersionCountLaunches:(NSUInteger)count
 {
-    [self.userDefaults setInteger:(NSInteger)count forKey:kADAppRatingVersionLaunchCountKey];
+    [self.userDefaults setInteger:(NSInteger)count forKey:kADAppRaterVersionLaunchCountKey];
     [self.userDefaults synchronize];
 }
 
 - (NSDate *)currentVersionLastReminded
 {
-    return [self.userDefaults objectForKey:kADAppRatingLastRemindedKey];
+    return [self.userDefaults objectForKey:kADAppRaterLastRemindedKey];
 }
 
 - (void)setCurrentVersionLastReminded:(NSDate *)date
 {
-    [self.userDefaults setObject:date forKey:kADAppRatingLastRemindedKey];
+    [self.userDefaults setObject:date forKey:kADAppRaterLastRemindedKey];
     [self.userDefaults synchronize];
 }
 
 - (NSDictionary *)persistEventCounters
 {
-    NSDictionary* dict = [self.userDefaults dictionaryForKey:kADAppRatingVersionEventCountKey];
+    NSDictionary* dict = [self.userDefaults dictionaryForKey:kADAppRaterVersionEventCountKey];
     return (dict ? dict : [NSDictionary dictionary]);
 }
 
 - (void)setPersistEventCounters:(NSDictionary *)dict
 {
-    [self.userDefaults setObject:dict forKey:kADAppRatingVersionEventCountKey];
+    [self.userDefaults setObject:dict forKey:kADAppRaterVersionEventCountKey];
     [self.userDefaults synchronize];
 }
 
 - (BOOL)declinedThisVersion
 {
-    return [[self.userDefaults objectForKey:kADAppRatingLastDeclinedVersionKey]
+    return [[self.userDefaults objectForKey:kADAppRaterLastDeclinedVersionKey]
             isEqualToString:self.applicationVersion];
 }
 
 - (void)setDeclinedThisVersion:(BOOL)declined
 {
     [self.userDefaults setObject:(declined ? self.applicationVersion: nil)
-                                              forKey:kADAppRatingLastDeclinedVersionKey];
+                                              forKey:kADAppRaterLastDeclinedVersionKey];
     [self.userDefaults synchronize];
 }
 
 - (BOOL)declinedAnyVersion
 {
-    return [(NSString *)[self.userDefaults objectForKey:kADAppRatingLastDeclinedVersionKey] length] != 0;
+    return [(NSString *)[self.userDefaults objectForKey:kADAppRaterLastDeclinedVersionKey] length] != 0;
 }
 
 - (BOOL)ratedThisVersion
 {
-    return [[self.userDefaults objectForKey:kADAppRatingLastRatedVersionKey]
+    return [[self.userDefaults objectForKey:kADAppRaterLastRatedVersionKey]
             isEqualToString:self.applicationVersion];
 }
 
 - (void)setRatedThisVersion:(BOOL)rated
 {
     [self.userDefaults setObject:(rated ? self.applicationVersion: nil)
-                                              forKey:kADAppRatingLastRatedVersionKey];
+                                              forKey:kADAppRaterLastRatedVersionKey];
     [self.userDefaults synchronize];
 }
 
 - (BOOL)ratedAnyVersion
 {
-    return [(NSString *)[self.userDefaults objectForKey:kADAppRatingLastRatedVersionKey] length] != 0;
+    return [(NSString *)[self.userDefaults objectForKey:kADAppRaterLastRatedVersionKey] length] != 0;
 }
 
 #pragma mark Private Getters
@@ -256,7 +256,7 @@ static dispatch_once_t once_token = 0;
 
 #pragma mark - Public Methods
 
-- (void)startRatingFlowFromViewController:(__weak UIViewController*)viewController
+- (void)startRaterFlowFromViewController:(__weak UIViewController*)viewController
 {
     // First check if we're online
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
@@ -264,23 +264,23 @@ static dispatch_once_t once_token = 0;
         BOOL isOnline = [self.appStoreConnector isAppStoreAvailable];;
         dispatch_async(dispatch_get_main_queue(), ^
         {
-            [self startRatingFlowFromViewController:viewController online:isOnline];
+            [self startRaterFlowFromViewController:viewController online:isOnline];
         });
     });
 }
 
-- (void)startRatingFlowIfCriteriaMetFromViewController:(__weak UIViewController*)viewController
+- (void)startRaterFlowIfCriteriaMetFromViewController:(__weak UIViewController*)viewController
 {
     if ([self shouldPromptForRating])
     {
-        [self startRatingFlowFromViewController:viewController];
+        [self startRaterFlowFromViewController:viewController];
     }
 }
 
 - (void)registerEvent:(NSString*)eventName withViewController:(__weak UIViewController*)viewController
 {
     [self registerEvent:eventName];
-    [self startRatingFlowIfCriteriaMetFromViewController:viewController];
+    [self startRaterFlowIfCriteriaMetFromViewController:viewController];
 }
 
 - (BOOL)shouldPromptForRating
@@ -289,7 +289,7 @@ static dispatch_once_t once_token = 0;
     // Preview mode?
     if (self.previewMode)
     {
-        [ADAppRating AR_logConsole:@"Preview mode is enabled - make sure you disable this for release"];
+        [ADAppRater AR_logConsole:@"Preview mode is enabled - make sure you disable this for release"];
         return YES;
     }
 #endif
@@ -297,14 +297,14 @@ static dispatch_once_t once_token = 0;
     // Check if we've rated this version
     if (self.ratedThisVersion)
     {
-        [ADAppRating AR_logConsole:@"Did not prompt for rating because the user has already rated this version"];
+        [ADAppRater AR_logConsole:@"Did not start Rater because the user has already rated this version"];
         return NO;
     }
     
     // Check if we've rated any version
     else if (self.ratedAnyVersion && !self.promptForNewVersionIfUserRated)
     {
-        [ADAppRating AR_logConsole:@"Did not prompt for rating because the user has already rated this app, and promptForNewVersionIfUserRated is disabled"];
+        [ADAppRater AR_logConsole:@"Did not start Rater because the user has already rated this app, and promptForNewVersionIfUserRated is disabled"];
         return NO;
     }
     
@@ -312,21 +312,21 @@ static dispatch_once_t once_token = 0;
     else if (self.declinedThisVersion ||
              (self.declinedAnyVersion && !self.promptForNewVersionIfUserRated))
     {
-        [ADAppRating AR_logConsole:@"Did not prompt for rating because the user has declined to rate the app"];
+        [ADAppRater AR_logConsole:@"Did not start Rater because the user has declined to rate the app"];
         return NO;
     }
     
     // Check how long we've been using this version
     else if ([[NSDate date] timeIntervalSinceDate:self.currentVersionFirstLaunch] < self.currentVersionDaysUntilPrompt * SECONDS_IN_A_DAY)
     {
-        [ADAppRating AR_logConsole:[NSString stringWithFormat:@"Did not prompt for rating because the app was first used less than %d days ago", (int)self.currentVersionDaysUntilPrompt]];
+        [ADAppRater AR_logConsole:[NSString stringWithFormat:@"Did not start Rater because the app was first used less than %d days ago", (int)self.currentVersionDaysUntilPrompt]];
         return NO;
     }
     
     // Check how many times we've used current version
     else if (self.currentVersionCountLaunches < self.currentVersionLaunchesUntilPrompt)
     {
-        [ADAppRating AR_logConsole:[NSString stringWithFormat:@"Did not prompt for rating because the app has only been used %d times", (int)self.currentVersionCountLaunches]];
+        [ADAppRater AR_logConsole:[NSString stringWithFormat:@"Did not start Rater because the app has only been used %d times", (int)self.currentVersionCountLaunches]];
         return NO;
     }
     
@@ -334,7 +334,7 @@ static dispatch_once_t once_token = 0;
     else if (self.currentVersionLastReminded &&
              [[NSDate date] timeIntervalSinceDate:self.currentVersionLastReminded] < self.remindWaitPeriod * SECONDS_IN_A_DAY)
     {
-        [ADAppRating AR_logConsole:[NSString stringWithFormat:@"Did not prompt for rating because the user last asked to be reminded less than %i days ago",
+        [ADAppRater AR_logConsole:[NSString stringWithFormat:@"Did not start Rater because the user last asked to be reminded less than %i days ago",
                           (int)self.remindWaitPeriod]];
         return NO;
     }
@@ -346,7 +346,7 @@ static dispatch_once_t once_token = 0;
         NSDictionary* eventList = self.persistEventCounters;
         if (eventList.count == 0)
         {
-            [ADAppRating AR_logConsole:@"No events have been logged yet"];
+            [ADAppRater AR_logConsole:@"No events have been logged yet"];
             return NO;
         }
         
@@ -355,22 +355,22 @@ static dispatch_once_t once_token = 0;
         {
             if ([self isScenarioComplete:currScenario eventList:eventList])
             {
-                [ADAppRating AR_logConsole:@"Found a complete scenario! Lets prompt!"];
+                [ADAppRater AR_logConsole:@"Found a complete scenario! Lets start Rater!"];
                 return YES;
             }
         }
         
-        [ADAppRating AR_logConsole:[NSString stringWithFormat:@"None of the %d scenarios has been completed yet",
+        [ADAppRater AR_logConsole:[NSString stringWithFormat:@"None of the %d scenarios has been completed yet",
                                     (int)self.eventScenariosUntilPrompt.count]];
         return NO;
     }
     
     
-    [ADAppRating AR_logConsole:@"All Crtieria met! Lets prompt!"];
+    [ADAppRater AR_logConsole:@"All Crtieria met! Lets start Rater!"];
     return YES;
 }
 
-- (void)promptDirectAppRatingFromViewController:(UIViewController *__weak)viewController
+- (void)promptDirectRatingFromViewController:(UIViewController *__weak)viewController
 {
     // First check if we're online
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
@@ -378,7 +378,7 @@ static dispatch_once_t once_token = 0;
                        BOOL isOnline = [self.appStoreConnector isAppStoreAvailable];;
                        dispatch_async(dispatch_get_main_queue(), ^
                                       {
-                                          [self promptDirectAppRatingFromViewController:viewController online:isOnline];
+                                          [self promptDirectRatingFromViewController:viewController online:isOnline];
                                       });
                    });
 }
@@ -388,8 +388,8 @@ static dispatch_once_t once_token = 0;
 {
     [self initCurrentVersionHistory];
     
-    [self.userDefaults removeObjectForKey:kADAppRatingLastDeclinedVersionKey];
-    [self.userDefaults removeObjectForKey:kADAppRatingLastRatedVersionKey];
+    [self.userDefaults removeObjectForKey:kADAppRaterLastDeclinedVersionKey];
+    [self.userDefaults removeObjectForKey:kADAppRaterLastRatedVersionKey];
     [self.userDefaults synchronize];
 }
 #endif
@@ -398,15 +398,15 @@ static dispatch_once_t once_token = 0;
 
 - (void)promptUserSatisfationAlertFromViewController:(__weak UIViewController*)viewController
 {
-    [self delegateSafeCall:@selector(appRateWillPromptUserSatisfaction)];
+    [self delegateSafeCall:@selector(appRaterWillPromptUserSatisfaction)];
     
-    __weak ADAppRating* welf = self;
-    ADCustomRatingViewCompletionBlock userSatisfiedBlock = ^()
+    __weak ADAppRater* welf = self;
+    ADAppRaterCustomViewBlock userSatisfiedBlock = ^()
     {
-        [welf promptUserRatingAlertFromViewController:viewController];
+        [welf promptAppRatingAlertFromViewController:viewController];
     };
 
-    ADCustomRatingViewCompletionBlock userNotSatisfiedBlock = ^()
+    ADAppRaterCustomViewBlock userNotSatisfiedBlock = ^()
     {
         welf.declinedThisVersion = YES;
         [welf promptFeedbackRequestAlertFromViewController:viewController];
@@ -457,30 +457,30 @@ static dispatch_once_t once_token = 0;
     }
 }
 
-- (void)promptUserRatingAlertFromViewController:(__weak UIViewController*)viewController
+- (void)promptAppRatingAlertFromViewController:(__weak UIViewController*)viewController
 {
     self.currentAlert = nil;
-    [self delegateSafeCall:@selector(appRateWillPromptUserRating)];
+    [self delegateSafeCall:@selector(appRaterWillPromptUserRating)];
     
-    __weak ADAppRating* welf = self;
-    ADCustomRatingViewCompletionBlock userWillRateAppBlock = ^()
+    __weak ADAppRater* welf = self;
+    ADAppRaterCustomViewBlock userWillRateAppBlock = ^()
     {
         [welf userResponse_ratingAlert_rateApp];
     };
     
-    ADCustomRatingViewCompletionBlock remindUserLaterBlock = ^()
+    ADAppRaterCustomViewBlock remindUserLaterBlock = ^()
     {
         [welf userResponse_ratingAlert_remindRateApp];
     };
     
-    ADCustomRatingViewCompletionBlock userRefusedBlock = ^()
+    ADAppRaterCustomViewBlock userRefusedBlock = ^()
     {
         [welf userResponse_ratingAlert_declineRateApp];
     };
     
-    if ([self.customViewsDelegate respondsToSelector:@selector(promptUserRatingAlertFromViewController:userWillRateAppBlock:remindUserLaterBlock:userRefusedBlock:)])
+    if ([self.customViewsDelegate respondsToSelector:@selector(promptAppRatingAlertFromViewController:userWillRateAppBlock:remindUserLaterBlock:userRefusedBlock:)])
     {
-        [self.customViewsDelegate promptUserRatingAlertFromViewController:viewController
+        [self.customViewsDelegate promptAppRatingAlertFromViewController:viewController
                                                      userWillRateAppBlock:userWillRateAppBlock
                                                      remindUserLaterBlock:remindUserLaterBlock
                                                          userRefusedBlock:userRefusedBlock];
@@ -490,25 +490,25 @@ static dispatch_once_t once_token = 0;
         if ([UIAlertController class])
         {
             UIAlertController* feedbackRequestAlert = [UIAlertController
-                                                       alertControllerWithTitle:self.localStrings.userRatingAlertTitle
-                                                       message:self.localStrings.userRatingAlertMessage
+                                                       alertControllerWithTitle:self.localStrings.appRatingAlertTitle
+                                                       message:self.localStrings.appRatingAlertMessage
                                                        preferredStyle:UIAlertControllerStyleAlert];
             [feedbackRequestAlert addAction:[UIAlertAction
-                                             actionWithTitle:self.localStrings.userRatingAlertAnswerRate
+                                             actionWithTitle:self.localStrings.appRatingAlertAnswerRate
                                              style:UIAlertActionStyleDefault
                                              handler:^(UIAlertAction *action)
                                              {
                                                  userWillRateAppBlock();
                                              }]];
             [feedbackRequestAlert addAction:[UIAlertAction
-                                             actionWithTitle:self.localStrings.userRatingAlertAnswerRemindMe
+                                             actionWithTitle:self.localStrings.appRatingAlertAnswerRemindMe
                                              style:UIAlertActionStyleDefault
                                              handler:^(UIAlertAction *action)
                                              {
                                                  remindUserLaterBlock();
                                              }]];
             [feedbackRequestAlert addAction:[UIAlertAction
-                                             actionWithTitle:self.localStrings.userRatingAlertAnswerDontRate
+                                             actionWithTitle:self.localStrings.appRatingAlertAnswerDontRate
                                              style:UIAlertActionStyleDefault
                                              handler:^(UIAlertAction *action)
                                              {
@@ -520,15 +520,15 @@ static dispatch_once_t once_token = 0;
         else
         {
             // Compatibilty for iOS 7 and older
-            [self.olderIosStyleDelegate promptUserRatingAlertFromViewController:viewController
-                                                                          title:self.localStrings.userRatingAlertTitle
-                                                                        message:self.localStrings.userRatingAlertMessage
-                                                                rateButtonTitle:self.localStrings.userRatingAlertAnswerRate
-                                                              remindButtonTitle:self.localStrings.userRatingAlertAnswerRemindMe
-                                                              refuseButtonTitle:self.localStrings.userRatingAlertAnswerDontRate
-                                                           userWillRateAppBlock:userWillRateAppBlock
-                                                           remindUserLaterBlock:remindUserLaterBlock
-                                                               userRefusedBlock:userRefusedBlock];
+            [self.olderIosStyleDelegate promptAppRatingAlertFromViewController:viewController
+                                                                         title:self.localStrings.appRatingAlertTitle
+                                                                       message:self.localStrings.appRatingAlertMessage
+                                                               rateButtonTitle:self.localStrings.appRatingAlertAnswerRate
+                                                             remindButtonTitle:self.localStrings.appRatingAlertAnswerRemindMe
+                                                             refuseButtonTitle:self.localStrings.appRatingAlertAnswerDontRate
+                                                          userWillRateAppBlock:userWillRateAppBlock
+                                                          remindUserLaterBlock:remindUserLaterBlock
+                                                              userRefusedBlock:userRefusedBlock];
         }
     }
 }
@@ -536,15 +536,15 @@ static dispatch_once_t once_token = 0;
 - (void)promptFeedbackRequestAlertFromViewController:(__weak UIViewController*)viewController
 {
     self.currentAlert = nil;
-    [self delegateSafeCall:@selector(appRateWillPromptFeedbackRequest)];
+    [self delegateSafeCall:@selector(appRaterWillPromptFeedbackRequest)];
 
-    __weak ADAppRating* welf = self;
-    ADCustomRatingViewCompletionBlock userWillSendFeedbackBlock = ^()
+    __weak ADAppRater* welf = self;
+    ADAppRaterCustomViewBlock userWillSendFeedbackBlock = ^()
     {
         [welf userResponse_feedbackRequestAlert_sendFeedbackFromViewController:viewController];
     };
     
-    ADCustomRatingViewCompletionBlock userWillNotSendFeedbackBlock = ^()
+    ADAppRaterCustomViewBlock userWillNotSendFeedbackBlock = ^()
     {
         [welf userResponse_feedbackRequestAlert_declineFeedback];
     };
@@ -597,11 +597,11 @@ static dispatch_once_t once_token = 0;
 - (void)displayThankYouAlertFromViewController:(__weak UIViewController*)viewController
 {
     self.currentAlert = nil;
-    [self delegateSafeCall:@selector(appRateWillDisplayThankYouAlert)];
+    [self delegateSafeCall:@selector(appRaterWillDisplayThankYouAlert)];
 
-    ADCustomRatingViewCompletionBlock completionBlock = ^()
+    ADAppRaterCustomViewBlock completionBlock = ^()
     {
-        [ADAppRating AR_logConsole:@"ThankYouAlert completionBlock"];
+        [ADAppRater AR_logConsole:@"ThankYouAlert completionBlock"];
     };
     
     if ([self.customViewsDelegate respondsToSelector:@selector(displayThankYouAlertFromViewController:completionBlock:)])
@@ -643,20 +643,20 @@ static dispatch_once_t once_token = 0;
 
 - (void)userResponse_ratingAlert_rateApp
 {
-    [self delegateSafeCall:@selector(appRateUserDidAgreeToRateApp)];
+    [self delegateSafeCall:@selector(appRaterUserDidAgreeToRateApp)];
     self.ratedThisVersion = YES;
     [self.appStoreConnector openRatingsPageInAppStore];
 }
 
 - (void)userResponse_ratingAlert_remindRateApp
 {
-    [self delegateSafeCall:@selector(appRateUserDidRequestReminderToRateApp)];
+    [self delegateSafeCall:@selector(appRaterUserDidRequestReminderToRateApp)];
     self.currentVersionLastReminded = [NSDate date];
 }
 
 - (void)userResponse_ratingAlert_declineRateApp
 {
-    [self delegateSafeCall:@selector(appRateUserDidDeclineToRateApp)];
+    [self delegateSafeCall:@selector(appRaterUserDidDeclineToRateApp)];
     self.declinedThisVersion = YES;
 }
 
@@ -664,15 +664,15 @@ static dispatch_once_t once_token = 0;
 
 - (void)userResponse_feedbackRequestAlert_sendFeedbackFromViewController:(__weak UIViewController*)viewController
 {
-    [ADAppRating AR_logConsole:@"FeedbackRequest positiveBlock"];
-    [self delegateSafeCall:@selector(appRateUserDidAgreeToSendFeedback)];
+    [ADAppRater AR_logConsole:@"FeedbackRequest positiveBlock"];
+    [self delegateSafeCall:@selector(appRaterUserDidAgreeToSendFeedback)];
     [self presentFeedbackMailComposerFromViewController:viewController];
 }
 
 - (void)userResponse_feedbackRequestAlert_declineFeedback
 {
-    [ADAppRating AR_logConsole:@"FeedbackRequest negativeBlock"];
-    [self delegateSafeCall:@selector(appRateUserDidDeclineToSendFeedback)];
+    [ADAppRater AR_logConsole:@"FeedbackRequest negativeBlock"];
+    [self delegateSafeCall:@selector(appRaterUserDidDeclineToSendFeedback)];
 }
 
 #pragma mark - Mail Compose ViewController
@@ -681,15 +681,15 @@ static dispatch_once_t once_token = 0;
 {
     self.currentAlert = nil;
     
-    __weak ADAppRating* welf = self;
-    ADCustomRatingViewCompletionBlock userSentFeedbackBlock = ^()
+    __weak ADAppRater* welf = self;
+    ADAppRaterCustomViewBlock userSentFeedbackBlock = ^()
     {
         [welf displayThankYouAlertFromViewController:viewController];
     };
 
-    ADCustomRatingViewCompletionBlock userDidNotSendFeedbackBlock = ^()
+    ADAppRaterCustomViewBlock userDidNotSendFeedbackBlock = ^()
     {
-        [ADAppRating AR_logConsole:@"User canceled feedback sending"];
+        [ADAppRater AR_logConsole:@"User canceled feedback sending"];
     };
 
     if ([self.customViewsDelegate respondsToSelector:@selector(presentFeedbackFormFromViewController:userSentFeedbackBlock:userDidNotSendFeedbackBlock:)])
@@ -714,7 +714,7 @@ static dispatch_once_t once_token = 0;
             }
             else
             {
-                [ADAppRating AR_logConsole:@"WARNING!! No email address provided for feedback form recipient!!"];
+                [ADAppRater AR_logConsole:@"WARNING!! No email address provided for feedback form recipient!!"];
             }
             
             [viewController presentViewController:mailComposer animated:YES completion:nil];
@@ -722,7 +722,7 @@ static dispatch_once_t once_token = 0;
         else
         {
             /// TODO: Add an error message
-            [ADAppRating AR_logConsole:@"Could not send email from this device"];
+            [ADAppRater AR_logConsole:@"Could not send email from this device"];
         }
     }
 }
@@ -750,19 +750,19 @@ static dispatch_once_t once_token = 0;
 
 #pragma mark - Private Helpers
 
-- (void)startRatingFlowFromViewController:(__weak UIViewController*)viewController online:(BOOL)isOnline
+- (void)startRaterFlowFromViewController:(__weak UIViewController*)viewController online:(BOOL)isOnline
 {
     if (isOnline)
     {
         // Make sure originating VC is still alive and visible
         if (viewController == nil)
         {
-            [ADAppRating AR_logConsole:@"Can't start rating flow since originating ViewController was released"];
+            [ADAppRater AR_logConsole:@"Can't start rating flow since originating ViewController was released"];
         }
         else if (viewController.presentedViewController != nil ||
                  viewController.navigationController.topViewController != viewController)
         {
-            [ADAppRating AR_logConsole:@"Can't start rating flow since originating ViewController is not visible"];
+            [ADAppRater AR_logConsole:@"Can't start rating flow since originating ViewController is not visible"];
         }
         else
         {
@@ -771,32 +771,32 @@ static dispatch_once_t once_token = 0;
     }
     else
     {
-        [ADAppRating AR_logConsole:@"Can't start rating flow since in offline mode"];
+        [ADAppRater AR_logConsole:@"Can't start rating flow since in offline mode"];
     }
 }
 
-- (void)promptDirectAppRatingFromViewController:(__weak UIViewController*)viewController online:(BOOL)isOnline
+- (void)promptDirectRatingFromViewController:(__weak UIViewController*)viewController online:(BOOL)isOnline
 {
     if (isOnline)
     {
         // Make sure originating VC is still alive and visible
         if (viewController == nil)
         {
-            [ADAppRating AR_logConsole:@"Can't prompt rating flow since originating ViewController was released"];
+            [ADAppRater AR_logConsole:@"Can't prompt rating flow since originating ViewController was released"];
         }
         else if (viewController.presentedViewController != nil ||
                  viewController.navigationController.topViewController != viewController)
         {
-            [ADAppRating AR_logConsole:@"Can't prompt rating flow since originating ViewController is not visible"];
+            [ADAppRater AR_logConsole:@"Can't prompt rating flow since originating ViewController is not visible"];
         }
         else
         {
-            [self promptUserRatingAlertFromViewController:viewController];
+            [self promptAppRatingAlertFromViewController:viewController];
         }
     }
     else
     {
-        [ADAppRating AR_logConsole:@"Can't prompt rating flow since in offline mode"];
+        [ADAppRater AR_logConsole:@"Can't prompt rating flow since in offline mode"];
     }
 }
 
@@ -862,7 +862,7 @@ static dispatch_once_t once_token = 0;
     }
     else
     {
-        [ADAppRating AR_logConsole:[NSString stringWithFormat:@"Delegate does not implement %@ method", NSStringFromSelector(selector)]];
+        [ADAppRater AR_logConsole:[NSString stringWithFormat:@"Delegate does not implement %@ method", NSStringFromSelector(selector)]];
     }
 }
 
@@ -870,12 +870,12 @@ static dispatch_once_t once_token = 0;
 
 + (void)AR_logConsole:(NSString*)message
 {
-    if (sharedAppRating.enableLog)
+    if (sharedAppRater.enableLog)
     {
         NSString* logM = [NSString stringWithFormat:@"%@: %@", NSStringFromClass([self class]), message];
-        if ([sharedAppRating.delegate respondsToSelector:@selector(appRateLogToConsole:)])
+        if ([sharedAppRater.delegate respondsToSelector:@selector(appRaterLogToConsole:)])
         {
-            [sharedAppRating.delegate appRateLogToConsole:message];
+            [sharedAppRater.delegate appRaterLogToConsole:message];
         }
         else
         {

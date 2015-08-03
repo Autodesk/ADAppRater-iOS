@@ -1,23 +1,23 @@
 //
-//  ADAppRatingTexts.m
-//  ADAppRating Demo
+//  ADAppRaterTexts.m
+//  ADAppRater
 //
 //  Created by Amir Shavit on 7/20/15.
 //  Copyright (c) 2015 Autodesk. All rights reserved.
 //
 
-#import "ADAppRatingTexts.h"
-#import "ADAppRating_Protected.h"
+#import "ADAppRaterTexts.h"
+#import "ADAppRater_Protected.h"
 
 static NSString* const kUserSatisfactionAlertMessageFormat = @"Do you find %@ useful?";
 static NSString* const kUserSatisfactionAlertAnswerYes = @"Yes";
 static NSString* const kUserSatisfactionAlertAnswerNo = @"No";
 
-static NSString* const kUserRatingAlertTitle = @"Thank You";
-static NSString* const kUserRatingAlertMessageFormat = @"We're happy that you find %@ useful! It'd be really helpful if you rated us.";
-static NSString* const kUserRatingAlertAnswerRateFormat = @"Rate %@";
-static NSString* const kUserRatingAlertAnswerRemindMe = @"Remind Me Later";
-static NSString* const kUserRatingAlertAnswerDontRate = @"No, Thanks";
+static NSString* const kAppRatingAlertTitle = @"Thank You";
+static NSString* const kAppRatingAlertMessageFormat = @"We're happy that you find %@ useful! It'd be really helpful if you rated us.";
+static NSString* const kAppRatingAlertAnswerRateFormat = @"Rate %@";
+static NSString* const kAppRatingAlertAnswerRemindMe = @"Remind Me Later";
+static NSString* const kAppRatingAlertAnswerDontRate = @"No, Thanks";
 
 static NSString* const kUserFeedbackAlertMessageFormat = @"Please let us know how to make %@ better for you!";
 static NSString* const kUserFeedbackAlertAnswerYes = @"Contact us";
@@ -30,7 +30,7 @@ static NSString* const kThankUserAlertDismiss = @"Close";
 static NSString* const kFeedbackFormRecipient;
 static NSString* const kFeedbackFormSubject = @"Feedback";
 
-@implementation ADAppRatingTexts
+@implementation ADAppRaterTexts
 
 - (instancetype)init
 {
@@ -84,31 +84,31 @@ static NSString* const kFeedbackFormSubject = @"Feedback";
     return (_userSatisfactionAlertAnswerNo ? _userSatisfactionAlertAnswerNo : kUserSatisfactionAlertAnswerNo);
 }
 
-- (NSString*)userRatingAlertTitle
+- (NSString*)appRatingAlertTitle
 {
-    return (_userRatingAlertTitle ? _userRatingAlertTitle : kUserRatingAlertTitle);
+    return (_appRatingAlertTitle ? _appRatingAlertTitle : kAppRatingAlertTitle);
 }
 
-- (NSString*)userRatingAlertMessage
+- (NSString*)appRatingAlertMessage
 {
-    return (_userRatingAlertMessage ? _userRatingAlertMessage :
-            [NSString stringWithFormat:kUserRatingAlertMessageFormat, self.applicationName]);
+    return (_appRatingAlertMessage ? _appRatingAlertMessage :
+            [NSString stringWithFormat:kAppRatingAlertMessageFormat, self.applicationName]);
 }
 
-- (NSString*)userRatingAlertAnswerRate
+- (NSString*)appRatingAlertAnswerRate
 {
-    return (_userRatingAlertAnswerRate ? _userRatingAlertAnswerRate :
-            [NSString stringWithFormat:kUserRatingAlertAnswerRateFormat, self.applicationName]);
+    return (_appRatingAlertAnswerRate ? _appRatingAlertAnswerRate :
+            [NSString stringWithFormat:kAppRatingAlertAnswerRateFormat, self.applicationName]);
 }
 
-- (NSString*)userRatingAlertAnswerRemindMe
+- (NSString*)appRatingAlertAnswerRemindMe
 {
-    return (_userRatingAlertAnswerRemindMe ? _userRatingAlertAnswerRemindMe : kUserRatingAlertAnswerRemindMe);
+    return (_appRatingAlertAnswerRemindMe ? _appRatingAlertAnswerRemindMe : kAppRatingAlertAnswerRemindMe);
 }
 
-- (NSString*)userRatingAlertAnswerDontRate
+- (NSString*)appRatingAlertAnswerDontRate
 {
-    return (_userRatingAlertAnswerDontRate ? _userRatingAlertAnswerDontRate : kUserRatingAlertAnswerDontRate);
+    return (_appRatingAlertAnswerDontRate ? _appRatingAlertAnswerDontRate : kAppRatingAlertAnswerDontRate);
 }
 
 - (NSString*)userFeedbackAlertTitle
@@ -150,7 +150,7 @@ static NSString* const kFeedbackFormSubject = @"Feedback";
 {
     if (_feedbackFormRecipient == nil)
     {
-        [ADAppRating AR_logConsole:@"WARNING!! No email address provided for feedback form recipient!!"];
+        [ADAppRater AR_logConsole:@"WARNING!! No email address provided for feedback form recipient!!"];
     }
     return _feedbackFormRecipient;
 }

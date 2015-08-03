@@ -1,6 +1,6 @@
 //
 //  ADARCustomViewsDelegate.h
-//  ADAppRating
+//  ADAppRater
 //
 //  Created by Amir Shavit on 6/11/15.
 //  Copyright (c) 2015 Autodesk. All rights reserved.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 @class UIViewController;
 
-typedef void (^ADCustomRatingViewCompletionBlock)();
+typedef void (^ADAppRaterCustomViewBlock)();
 
 @protocol ADARCustomViewsDelegate <NSObject>
 
@@ -25,8 +25,8 @@ typedef void (^ADCustomRatingViewCompletionBlock)();
  *  @param userNotSatisfiedBlock The custom view should call this block if the user answered he is not satisfied with the app. This block continues to request the user to send feedback (not to the store.
  */
 - (void)promptUserSatisfationAlertFromViewController:(UIViewController*)viewController
-                                  userSatisfiedBlock:(ADCustomRatingViewCompletionBlock)userSatisfiedBlock
-                               userNotSatisfiedBlock:(ADCustomRatingViewCompletionBlock)userNotSatisfiedBlock;
+                                  userSatisfiedBlock:(ADAppRaterCustomViewBlock)userSatisfiedBlock
+                               userNotSatisfiedBlock:(ADAppRaterCustomViewBlock)userNotSatisfiedBlock;
 
 /**
  *  Tells the delegate the user should be asked to rate the app on Apple's App Store.
@@ -38,10 +38,10 @@ typedef void (^ADCustomRatingViewCompletionBlock)();
  *  @param remindUserLaterBlock  The custom view should call this block if the user asked to be asked again later. This block end the flow for now, to start again on a different occasion.
  *  @param userRefusedBlock      The custom view should call this block if the user is not willing to rate the app. This block ends the flow.
  */
-- (void)promptUserRatingAlertFromViewController:(UIViewController *)viewController
-                           userWillRateAppBlock:(ADCustomRatingViewCompletionBlock)userWillRateAppBlock
-                           remindUserLaterBlock:(ADCustomRatingViewCompletionBlock)remindUserLaterBlock
-                               userRefusedBlock:(ADCustomRatingViewCompletionBlock)userRefusedBlock;
+- (void)promptAppRatingAlertFromViewController:(UIViewController *)viewController
+                           userWillRateAppBlock:(ADAppRaterCustomViewBlock)userWillRateAppBlock
+                           remindUserLaterBlock:(ADAppRaterCustomViewBlock)remindUserLaterBlock
+                               userRefusedBlock:(ADAppRaterCustomViewBlock)userRefusedBlock;
 
 /**
  *  Tells the delegate the user should be requested to send feedback on the app.
@@ -53,8 +53,8 @@ typedef void (^ADCustomRatingViewCompletionBlock)();
  *  @param userWillNotSendFeedbackBlock The custom view should call this block if the user answered he is not willing to send us feedback. This block ends the flow.
  */
 - (void)promptFeedbackRequestAlertFromViewController:(UIViewController*)viewController
-                           userWillSendFeedbackBlock:(ADCustomRatingViewCompletionBlock)userWillSendFeedbackBlock
-                        userWillNotSendFeedbackBlock:(ADCustomRatingViewCompletionBlock)userWillNotSendFeedbackBlock;
+                           userWillSendFeedbackBlock:(ADAppRaterCustomViewBlock)userWillSendFeedbackBlock
+                        userWillNotSendFeedbackBlock:(ADAppRaterCustomViewBlock)userWillNotSendFeedbackBlock;
 
 /**
  *  Tells the delegate the users has successfully finished sending us his feedback.
@@ -65,7 +65,7 @@ typedef void (^ADCustomRatingViewCompletionBlock)();
  *  @param completion      The custom view should call this block after dismissing the message. This block ends the flow.
  */
 - (void)displayThankYouAlertFromViewController:(UIViewController*)viewController
-                               completionBlock:(ADCustomRatingViewCompletionBlock)completion;
+                               completionBlock:(ADAppRaterCustomViewBlock)completion;
 
 /**
  *  Tells the delegate the user has agreed to send his feedback.
@@ -77,7 +77,7 @@ typedef void (^ADCustomRatingViewCompletionBlock)();
  *  @param userDidNotSendFeedbackBlock The custom form should call this block after user canceled the feedback form. This block ends the flow.
  */
 - (void)presentFeedbackFormFromViewController:(UIViewController*)viewController
-                        userSentFeedbackBlock:(ADCustomRatingViewCompletionBlock)userSentFeedbackBlock
-                  userDidNotSendFeedbackBlock:(ADCustomRatingViewCompletionBlock)userDidNotSendFeedbackBlock;
+                        userSentFeedbackBlock:(ADAppRaterCustomViewBlock)userSentFeedbackBlock
+                  userDidNotSendFeedbackBlock:(ADAppRaterCustomViewBlock)userDidNotSendFeedbackBlock;
 
 @end

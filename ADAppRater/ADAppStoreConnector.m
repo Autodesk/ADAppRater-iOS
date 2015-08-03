@@ -1,6 +1,6 @@
 //
 //  ADAppStoreConnector.m
-//  ADAppRating Demo
+//  ADAppRater
 //
 //  Created by Amir Shavit on 6/14/15.
 //  Copyright (c) 2015 Autodesk. All rights reserved.
@@ -9,7 +9,7 @@
 #import "ADAppStoreConnector.h"
 #import <UIKit/UIKit.h>
 
-static NSString *const kARErrorDomain = @"AppRateErrorDomain";
+static NSString *const kARErrorDomain = @"AppRaterErrorDomain";
 
 typedef NS_ENUM(NSUInteger, ARErrorCode)
 {
@@ -19,7 +19,7 @@ typedef NS_ENUM(NSUInteger, ARErrorCode)
     ARErrorCouldNotOpenRatingPageURL
 };
 
-static NSString *const kARAppStoreIDKey = @"AppRateAppStoreID";
+static NSString *const kARAppStoreIDKey = @"AppRaterAppStoreID";
 
 
 static NSString *const kARAppLookupURLFormat = @"http://itunes.apple.com/%@/lookup";
@@ -108,14 +108,14 @@ static NSString *const kARiOS7AppStoreURLFormat = @"itms-apps://itunes.apple.com
     
     if ([[self.ratingsURL scheme] isEqualToString:kARiOSAppStoreURLScheme])
     {
-        cantOpenMessage = @"ADAppRating could not open the ratings page because the App Store is not available on the iOS simulator";
+        cantOpenMessage = @"ADAppRater could not open the ratings page because the App Store is not available on the iOS simulator";
     }
     
 #elif DEBUG
     
     if (![[UIApplication sharedApplication] canOpenURL:self.ratingsURL])
     {
-        cantOpenMessage = [NSString stringWithFormat:@"ADAppRating was unable to open the specified ratings URL: %@", self.ratingsURL];
+        cantOpenMessage = [NSString stringWithFormat:@"ADAppRater was unable to open the specified ratings URL: %@", self.ratingsURL];
     }
     
 #endif
@@ -126,19 +126,19 @@ static NSString *const kARiOS7AppStoreURLFormat = @"itms-apps://itunes.apple.com
         NSError *error = [NSError errorWithDomain:kARErrorDomain
                                              code:ARErrorCouldNotOpenRatingPageURL
                                          userInfo:@{NSLocalizedDescriptionKey: cantOpenMessage}];
-        if ([self.delegate respondsToSelector:@selector(appRateAppStoreCouldNotConnect:)])
+        if ([self.delegate respondsToSelector:@selector(appRaterAppStoreCouldNotConnect:)])
         {
-            [self.delegate appRateAppStoreCouldNotConnect:error];
+            [self.delegate appRaterAppStoreCouldNotConnect:error];
         }
     }
     else
     {
-        NSLog(@"ADAppRating will open the App Store ratings page using the following URL: %@", self.ratingsURL);
+        NSLog(@"ADAppRater will open the App Store ratings page using the following URL: %@", self.ratingsURL);
         
         [[UIApplication sharedApplication] openURL:self.ratingsURL];
-        if ([self.delegate respondsToSelector:@selector(appRateAppStoreDidOpen)])
+        if ([self.delegate respondsToSelector:@selector(appRaterAppStoreDidOpen)])
         {
-            [self.delegate appRateAppStoreDidOpen];
+            [self.delegate appRaterAppStoreDidOpen];
         }
     }
 }
@@ -154,7 +154,7 @@ static NSString *const kARiOS7AppStoreURLFormat = @"itms-apps://itunes.apple.com
     
     else if (self.appStoreID > 0)
     {
-        NSLog(@"ADAppRating could not find the App Store ID for this application. If the application is not intended for App Store release then you must specify a custom ratingsURL.");
+        NSLog(@"ADAppRater could not find the App Store ID for this application. If the application is not intended for App Store release then you must specify a custom ratingsURL.");
         
         NSString *URLString;
         
@@ -286,16 +286,16 @@ static NSString *const kARiOS7AppStoreURLFormat = @"itms-apps://itunes.apple.com
         //log the error
         if (error)
         {
-            NSLog(@"ADAppRating rating process failed because: %@", [error localizedDescription]);
+            NSLog(@"ADAppRater rating process failed because: %@", [error localizedDescription]);
         }
         else
         {
-            NSLog(@"ADAppRating rating process failed because an unknown error occured");
+            NSLog(@"ADAppRater rating process failed because an unknown error occured");
         }
         
-        if ([self.delegate respondsToSelector:@selector(appRateAppStoreCouldNotConnect:)])
+        if ([self.delegate respondsToSelector:@selector(appRaterAppStoreCouldNotConnect:)])
         {
-            [self.delegate appRateAppStoreCouldNotConnect:error];
+            [self.delegate appRaterAppStoreCouldNotConnect:error];
         }
     }
 }
@@ -347,7 +347,7 @@ static NSString *const kARiOS7AppStoreURLFormat = @"itms-apps://itunes.apple.com
         iTunesServiceURL = [iTunesServiceURL stringByAppendingFormat:@"?bundleId=%@", self.applicationBundleID];
     }
     
-    NSLog(@"ADAppRating is checking %@ to retrieve the App Store details...", iTunesServiceURL);
+    NSLog(@"ADAppRater is checking %@ to retrieve the App Store details...", iTunesServiceURL);
 
     NSURLResponse *response = nil;
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:iTunesServiceURL] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:REQUEST_TIMEOUT];
@@ -356,12 +356,12 @@ static NSString *const kARiOS7AppStoreURLFormat = @"itms-apps://itunes.apple.com
     if (data && statusCode == 200)
     {
         //in case error is garbage...
-        error = nil;
+        NSError *aError = nil;
         
         id json = nil;
         if ([NSJSONSerialization class])
         {
-            json = [[NSJSONSerialization JSONObjectWithData:data options:(NSJSONReadingOptions)0 error:error][@"results"] lastObject];
+            json = [[NSJSONSerialization JSONObjectWithData:data options:(NSJSONReadingOptions)0 error:&aError][@"results"] lastObject];
         }
         else
         {
@@ -369,7 +369,7 @@ static NSString *const kARiOS7AppStoreURLFormat = @"itms-apps://itunes.apple.com
             json = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         }
         
-        if (!error)
+        if (!aError)
         {
             //check bundle ID matches
             NSString *bundleID = [self valueForKey:@"bundleId" inJSON:json];
@@ -389,7 +389,7 @@ static NSString *const kARiOS7AppStoreURLFormat = @"itms-apps://itunes.apple.com
                         NSString *appStoreIDString = [self valueForKey:@"trackId" inJSON:json];
                         [self performSelectorOnMainThread:@selector(setAppStoreIDOnMainThread:) withObject:appStoreIDString waitUntilDone:YES];
                         
-                        NSLog(@"ADAppRating found the app on iTunes. The App Store ID is %@", appStoreIDString);
+                        NSLog(@"ADAppRater found the app on iTunes. The App Store ID is %@", appStoreIDString);
                     }
                     
                     /// TODO: Check version
@@ -398,7 +398,7 @@ static NSString *const kARiOS7AppStoreURLFormat = @"itms-apps://itunes.apple.com
 //                        NSString *latestVersion = [self valueForKey:@"version" inJSON:json];
 //                        if ([latestVersion compare:self.applicationVersion options:NSNumericSearch] == NSOrderedDescending)
 //                        {
-//                            NSLog(@"ADAppRating found that the installed application version (%@) is not the latest version on the App Store, which is %@", self.applicationVersion, latestVersion);
+//                            NSLog(@"ADAppRater found that the installed application version (%@) is not the latest version on the App Store, which is %@", self.applicationVersion, latestVersion);
 //                            
 //                            error = [NSError errorWithDomain:kARErrorDomain code:ARErrorApplicationIsNotLatestVersion userInfo:@{NSLocalizedDescriptionKey: @"Installed app is not the latest version available"}];
 //                        }
@@ -406,7 +406,7 @@ static NSString *const kARiOS7AppStoreURLFormat = @"itms-apps://itunes.apple.com
                 }
                 else
                 {
-                    NSLog(@"ADAppRating found that the application bundle ID (%@) does not match the bundle ID of the app found on iTunes (%@) with the specified App Store ID (%@)", self.applicationBundleID, bundleID, @(self.appStoreID));
+                    NSLog(@"ADAppRater found that the application bundle ID (%@) does not match the bundle ID of the app found on iTunes (%@) with the specified App Store ID (%@)", self.applicationBundleID, bundleID, @(self.appStoreID));
                     
                     *error = [NSError errorWithDomain:kARErrorDomain
                                                  code:ARErrorBundleIdDoesNotMatchAppStore
@@ -415,7 +415,7 @@ static NSString *const kARiOS7AppStoreURLFormat = @"itms-apps://itunes.apple.com
             }
             else if (_appStoreID || !self.ratingsURL)
             {
-                NSLog(@"ADAppRating could not find this application on iTunes. If your app is not intended for App Store release then you must specify a custom ratingsURL. If this is the first release of your application then it's not a problem that it cannot be found on the store yet");
+                NSLog(@"ADAppRater could not find this application on iTunes. If your app is not intended for App Store release then you must specify a custom ratingsURL. If this is the first release of your application then it's not a problem that it cannot be found on the store yet");
                 
                 *error = [NSError errorWithDomain:kARErrorDomain
                                              code:ARErrorApplicationNotFoundOnAppStore
@@ -423,7 +423,7 @@ static NSString *const kARiOS7AppStoreURLFormat = @"itms-apps://itunes.apple.com
             }
             else if (!_appStoreID)
             {
-                NSLog(@"ADAppRating could not find your app on iTunes. If your app is not yet on the store or is not intended for App Store release then don't worry about this");
+                NSLog(@"ADAppRater could not find your app on iTunes. If your app is not yet on the store or is not intended for App Store release then don't worry about this");
             }
         }
     }

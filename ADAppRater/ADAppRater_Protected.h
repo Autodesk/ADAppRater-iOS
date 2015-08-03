@@ -1,14 +1,14 @@
 //
-//  ADAppRating_Protected.h
-//  ADAppRating Demo
+//  ADAppRater.h
+//  ADAppRater
 //
 //  Created by Amir Shavit on 7/21/15.
 //  Copyright (c) 2015 Autodesk. All rights reserved.
 //
 
-#import "ADAppRating.h"
+#import "ADAppRater.h"
 
-@interface ADAppRating ()
+@interface ADAppRater ()
 
 + (void)AR_logConsole:(NSString*)message;
 
