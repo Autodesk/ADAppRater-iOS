@@ -3,25 +3,25 @@ ADAppRater is a component intended to help you promote your apps in the App Stor
 
 By pinpointing users who regularly engage with and think highly of your app, this approach is one of the best ways to earn positive app reviews. Following a simple installation process, you can see drastic improvements in your store rating in a matter of weeks.
 
-* [Overview](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#overview)
-  * [Support](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#support)
-  * [Rater flow](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#rating-flow)
-* [Features](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#features)
-* [Installation](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#installation)
-* [Configuration](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#configuration)
- * [Advanced Configuration](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#advanced-configuration)
-* [How To Use](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#how-to-use)
-* [Text Customization](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#text-customization)
- * [Email Recipient for Feedback Form](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#email-recipient-for-feedback-form)
- * [Text & Localization](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#text--localization)
-* [Delegate Methods](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#delegate-methods)
- * [ADARDelegate Protocol](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#adardelegate-protocol)
- * [ADARCustomViewsDelegate Protocol](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#adarcustomviewsdelegate-protocol)
-* [Developer Tools Configuration](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#developer-tools-configuration)
-* [Example Project](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#example-project)
-* [Contributing](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#contributing)
-* [Special Thanks](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#special-thanks)
-* [Contact](https://git.autodesk.com/AutoCAD360/ADAppRater-iOS#contact)
+* [Overview](https://github.com/Autodesk/ADAppRater-iOS#overview)
+  * [Support](https://github.com/Autodesk/ADAppRater-iOS#support)
+  * [Rater flow](https://github.com/Autodesk/ADAppRater-iOS#rating-flow)
+* [Features](https://github.com/Autodesk/ADAppRater-iOS#features)
+* [Installation](https://github.com/Autodesk/ADAppRater-iOS#installation)
+* [Configuration](https://github.com/Autodesk/ADAppRater-iOS#configuration)
+ * [Advanced Configuration](https://github.com/Autodesk/ADAppRater-iOS#advanced-configuration)
+* [How To Use](https://github.com/Autodesk/ADAppRater-iOS#how-to-use)
+* [Text Customization](https://github.com/Autodesk/ADAppRater-iOS#text-customization)
+ * [Email Recipient for Feedback Form](https://github.com/Autodesk/ADAppRater-iOS#email-recipient-for-feedback-form)
+ * [Text & Localization](https://github.com/Autodesk/ADAppRater-iOS#text--localization)
+* [Delegate Methods](https://github.com/Autodesk/ADAppRater-iOS#delegate-methods)
+ * [ADARDelegate Protocol](https://github.com/Autodesk/ADAppRater-iOS#adardelegate-protocol)
+ * [ADARCustomViewsDelegate Protocol](https://github.com/Autodesk/ADAppRater-iOS#adarcustomviewsdelegate-protocol)
+* [Developer Tools Configuration](https://github.com/Autodesk/ADAppRater-iOS#developer-tools-configuration)
+* [Example Project](https://github.com/Autodesk/ADAppRater-iOS#example-project)
+* [Contributing](https://github.com/Autodesk/ADAppRater-iOS#contributing)
+* [Special Thanks](https://github.com/Autodesk/ADAppRater-iOS#special-thanks)
+* [Contact](https://github.com/Autodesk/ADAppRater-iOS#contact)
 
 ####Support
 * Built for iOS 8
@@ -49,7 +49,7 @@ By pinpointing users who regularly engage with and think highly of your app, thi
 
 ##Installation
 ####Cocoa pod
-`pod 'ADAppRater', :git => 'git@git.autodesk.com:AutoCAD360/ADAppRater-iOS.git', :branch => 'master' ` 
+`pod 'ADAppRater', :git => 'https://github.com/Autodesk/ADAppRater-iOS' ` 
 
 ####Standard installation
 1. Download project to desktop
