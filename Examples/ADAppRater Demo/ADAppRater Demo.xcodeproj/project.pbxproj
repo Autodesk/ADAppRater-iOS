@@ -98,7 +98,7 @@
 		C4DEEB2D1B6FF29C003A52B2 /* ADAppRaterPropertiesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADAppRaterPropertiesTests.m; sourceTree = "<group>"; };
 		C4DEEB2E1B6FF29C003A52B2 /* ADARManagerBaseTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADARManagerBaseTestCase.h; sourceTree = "<group>"; };
 		C4DEEB2F1B6FF29C003A52B2 /* ADARManagerBaseTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADARManagerBaseTestCase.m; sourceTree = "<group>"; };
-		C4DEEB3B1B6FFD4A003A52B2 /* ADAppRater.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ADAppRater.podspec; sourceTree = "<group>"; };
+		C4DEEB3B1B6FFD4A003A52B2 /* ADAppRater.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ADAppRater.podspec; path = ../../ADAppRater.podspec; sourceTree = "<group>"; };
 		C4DEEB3D1B6FFD68003A52B2 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
