@@ -76,6 +76,14 @@ If you do wish to configure ADAppRater, I suggest doing so *before* the app has 
       return YES;
     }
 
+
+* `currentVersionDaysUntilPrompt` is the amount of days since the current app version was first launched to wait before prompting user to rate the app. Defualt is 1.
+* `currentVersionLaunchesUntilPrompt` is the amount of launches of the current app version to wait before prompting user to rate the app. Defualt is 3.
+* `remindWaitPeriod` is the number of days to wait to re-prompt user to rate the app, in case he asked to be reminded later.
+* `promptForNewVersionIfUserRated` Set YES if user should be prompted to rate the app for a new version, even if he already rated an older version. Defualt is NO.
+
+
+
 ###Advanced configuration
 ADAppRater supports multiple scenarios of significant events to target users who have reached a certain goal.
 
