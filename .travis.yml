@@ -1,5 +1,5 @@
 osx_image: xcode6.4
 language: objective-c
 xcode_workspace: Examples/ADAppRater Demo/ADAppRater Demo.xcworkspace
-xcode_scheme: 'ADAppRater JazzHandsDemo'
+xcode_scheme: 'ADAppRater Demo'
 podfile: Examples/ADAppRater Demo/Podfile
