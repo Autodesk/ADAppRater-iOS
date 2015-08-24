@@ -1,3 +1,5 @@
+[![CocoaPods Version](https://img.shields.io/cocoapods/v/ADAppRater.svg)](http://cocoadocs.org/docsets/ADAppRater)
+
 # ADAppRater
 ADAppRater is a component intended to help you promote your apps in the App Store by targeting satisfied users and asking them to rate your app.
 
