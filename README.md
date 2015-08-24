@@ -49,7 +49,7 @@ By pinpointing users who regularly engage with and think highly of your app, thi
 
 ##Installation
 ####Cocoa pod
-`pod 'ADAppRater', :git => 'https://github.com/Autodesk/ADAppRater-iOS' ` 
+`pod 'ADAppRater', '~> 1.0.0' ` 
 
 ####Standard installation
 1. Download project to desktop
