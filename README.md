@@ -1,4 +1,5 @@
 [![CocoaPods Version](https://img.shields.io/cocoapods/v/ADAppRater.svg)](http://cocoadocs.org/docsets/ADAppRater)
+[![Build Status](https://travis-ci.org/Autodesk/ADAppRater-iOS.svg?branch=master)](https://travis-ci.org/Autodesk/ADAppRater-iOS)
 
 # ADAppRater
 ADAppRater is a component intended to help you promote your apps in the App Store by targeting satisfied users and asking them to rate your app.
