@@ -2,8 +2,18 @@ Pod::Spec.new do |s|
   
   s.name               = "ADAppRater"
   s.version            = "1.0.0"
-  s.summary            = "An AutoCAD360 component that helps you promote your app and get good reviews on the App Store"
- 
+  s.summary            = "ADAppRater is a component intended to help you promote your apps in the App Store by targeting satisfied users and asking them to rate your app"
+  s.description        = <<-DESC
+                        ADAppRater is a component intended to help you promote your apps in the App Store by targeting satisfied users and asking them to rate your app.
+                        By pinpointing users who regularly engage with and think highly of your app, this approach is one of the best ways to earn positive app reviews. Following a simple installation process, you can see drastic improvements in your store rating in a matter of weeks.
+                        Features:
+                        1. Target only satisfied users to achieve a higher App Store rating
+                        2. Collect valuable feedback and complaints from dissatisfied users
+                        3. Easy to define usage parameters to target only experienced users
+                        4. Supports multiple scenarios of significant events to target users who have completed a flow
+                        5. You can create your own custom UI
+                        DESC
+
   s.author             = { "Amir Shavit" => "amir.shavit@autodesk.com" }
   s.social_media_url   = "https://twitter.com/ashavit3"
 
