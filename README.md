@@ -273,7 +273,7 @@ __Pay attention to the log console to follow the flow__
 
 
 ## Release Notes
-See [Release Notes](./wiki/ADAppRater-iOS-Release-Notes) wiki page.
+See [Release Notes](./ReleaseNotes) wiki page.
 
 
 ## Contributing
