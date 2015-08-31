@@ -22,6 +22,7 @@ By pinpointing users who regularly engage with and think highly of your app, thi
  * [ADARCustomViewsDelegate Protocol](https://github.com/Autodesk/ADAppRater-iOS#adarcustomviewsdelegate-protocol)
 * [Developer Tools Configuration](https://github.com/Autodesk/ADAppRater-iOS#developer-tools-configuration)
 * [Example Project](https://github.com/Autodesk/ADAppRater-iOS#example-project)
+* [Release Notes](https://github.com/Autodesk/ADAppRater-iOS#release-notes)
 * [Contributing](https://github.com/Autodesk/ADAppRater-iOS#contributing)
 * [Special Thanks](https://github.com/Autodesk/ADAppRater-iOS#special-thanks)
 * [Contact](https://github.com/Autodesk/ADAppRater-iOS#contact)
@@ -269,6 +270,10 @@ Part of the `ADARDelegate` protocol. Implement this method to provide a custom l
   3. Default UI flow with several scenarios of significant events
 
 __Pay attention to the log console to follow the flow__
+
+
+## Release Notes
+See [Release Notes](./ReleaseNotes.md) wiki page.
 
 
 ## Contributing
