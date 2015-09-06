@@ -66,6 +66,16 @@
  */
 @property (nonatomic, strong) NSArray* eventScenariosUntilPrompt;
 
+#pragma mark Localization
+
+/**
+ *  @brief An object bundling all text strings that will be displayed with the default UI flow.
+ *  @discussion ADAppRater is not localized and has only default English strings. 
+ *  All strings used for the default UI flow are bundled in an ADAppRaterTexts class.
+ *  You can either access the default instance or create a new instance and override the new one
+ */
+@property (nonatomic, strong) ADAppRaterTexts* localStrings;
+
 #pragma mark - App Usage History
 
 @property (nonatomic, readonly) NSDate *currentVersionFirstLaunch;

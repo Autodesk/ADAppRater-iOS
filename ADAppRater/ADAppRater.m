@@ -27,7 +27,6 @@ static NSString *const kADAppRaterLastRemindedKey = @"AD_AppRaterLastReminded";
 @property (nonatomic, strong) UIAlertController* currentAlert;
 @property (nonatomic, strong) ADAppStoreConnector* appStoreConnector;
 @property (nonatomic, strong) ADAlertViewRatingDelegate* olderIosStyleDelegate;
-@property (nonatomic, strong) ADAppRaterTexts* localStrings;
 
 // Extend Capabilities of public read only properties
 @property (nonatomic, strong) NSDate *currentVersionFirstLaunch;
