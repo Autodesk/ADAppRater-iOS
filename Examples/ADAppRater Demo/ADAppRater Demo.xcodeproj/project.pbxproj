@@ -35,6 +35,7 @@
 		C4DEEB3A1B6FF29C003A52B2 /* ADARManagerBaseTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DEEB2F1B6FF29C003A52B2 /* ADARManagerBaseTestCase.m */; };
 		C4DEEB3C1B6FFD4A003A52B2 /* ADAppRater.podspec in Resources */ = {isa = PBXBuildFile; fileRef = C4DEEB3B1B6FFD4A003A52B2 /* ADAppRater.podspec */; };
 		C4DEEB3E1B6FFD68003A52B2 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = C4DEEB3D1B6FFD68003A52B2 /* Podfile */; };
+		C4E4722A1B9FF65D0091AE9B /* ADAppRaterTextsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E472291B9FF65D0091AE9B /* ADAppRaterTextsTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,7 @@
 		C4DEEB2F1B6FF29C003A52B2 /* ADARManagerBaseTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADARManagerBaseTestCase.m; sourceTree = "<group>"; };
 		C4DEEB3B1B6FFD4A003A52B2 /* ADAppRater.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ADAppRater.podspec; path = ../../ADAppRater.podspec; sourceTree = "<group>"; };
 		C4DEEB3D1B6FFD68003A52B2 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		C4E472291B9FF65D0091AE9B /* ADAppRaterTextsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADAppRaterTextsTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,6 +268,7 @@
 		C4DEEB1F1B6FF29C003A52B2 /* Model Object Tests */ = {
 			isa = PBXGroup;
 			children = (
+				C4E472291B9FF65D0091AE9B /* ADAppRaterTextsTests.m */,
 				C4DEEB201B6FF29C003A52B2 /* ADEventCriteriaTests.m */,
 				C4DEEB211B6FF29C003A52B2 /* ADEventScenarioTests.m */,
 			);
@@ -455,6 +458,7 @@
 				C4DEEB301B6FF29C003A52B2 /* ADAppStoreConnectorTests.m in Sources */,
 				C4DEEB361B6FF29C003A52B2 /* ADCustomFlowViewControllerTests.m in Sources */,
 				C4DEEB321B6FF29C003A52B2 /* ADEventScenarioTests.m in Sources */,
+				C4E4722A1B9FF65D0091AE9B /* ADAppRaterTextsTests.m in Sources */,
 				C4DEEB391B6FF29C003A52B2 /* ADAppRaterPropertiesTests.m in Sources */,
 				C4DEEB3A1B6FF29C003A52B2 /* ADARManagerBaseTestCase.m in Sources */,
 				C4DEEB371B6FF29C003A52B2 /* ADAppRatingFlowTests.m in Sources */,
