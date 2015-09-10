@@ -16,6 +16,7 @@
     
     // Do any additional setup after loading the view, typically from a nib.
     [ADAppRater sharedInstance].enableLog = YES;
+    [ADAppRater sharedInstance].previewMode = YES;
 
     // Insert your domain here to play with the demo:
     [ADAppRater sharedInstance].applicationBundleID = @"com.your.bundleid";
