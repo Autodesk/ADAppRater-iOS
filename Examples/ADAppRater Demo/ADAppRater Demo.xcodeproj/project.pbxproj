@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		72E3178D199C633F976E348D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 764FC2F4156BA13641F4BF16 /* libPods.a */; };
+		C431239A1BA1524E00A991C2 /* ADLocalizedTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C43123991BA1524E00A991C2 /* ADLocalizedTextViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C4DEEAB91B6FC84A003A52B2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DEEAB81B6FC84A003A52B2 /* main.m */; };
 		C4DEEABC1B6FC84A003A52B2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DEEABB1B6FC84A003A52B2 /* AppDelegate.m */; };
 		C4DEEAC21B6FC84A003A52B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4DEEAC01B6FC84A003A52B2 /* Main.storyboard */; };
@@ -52,6 +53,8 @@
 		12D1BBE296E64BA5E85AB238 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		764FC2F4156BA13641F4BF16 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0CFBDD90C6D7665528ED2C1 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		C43123981BA1524E00A991C2 /* ADLocalizedTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADLocalizedTextViewController.h; sourceTree = "<group>"; };
+		C43123991BA1524E00A991C2 /* ADLocalizedTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADLocalizedTextViewController.m; sourceTree = "<group>"; };
 		C4DEEAB31B6FC84A003A52B2 /* ADAppRater Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ADAppRater Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4DEEAB71B6FC84A003A52B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4DEEAB81B6FC84A003A52B2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -217,6 +220,8 @@
 			children = (
 				C4DEEADD1B6FC8C0003A52B2 /* ADBasicFlowViewController.h */,
 				C4DEEADE1B6FC8C0003A52B2 /* ADBasicFlowViewController.m */,
+				C43123981BA1524E00A991C2 /* ADLocalizedTextViewController.h */,
+				C43123991BA1524E00A991C2 /* ADLocalizedTextViewController.m */,
 				C4DEEADF1B6FC8C0003A52B2 /* ADCustomFlowViewController.h */,
 				C4DEEAE01B6FC8C0003A52B2 /* ADCustomFlowViewController.m */,
 				C4DEEAE11B6FC8C0003A52B2 /* ADScenariosFlowViewController.h */,
@@ -438,6 +443,7 @@
 				C4DEEAE41B6FC8C0003A52B2 /* ADCustomFlowViewController.m in Sources */,
 				C4DEEAFC1B6FC8E8003A52B2 /* ADEventScenario.m in Sources */,
 				C4DEEAE51B6FC8C0003A52B2 /* ADScenariosFlowViewController.m in Sources */,
+				C431239A1BA1524E00A991C2 /* ADLocalizedTextViewController.m in Sources */,
 				C4DEEABC1B6FC84A003A52B2 /* AppDelegate.m in Sources */,
 				C4DEEAB91B6FC84A003A52B2 /* main.m in Sources */,
 				C4DEEAF91B6FC8E8003A52B2 /* ADAppStoreConnector.m in Sources */,
