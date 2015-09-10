@@ -29,7 +29,7 @@
 + (instancetype)sharedInstance;
 
 /**
- *  Application Details - These are set automatically, but can bu overriden if needed
+ *  Application Details - These are set automatically, but can be overriden if needed
  */
 @property (nonatomic, copy) NSString *applicationName;
 @property (nonatomic, copy) NSString *applicationVersion;
