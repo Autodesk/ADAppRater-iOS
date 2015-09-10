@@ -260,7 +260,7 @@ static dispatch_once_t once_token = 0;
     // First check if we're online
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
     {
-        BOOL isOnline = [self.appStoreConnector isAppStoreAvailable];
+        BOOL isOnline = [self.appStoreConnector isAppStoreAvailable];;
         dispatch_async(dispatch_get_main_queue(), ^
         {
             [self startRaterFlowFromViewController:viewController online:isOnline];
@@ -751,7 +751,7 @@ static dispatch_once_t once_token = 0;
 
 - (void)startRaterFlowFromViewController:(__weak UIViewController*)viewController online:(BOOL)isOnline
 {
-    if (isOnline || self.previewMode)
+    if (isOnline)
     {
         // Make sure originating VC is still alive and visible
         if (viewController == nil)

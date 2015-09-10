@@ -16,7 +16,6 @@
     
     // Do any additional setup after loading the view, typically from a nib.
     [ADAppRater sharedInstance].enableLog = YES;
-    [ADAppRater sharedInstance].previewMode = YES;
     [ADAppRater sharedInstance].customViewsDelegate = self;
 
     // Insert your domain here to play with the demo:

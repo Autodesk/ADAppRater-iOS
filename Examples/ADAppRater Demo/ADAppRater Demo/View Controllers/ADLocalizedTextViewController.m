@@ -16,7 +16,6 @@
     
     // Do any additional setup after loading the view, typically from a nib.
     [ADAppRater sharedInstance].enableLog = YES;
-    [ADAppRater sharedInstance].previewMode = YES;
     
     // Insert your domain here to play with the demo:
     [ADAppRater sharedInstance].applicationBundleID = @"com.your.bundleid";
@@ -34,31 +33,30 @@
 {
     ADAppRaterTexts* raterStrings = [ADAppRater sharedInstance].localStrings;
     
-    raterStrings.userSatisfactionAlertTitle = @"Add a localized title here";
-    raterStrings.userSatisfactionAlertMessage = @"Localize asking the user if he likes the app";
+    raterStrings.userSatisfactionAlertTitle = @"You can add a localized title here";
+    raterStrings.userSatisfactionAlertMessage = @"You can localize asking the user if he likes the app";
     raterStrings.userSatisfactionAlertAnswerYes = @"Local Yes";
     raterStrings.userSatisfactionAlertAnswerNo = @"Local No";
     
-    // You can also localize the rest of the strings all or some of them
-    
-//    raterStrings.appRatingAlertTitlel
-//    raterStrings.appRatingAlertMessage;
-//    raterStrings.appRatingAlertAnswerRate;
-//    raterStrings.appRatingAlertAnswerRemindMe;
-//    raterStrings.appRatingAlertAnswerDontRate;
-    
-//    raterStrings.userFeedbackAlertTitle;
-//    raterStrings.userFeedbackAlertMessage;
-//    raterStrings.userFeedbackAlertAnswerYes;
-//    raterStrings.userFeedbackAlertAnswerNo;
-    
-//    raterStrings.thankUserAlertTitle;
-//    raterStrings.thankUserAlertMessage;
-//    raterStrings.thankUserAlertDismiss;
-    
-//    raterStrings.feedbackFormRecipient;
-//    raterStrings.feedbackFormSubject;
-//    raterStrings.feedbackFormBody;
+//    raterStrings.appRatingAlertTitle = @"";
+//    raterStrings.appRatingAlertMessage = @"";
+//    raterStrings.appRatingAlertAnswerRate = @"";
+//    raterStrings.appRatingAlertAnswerRemindMe = @"";
+//    raterStrings.appRatingAlertAnswerDontRate = @"";
+//    
+//    raterStrings.userFeedbackAlertTitle = @"";
+//    raterStrings.userFeedbackAlertMessage = @"";
+//    raterStrings.userFeedbackAlertAnswerYes = @"";
+//    raterStrings.userFeedbackAlertAnswerNo = @"";
+//    
+//    raterStrings.thankUserAlertTitle = @"";
+//    raterStrings.thankUserAlertMessage = @"";
+//    raterStrings.thankUserAlertDismiss = @"";
+//    
+//    raterStrings.feedbackFormRecipient = @"";
+//    raterStrings.feedbackFormSubject = @"";
+//    raterStrings.feedbackFormBody = @"";
+
 }
 
 - (IBAction)pressedStartFlowButton:(UIButton *)sender
