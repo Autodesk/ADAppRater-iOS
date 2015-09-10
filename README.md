@@ -264,12 +264,14 @@ Part of the `ADARDelegate` protocol. Implement this method to provide a custom l
 ##Example Project
 1. Download project to desktop
 2. Open the ‘ADAppRater Demo’ App
-3. The demo app demonstrates 3 ways to use the component:
+3. The demo app demonstrates 4 ways to use the component:
   1. Default UI flow without scenarios
-  2. Custom View Delegate implementation, without scenarios
-  3. Default UI flow with several scenarios of significant events
+  2. Default UI flow, with custom strings
+  3. Custom View Delegate implementation, without scenarios
+  4. Default UI flow with several scenarios of significant events
 
-__Pay attention to the log console to follow the flow__
+* __Pay attention to the log console to follow the flow__
+* __In order for the flow to work you must remeber to insert a real bundle Id in each UIViewController, otherwise the demo will act as offline__
 
 
 ## Release Notes
