@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   
   s.name               = "ADAppRater"
-  s.version            = "1.0.1"
+  s.version            = "1.0.2"
   s.summary            = "ADAppRater promotes your apps by targeting satisfied users and asking them to rate your app"
   s.description        = <<-DESC
                         ADAppRater is a component intended to help you promote your apps in the App Store by targeting satisfied users and asking them to rate your app.
@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
                            "https://raw.githubusercontent.com/Autodesk/ADAppRater-iOS/master/Screenshots/Screenshot3_Feedback.png" ]
   s.license            = { :type => "MIT", :file => "LICENCE.md" }
 
-  s.source             = { :git => "https://github.com/Autodesk/ADAppRater-iOS.git", :tag => '1.0.1' }
+  s.source             = { :git => "https://github.com/Autodesk/ADAppRater-iOS.git", :tag => '1.0.2' }
   s.platform           = :ios, '7.0'
   s.source_files       = 'ADAppRater/**/*.{h,m}'
   
