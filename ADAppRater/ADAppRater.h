@@ -86,7 +86,11 @@
 #pragma mark - App Usage History
 
 @property (nonatomic, readonly) NSDate *currentVersionFirstLaunch;
-@property (nonatomic, readonly) NSDate *currentVersionLastReminded;
+
+/**
+ * userLastRemindedToRate replaces previous `currentVersionLastReminded`. Reminder is no longer limited to a version.
+ */
+@property (nonatomic, readonly) NSDate *userLastRemindedToRate;
 @property (nonatomic, readonly) NSDate *userLastPromptedToRate;
 @property (nonatomic, readonly) NSDictionary* persistEventCounters;
 @property (nonatomic, readonly) NSUInteger currentVersionCountLaunches;

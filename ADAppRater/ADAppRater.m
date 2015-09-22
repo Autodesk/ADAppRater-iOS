@@ -31,7 +31,7 @@ static NSString *const kADAppRaterLastRemindedKey = @"AD_AppRaterLastReminded";
 
 // Extend Capabilities of public read only properties
 @property (nonatomic, strong) NSDate *currentVersionFirstLaunch;
-@property (nonatomic, strong) NSDate *currentVersionLastReminded;
+@property (nonatomic, strong) NSDate *userLastRemindedToRate;
 @property (nonatomic, strong) NSDate *userLastPromptedToRate;
 @property (nonatomic, strong) NSDictionary* persistEventCounters;
 @property (nonatomic) NSUInteger currentVersionCountLaunches;
@@ -138,7 +138,7 @@ static dispatch_once_t once_token = 0;
     [self.userDefaults setInteger:0 forKey:kADAppRaterVersionLaunchCountKey];
     
     // Reset reminders
-    [self.userDefaults removeObjectForKey:kADAppRaterLastRemindedKey];
+    [self resetUserLastRemindedDate];
     [self.userDefaults removeObjectForKey:kADAppRaterVersionEventCountKey];
     
     [self.userDefaults synchronize];
@@ -186,12 +186,12 @@ static dispatch_once_t once_token = 0;
     [self.userDefaults synchronize];
 }
 
-- (NSDate *)currentVersionLastReminded
+- (NSDate *)userLastRemindedToRate
 {
     return [self.userDefaults objectForKey:kADAppRaterLastRemindedKey];
 }
 
-- (void)setCurrentVersionLastReminded:(NSDate *)date
+- (void)setUserLastRemindedToRate:(NSDate *)date
 {
     [self.userDefaults setObject:date forKey:kADAppRaterLastRemindedKey];
     [self.userDefaults synchronize];
@@ -329,6 +329,26 @@ static dispatch_once_t once_token = 0;
         return NO;
     }
     
+    // Check if user asked for a reminder
+    else if (self.userLastRemindedToRate)
+    {
+        // Check if reminder period has passed or not
+        NSCalendar* cal = [NSCalendar currentCalendar];
+        NSDateComponents* delta = [cal components:NSCalendarUnitDay
+                                          fromDate:self.userLastRemindedToRate
+                                            toDate:[NSDate date]
+                                           options:NSCalendarWrapComponents];
+        
+        if (delta.day >= self.remindWaitPeriod)
+            return YES;
+        else
+        {
+            [ADAppRater AR_logConsole:[NSString stringWithFormat:@"Did not start Rater because the user last asked to be reminded less than %i days ago",
+                                       (int)self.remindWaitPeriod]];
+            return NO;
+        }
+    }
+    
     // Check if user should be prompted for each version, but with a rate limit
     /// TODO: Need to save date of last prompt and compare to this. last prompt should be updated each show / remind, etc.
 //    else if (self.promptForNewVersionIfUserRated &&)
@@ -348,15 +368,6 @@ static dispatch_once_t once_token = 0;
     else if (self.currentVersionCountLaunches < self.currentVersionLaunchesUntilPrompt)
     {
         [ADAppRater AR_logConsole:[NSString stringWithFormat:@"Did not start Rater because the app has only been used %d times", (int)self.currentVersionCountLaunches]];
-        return NO;
-    }
-    
-    // Check if within the reminder period
-    else if (self.currentVersionLastReminded &&
-             [[NSDate date] timeIntervalSinceDate:self.currentVersionLastReminded] < self.remindWaitPeriod * SECONDS_IN_A_DAY)
-    {
-        [ADAppRater AR_logConsole:[NSString stringWithFormat:@"Did not start Rater because the user last asked to be reminded less than %i days ago",
-                          (int)self.remindWaitPeriod]];
         return NO;
     }
     
@@ -672,7 +683,7 @@ static dispatch_once_t once_token = 0;
 - (void)userResponse_ratingAlert_remindRateApp
 {
     [self delegateSafeCall:@selector(appRaterUserDidRequestReminderToRateApp)];
-    self.currentVersionLastReminded = [NSDate date];
+    self.userLastRemindedToRate = [NSDate date];
 }
 
 - (void)userResponse_ratingAlert_declineRateApp
@@ -787,8 +798,10 @@ static dispatch_once_t once_token = 0;
         }
         else
         {
-            [self promptUserSatisfationAlertFromViewController:viewController];
+            [self resetUserLastRemindedDate];
             self.userLastPromptedToRate = [NSDate date];
+            
+            [self promptUserSatisfationAlertFromViewController:viewController];
         }
     }
     else
@@ -813,8 +826,10 @@ static dispatch_once_t once_token = 0;
         }
         else
         {
-            [self promptAppRatingAlertFromViewController:viewController];
+            [self resetUserLastRemindedDate];
             self.userLastPromptedToRate = [NSDate date];
+            
+            [self promptAppRatingAlertFromViewController:viewController];
         }
     }
     else
@@ -827,6 +842,11 @@ static dispatch_once_t once_token = 0;
 {
     [viewController presentViewController:alertController animated:YES completion:nil];
     self.currentAlert = alertController;
+}
+
+- (void)resetUserLastRemindedDate
+{
+    [self.userDefaults removeObjectForKey:kADAppRaterLastRemindedKey];
 }
 
 - (void)registerEvent:(NSString*)eventName
