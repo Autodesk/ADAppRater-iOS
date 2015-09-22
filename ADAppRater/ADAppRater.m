@@ -16,6 +16,7 @@ static NSString *const kADAppRaterVersionLaunchCountKey = @"AD_AppRaterVersionLa
 static NSString *const kADAppRaterVersionEventCountKey = @"AD_AppRaterVersionEventCount";
 static NSString *const kADAppRaterLastRatedVersionKey = @"AD_AppRaterLastRatedVersion";
 static NSString *const kADAppRaterLastDeclinedVersionKey = @"AD_AppRaterLastDeclinedVersion";
+static NSString *const kADAppRaterLastPromptedKey = @"AD_AppRaterLastPromptedDate";
 static NSString *const kADAppRaterLastRemindedKey = @"AD_AppRaterLastReminded";
 
 #define SECONDS_IN_A_DAY 86400.0
@@ -31,6 +32,7 @@ static NSString *const kADAppRaterLastRemindedKey = @"AD_AppRaterLastReminded";
 // Extend Capabilities of public read only properties
 @property (nonatomic, strong) NSDate *currentVersionFirstLaunch;
 @property (nonatomic, strong) NSDate *currentVersionLastReminded;
+@property (nonatomic, strong) NSDate *userLastPromptedToRate;
 @property (nonatomic, strong) NSDictionary* persistEventCounters;
 @property (nonatomic) NSUInteger currentVersionCountLaunches;
 
@@ -121,6 +123,7 @@ static dispatch_once_t once_token = 0;
     self.currentVersionLaunchesUntilPrompt = 3;
     self.remindWaitPeriod = 5;
     self.promptForNewVersionIfUserRated = NO;
+    self.limitPromptFrequency = 30;
     self.enableLog = NO;
 
 #ifdef DEBUG
@@ -169,6 +172,17 @@ static dispatch_once_t once_token = 0;
 - (void)setCurrentVersionCountLaunches:(NSUInteger)count
 {
     [self.userDefaults setInteger:(NSInteger)count forKey:kADAppRaterVersionLaunchCountKey];
+    [self.userDefaults synchronize];
+}
+
+- (NSDate *)userLastPromptedToRate
+{
+    return [self.userDefaults objectForKey:kADAppRaterLastPromptedKey];
+}
+
+- (void)setUserLastPromptedToRate:(NSDate *)date
+{
+    [self.userDefaults setObject:date forKey:kADAppRaterLastPromptedKey];
     [self.userDefaults synchronize];
 }
 
@@ -314,6 +328,14 @@ static dispatch_once_t once_token = 0;
         [ADAppRater AR_logConsole:@"Did not start Rater because the user has declined to rate the app"];
         return NO;
     }
+    
+    // Check if user should be prompted for each version, but with a rate limit
+    /// TODO: Need to save date of last prompt and compare to this. last prompt should be updated each show / remind, etc.
+//    else if (self.promptForNewVersionIfUserRated &&)
+//    {
+//        [ADAppRater AR_logConsole:@"Did not start Rater because the user has declined to rate the app"];
+//        return NO;
+//    }
     
     // Check how long we've been using this version
     else if ([[NSDate date] timeIntervalSinceDate:self.currentVersionFirstLaunch] < self.currentVersionDaysUntilPrompt * SECONDS_IN_A_DAY)
@@ -766,6 +788,7 @@ static dispatch_once_t once_token = 0;
         else
         {
             [self promptUserSatisfationAlertFromViewController:viewController];
+            self.userLastPromptedToRate = [NSDate date];
         }
     }
     else
@@ -791,6 +814,7 @@ static dispatch_once_t once_token = 0;
         else
         {
             [self promptAppRatingAlertFromViewController:viewController];
+            self.userLastPromptedToRate = [NSDate date];
         }
     }
     else
