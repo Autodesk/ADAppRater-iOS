@@ -333,14 +333,16 @@ static dispatch_once_t once_token = 0;
     else if (self.userLastRemindedToRate)
     {
         // Check if reminder period has passed or not
-        NSCalendar* cal = [NSCalendar currentCalendar];
-        NSDateComponents* delta = [cal components:NSCalendarUnitDay
-                                          fromDate:self.userLastRemindedToRate
-                                            toDate:[NSDate date]
-                                           options:NSCalendarWrapComponents];
+        NSDateComponents* delta = [[NSCalendar currentCalendar] components:NSCalendarUnitDay
+                                                                  fromDate:self.userLastRemindedToRate
+                                                                    toDate:[NSDate date]
+                                                                   options:NSCalendarWrapComponents];
         
         if (delta.day >= self.remindWaitPeriod)
+        {
+            [ADAppRater AR_logConsole:@"Prompt without further conditions since the user asked to be remenided"];
             return YES;
+        }
         else
         {
             [ADAppRater AR_logConsole:[NSString stringWithFormat:@"Did not start Rater because the user last asked to be reminded less than %i days ago",
