@@ -352,12 +352,19 @@ static dispatch_once_t once_token = 0;
     }
     
     // Check if user should be prompted for each version, but with a rate limit
-    /// TODO: Need to save date of last prompt and compare to this. last prompt should be updated each show / remind, etc.
-//    else if (self.promptForNewVersionIfUserRated &&)
-//    {
-//        [ADAppRater AR_logConsole:@"Did not start Rater because the user has declined to rate the app"];
-//        return NO;
-//    }
+    else if (self.promptForNewVersionIfUserRated)
+    {
+        // Check if minimum frequency has passed yet
+        NSDateComponents* delta = [[NSCalendar currentCalendar] components:NSCalendarUnitDay
+                                                                 fromDate:self.userLastPromptedToRate
+                                                                   toDate:[NSDate date]
+                                                                  options:NSCalendarWrapComponents];
+        if (delta.day < self.limitPromptFrequency)
+        {
+            [ADAppRater AR_logConsole:@"Did not start Rater because the user has declined to rate the app"];
+            return NO;
+        }
+    }
     
     // Check how long we've been using this version
     else if ([[NSDate date] timeIntervalSinceDate:self.currentVersionFirstLaunch] < self.currentVersionDaysUntilPrompt * SECONDS_IN_A_DAY)

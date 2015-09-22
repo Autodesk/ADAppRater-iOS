@@ -254,13 +254,39 @@
 {
     // Arrange
     NSInteger remindDays = 3;
-    NSDate* reminded = [NSDate dateWithTimeIntervalSinceNow:(-(remindDays-1) * SECONDS_IN_A_DAY)];
+    NSDate *reminded = [[NSCalendar currentCalendar] dateByAddingUnit:NSCalendarUnitDay
+                                                                value:-(remindDays-1)
+                                                               toDate:[NSDate date]
+                                                              options:kNilOptions];
+
     self.raterManager.remindWaitPeriod = remindDays;
     OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastReminded"]).andReturn(reminded);
     
     // Make sure the min usage is met
     self.raterManager.currentVersionDaysUntilPrompt = 0;
     self.raterManager.currentVersionLaunchesUntilPrompt = 0;
+    
+    // Act
+    BOOL shouldPrompt = [self.raterManager shouldPromptForRating];
+    
+    // Assert
+    XCTAssertFalse(shouldPrompt);
+}
+
+#pragma mark Frequency
+
+- (void)testShouldPromptForRating_PassedLessDaysSinceLastPrompted_shouldReturnFalse
+{
+    // Arrange
+    NSInteger frequncyLimit = 30;
+    NSDate *lastPrompted = [[NSCalendar currentCalendar] dateByAddingUnit:NSCalendarUnitDay
+                                                                    value:-(frequncyLimit-1)
+                                                                   toDate:[NSDate date]
+                                                                  options:kNilOptions];
+    
+    self.raterManager.promptForNewVersionIfUserRated = YES;
+    self.raterManager.limitPromptFrequency = frequncyLimit;
+    OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastPromptedDate"]).andReturn(lastPrompted);
     
     // Act
     BOOL shouldPrompt = [self.raterManager shouldPromptForRating];
