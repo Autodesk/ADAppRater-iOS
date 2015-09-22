@@ -61,6 +61,13 @@
 @property (nonatomic) BOOL promptForNewVersionIfUserRated;
 
 /**
+ *  @brief Limit the frequency where the user is prompted to rate the app.
+ *  @discussion In case configuration is set to prompt user for each version, limit prompt occurency in days to prvent annoying users.
+ *  Default is 30 days (once a month).
+ */
+@property (nonatomic) NSInteger limitPromptFrequency;
+
+/**
  *  Array of ADEventScenario Objects, each describes a scenario to prompt user to rate app if completed.
  *  @see ADEventScenario
  */
@@ -79,7 +86,12 @@
 #pragma mark - App Usage History
 
 @property (nonatomic, readonly) NSDate *currentVersionFirstLaunch;
-@property (nonatomic, readonly) NSDate *currentVersionLastReminded;
+
+/**
+ * userLastRemindedToRate replaces previous `currentVersionLastReminded`. Reminder is no longer limited to a version.
+ */
+@property (nonatomic, readonly) NSDate *userLastRemindedToRate;
+@property (nonatomic, readonly) NSDate *userLastPromptedToRate;
 @property (nonatomic, readonly) NSDictionary* persistEventCounters;
 @property (nonatomic, readonly) NSUInteger currentVersionCountLaunches;
 

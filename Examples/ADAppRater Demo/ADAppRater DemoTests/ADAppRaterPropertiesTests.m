@@ -43,7 +43,10 @@
     XCTAssertEqualObjects(self.raterManager.applicationBundleID, bundle);
     XCTAssertEqual(self.raterManager.currentVersionDaysUntilPrompt, 1);
     XCTAssertEqual(self.raterManager.currentVersionLaunchesUntilPrompt, 3);
+    XCTAssertEqual(self.raterManager.remindWaitPeriod, 5);
+    XCTAssertEqual(self.raterManager.limitPromptFrequency, 30);
     XCTAssertFalse(self.raterManager.promptForNewVersionIfUserRated);
+    XCTAssertFalse(self.raterManager.enableLog);
     
 #ifdef DEBUG
     XCTAssertFalse(self.raterManager.previewMode);

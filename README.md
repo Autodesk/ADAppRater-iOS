@@ -76,6 +76,7 @@ If you do wish to configure ADAppRater, I suggest doing so *before* the app has 
       [ADAppRater sharedInstance].currentVersionLaunchesUntilPrompt = 3;
       [ADAppRater sharedInstance].remindWaitPeriod = 5;
       [ADAppRater sharedInstance].promptForNewVersionIfUserRated = NO;
+      [ADAppRater sharedInstance].limitPromptFrequency = 30;
       
       return YES;
     }
@@ -85,6 +86,7 @@ If you do wish to configure ADAppRater, I suggest doing so *before* the app has 
 * `currentVersionLaunchesUntilPrompt` is the amount of launches of the current app version to wait before prompting user to rate the app. Defualt is 3.
 * `remindWaitPeriod` is the number of days to wait to re-prompt user to rate the app, in case he asked to be reminded later.
 * `promptForNewVersionIfUserRated` Set YES if user should be prompted to rate the app for a new version, even if he already rated an older version. Defualt is NO.
+* `limitPromptFrequency` is the minimum number of days to wait between prompts (excluding remiders requested by user) Default is 30 days (once a month).
 
 
 

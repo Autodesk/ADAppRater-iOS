@@ -44,6 +44,7 @@
     
     id mockRatingManager = OCMPartialMock(self.raterManager);
     OCMExpect([mockRatingManager promptUserSatisfationAlertFromViewController:[OCMArg any]]).andForwardToRealObject;
+    OCMExpect([mockRatingManager setUserLastPromptedToRate:[OCMArg isKindOfClass:[NSDate class]]]);
     
     // Act
     [mockRatingManager startRaterFlowFromViewController:mockVc online:YES];
@@ -135,6 +136,7 @@
     
     id mockRatingManager = OCMPartialMock(self.raterManager);
     OCMExpect([mockRatingManager promptAppRatingAlertFromViewController:[OCMArg any]]).andForwardToRealObject;
+    OCMExpect([mockRatingManager setUserLastPromptedToRate:[OCMArg isKindOfClass:[NSDate class]]]);
     
     // Act
     [mockRatingManager promptDirectRatingFromViewController:mockVc online:YES];

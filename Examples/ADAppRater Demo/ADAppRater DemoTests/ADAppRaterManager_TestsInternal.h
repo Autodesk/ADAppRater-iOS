@@ -10,6 +10,8 @@
 
 @interface ADAppRater ()
 
+@property (nonatomic, strong) NSDate *userLastPromptedToRate;
+
 @property (nonatomic, strong) UIAlertController* currentAlert;
 
 - (instancetype)initWithUserDefaults:(NSUserDefaults*)userDefaults appStoreConnector:(ADAppStoreConnector*)storeConnector;
