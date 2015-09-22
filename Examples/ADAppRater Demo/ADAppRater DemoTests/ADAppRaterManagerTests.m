@@ -85,6 +85,7 @@
     OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastRatedVersion"]).andReturn(@"someVersion");
     
     // Make sure the min usage is met
+    self.raterManager.limitPromptFrequency = 0;
     self.raterManager.currentVersionDaysUntilPrompt = 0;
     self.raterManager.currentVersionLaunchesUntilPrompt = 0;
     
