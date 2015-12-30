@@ -1,6 +1,7 @@
 [![CocoaPods Version](https://img.shields.io/cocoapods/v/ADAppRater.svg)](http://cocoadocs.org/docsets/ADAppRater)
 [![Build Status](https://travis-ci.org/Autodesk/ADAppRater-iOS.svg?branch=master)](https://travis-ci.org/Autodesk/ADAppRater-iOS)
 
+[![ADAppRater-iOS](./Assets/Icons/icon180.png)](https://github.com/Autodesk/ADAppRater-iOS) 
 # ADAppRater
 ADAppRater is a component intended to help you promote your apps in the App Store by targeting satisfied users and asking them to rate your app.
 
@@ -34,7 +35,7 @@ By pinpointing users who regularly engage with and think highly of your app, thi
 
 ####Rater flow:
 
-![](./Screenshots/Screenshot1_Satisfaction.png "Check user satisfaction") ![](./Screenshots/Screenshot2_Rate.png "Prompt app rating") ![](./Screenshots/Screenshot3_Feedback.png "Request user feedback")
+![](./Assets/Screenshots/Screenshot1_Satisfaction.png "Check user satisfaction") ![](./Assets/Screenshots/Screenshot2_Rate.png "Prompt app rating") ![](./Assets/Screenshots/Screenshot3_Feedback.png "Request user feedback")
 
 * First check user satisfaction
 * Navigate satisfied users to feedback publicly in the app store
@@ -283,6 +284,11 @@ See [Release Notes](./ReleaseNotes.md) wiki page.
 ## Contributing
 See [Contributing](./Contributing.md) page.
 
+
+## Apps using ADAppRater
+[![AutoCAD 360](./Assets/Apps Using/AutoCAD360@2x.png)](https://itunes.apple.com/us/app/autocad-360/id393149734)
+
+Want to add your app here? Let me know.
 
 ##Special Thanks
 - I'd appreciate a github star if you find this useful.
