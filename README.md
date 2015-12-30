@@ -1,7 +1,7 @@
+[![ADAppRater-iOS](./Assets/Icons/icon120.png)](https://github.com/Autodesk/ADAppRater-iOS) 
 [![CocoaPods Version](https://img.shields.io/cocoapods/v/ADAppRater.svg)](http://cocoadocs.org/docsets/ADAppRater)
 [![Build Status](https://travis-ci.org/Autodesk/ADAppRater-iOS.svg?branch=master)](https://travis-ci.org/Autodesk/ADAppRater-iOS)
 
-[![ADAppRater-iOS](./Assets/Icons/icon180.png)](https://github.com/Autodesk/ADAppRater-iOS) 
 # ADAppRater
 ADAppRater is a component intended to help you promote your apps in the App Store by targeting satisfied users and asking them to rate your app.
 
@@ -288,7 +288,7 @@ See [Contributing](./Contributing.md) page.
 ## Apps using ADAppRater
 [![AutoCAD 360](./Assets/Apps Using/AutoCAD360@2x.png)](https://itunes.apple.com/us/app/autocad-360/id393149734)
 
-Want to add your app here? Let me know.
+Using ADAppRater? Let me know.
 
 ##Special Thanks
 - I'd appreciate a github star if you find this useful.
