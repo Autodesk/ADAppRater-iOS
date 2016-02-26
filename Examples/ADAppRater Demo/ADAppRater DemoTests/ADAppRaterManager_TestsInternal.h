@@ -11,6 +11,7 @@
 @interface ADAppRater ()
 
 @property (nonatomic, strong) NSDate *userLastPromptedToRate;
+@property (nonatomic, strong) NSDictionary* tempOldVersionEventCounters;
 
 @property (nonatomic, strong) UIAlertController* currentAlert;
 
