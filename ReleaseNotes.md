@@ -1,5 +1,9 @@
 # ADAppRater-iOS Release Notes
 
+##### Version 1.0.4
+* Request: Do not reset event history if not supposed to ask again every version
+* ATS: Use HTTPS for querying the App Store
+
 ##### Version 1.0.3
 * Request: Never show more then once per X days
   * Added `limitPromptFrequency` property to AppRater configuration, to define number of days
