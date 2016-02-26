@@ -36,6 +36,9 @@ static NSString *const kADAppRaterLastRemindedKey = @"AD_AppRaterLastReminded";
 @property (nonatomic, strong) NSDictionary* persistEventCounters;
 @property (nonatomic) NSUInteger currentVersionCountLaunches;
 
+// Temp dictionary to hold old events found when version is updated - Hold to be saved again in session if needed
+@property (nonatomic, strong) NSDictionary* tempOldVersionEventCounters;
+
 @end
 
 @implementation ADAppRater
@@ -102,7 +105,7 @@ static dispatch_once_t once_token = 0;
         if (!self.currentVersionFirstLaunch || ![lastUsedVersion isEqualToString:self.applicationVersion])
         {
             // Reset
-            [self initCurrentVersionHistory];
+            [self initCurrentVersionHistoryForceReset:NO];
             
             /// TODO: Inform about app update
 //            [self.delegate appRateDidDetectAppUpdate];
@@ -131,20 +134,49 @@ static dispatch_once_t once_token = 0;
 #endif
 }
 
-- (void)initCurrentVersionHistory
+- (void)initCurrentVersionHistoryForceReset:(BOOL)shouldForceReset
 {
+    // Copy events
+    if (!shouldForceReset)
+    {
+        self.tempOldVersionEventCounters = [NSDictionary dictionaryWithDictionary:self.persistEventCounters];
+    }
+    
     [self.userDefaults setObject:self.applicationVersion forKey:kADAppRaterLastVersionUsedKey];
     [self.userDefaults setObject:[NSDate date] forKey:kADAppRaterVersionFirstUsedKey];
     [self.userDefaults setInteger:0 forKey:kADAppRaterVersionLaunchCountKey];
     
     // Reset reminders
     [self resetUserLastRemindedDate];
+    
     [self.userDefaults removeObjectForKey:kADAppRaterVersionEventCountKey];
     
     [self.userDefaults synchronize];
 }
 
-#pragma mark - Getters
+#pragma mark - Setters
+
+- (void)setPromptForNewVersionIfUserRated:(BOOL)promptForNewVersionIfUserRated
+{
+    _promptForNewVersionIfUserRated = promptForNewVersionIfUserRated;
+    
+    // Restore events from previous versions if applicable
+    if (promptForNewVersionIfUserRated)
+    {
+        self.tempOldVersionEventCounters = nil;
+    }
+    else if (self.tempOldVersionEventCounters)
+    {
+        // Restore old events to continue count
+        NSDictionary* merged = [self mergeEvents:self.persistEventCounters withEvents:self.tempOldVersionEventCounters];
+        
+        // Save back and reset
+        self.persistEventCounters = merged;
+        self.tempOldVersionEventCounters = nil;
+    }
+}
+
+#pragma mark Getters
 
 // Push applicationName to update strings too
 -(void)setApplicationName:(NSString *)applicationName
@@ -427,7 +459,7 @@ static dispatch_once_t once_token = 0;
 #ifdef DEBUG
 - (void)resetUsageHistory
 {
-    [self initCurrentVersionHistory];
+    [self initCurrentVersionHistoryForceReset:YES];
     
     [self.userDefaults removeObjectForKey:kADAppRaterLastDeclinedVersionKey];
     [self.userDefaults removeObjectForKey:kADAppRaterLastRatedVersionKey];
@@ -856,6 +888,27 @@ static dispatch_once_t once_token = 0;
 - (void)resetUserLastRemindedDate
 {
     [self.userDefaults removeObjectForKey:kADAppRaterLastRemindedKey];
+}
+
+- (NSDictionary*)mergeEvents:(NSDictionary*)events1 withEvents:(NSDictionary*)events2
+{
+    // Restore old events to continue count
+    NSMutableDictionary* merged = events2.mutableCopy;
+    
+    for (NSString* ev in events1.allKeys)
+    {
+        NSNumber* val1 = events1[ev];
+        if ([events2.allKeys containsObject:ev])
+        {
+            NSNumber* val2 = events2[ev];
+            merged[ev] = @(val1.integerValue + val2.integerValue);
+        }
+        else
+        {
+            merged[ev] = val1;
+        }
+    }
+    return merged;
 }
 
 - (void)registerEvent:(NSString*)eventName

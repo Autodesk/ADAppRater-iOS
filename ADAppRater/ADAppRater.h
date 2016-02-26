@@ -56,6 +56,7 @@
 
 /**
  *  Set YES if user should be prompted to rate the app for a new version, even if he already rated an older version.
+ *  @discussion When set to NO, the Rater does not reset the list of significant events, in order to keep progress of the event scenarios.
  *  Defualt is NO.
  */
 @property (nonatomic) BOOL promptForNewVersionIfUserRated;

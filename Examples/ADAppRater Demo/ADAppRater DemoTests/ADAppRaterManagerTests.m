@@ -433,7 +433,8 @@
     NSDictionary* mockDict = @{eventName : @(currentEventCount)};
     
     OCMExpect([self.mockUserDefaults dictionaryForKey:@"AD_AppRaterVersionEventCount"]).andReturn(mockDict);
-    OCMExpect([self.mockUserDefaults setObject:[OCMArg checkWithBlock:[self blockTestEventDictionaryWithEvent:eventName expectedEventCount:currentEventCount+1]]
+    OCMExpect([self.mockUserDefaults setObject:[OCMArg checkWithBlock:[self blockTestEventDictionaryWithEvent:eventName
+                                                                                           expectedEventCount:currentEventCount+1]]
                                         forKey:@"AD_AppRaterVersionEventCount"]);
     
     // Act
@@ -442,6 +443,56 @@
     // Assert
     OCMVerifyAll(self.mockUserDefaults);
 }
+
+- (void)testPersistingEventsOverVersion_promptEachVersionTrue_shouldResetEvents
+{
+    // Arrange
+    NSString* eventName = @"anyEvent";
+    NSInteger currentEventCount = 4;
+    NSDictionary* mockDict = @{eventName : @(currentEventCount)};
+    
+    OCMStub([self.mockUserDefaults dictionaryForKey:@"AD_AppRaterVersionEventCount"]).andReturn(mockDict);
+    OCMExpect([self.mockUserDefaults removeObjectForKey:@"AD_AppRaterVersionEventCount"]);
+
+    self.raterManager = [[ADAppRater alloc] initWithUserDefaults:self.mockUserDefaults
+                                               appStoreConnector:self.mockAppStoreConnector];
+    
+    // Act
+    self.raterManager.promptForNewVersionIfUserRated = YES;
+    
+    // Assert
+    XCTAssertNil(self.raterManager.tempOldVersionEventCounters);
+    OCMVerifyAll(self.mockUserDefaults);
+}
+
+- (void)testPersistingEventsOverVersion_promptEachVersionFalse_shouldNotResetEvents
+{
+    // Arrange
+    NSString* eventName = @"anyEvent";
+    NSInteger currentEventCount = 4;
+    NSDictionary* mockDict = @{eventName : @(currentEventCount)};
+    
+    OCMExpect([self.mockUserDefaults dictionaryForKey:@"AD_AppRaterVersionEventCount"]).andReturn(mockDict);
+    OCMExpect([self.mockUserDefaults removeObjectForKey:@"AD_AppRaterVersionEventCount"]);
+    OCMExpect([self.mockUserDefaults setObject:[OCMArg checkWithBlock:
+                                                [self blockTestEventDictionaryWithEvent:eventName
+                                                                     expectedEventCount:currentEventCount]]
+                                        forKey:@"AD_AppRaterVersionEventCount"]);
+
+    self.raterManager = [[ADAppRater alloc] initWithUserDefaults:self.mockUserDefaults
+                                               appStoreConnector:self.mockAppStoreConnector];
+    
+    // Event list should be empty after init - although while mocking this does not always happen
+    XCTAssertEqual(self.raterManager.persistEventCounters.count, 0);
+
+    // Act
+    self.raterManager.promptForNewVersionIfUserRated = NO;
+    
+    // Assert
+    XCTAssertNil(self.raterManager.tempOldVersionEventCounters);
+    OCMVerifyAll(self.mockUserDefaults);
+}
+
 
 #pragma mark - Private Helpers
 #pragma mark - 
