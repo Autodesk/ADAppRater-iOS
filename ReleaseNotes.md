@@ -1,5 +1,8 @@
 # ADAppRater-iOS Release Notes
 
+##### Version 1.0.5
+* PR #15: Handle case where the view controller has no navigation controller
+
 ##### Version 1.0.4
 * Request: Do not reset event history if not supposed to ask again every version
 * ATS: Use HTTPS for querying the App Store
