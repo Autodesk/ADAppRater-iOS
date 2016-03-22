@@ -833,7 +833,7 @@ static dispatch_once_t once_token = 0;
             [ADAppRater AR_logConsole:@"Can't start rating flow since originating ViewController was released"];
         }
         else if (viewController.presentedViewController != nil ||
-                 viewController.navigationController.topViewController != viewController)
+                 (viewController.navigationController != nil && viewController.navigationController.topViewController != viewController))
         {
             [ADAppRater AR_logConsole:@"Can't start rating flow since originating ViewController is not visible"];
         }
