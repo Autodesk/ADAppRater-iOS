@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ADAppRater.h"
+#import <ADAppRater/ADAppRater.h>
 
 @interface ADLocalizedTextViewController : UIViewController
 

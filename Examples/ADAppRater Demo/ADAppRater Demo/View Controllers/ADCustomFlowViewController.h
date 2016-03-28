@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ADAppRater.h"
+#import <ADAppRater/ADAppRater.h>
 
 @interface ADCustomFlowViewController : UIViewController <ADARCustomViewsDelegate>
 

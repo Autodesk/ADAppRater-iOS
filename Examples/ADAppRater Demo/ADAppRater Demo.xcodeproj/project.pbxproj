@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		72E3178D199C633F976E348D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 764FC2F4156BA13641F4BF16 /* libPods.a */; };
 		C431239A1BA1524E00A991C2 /* ADLocalizedTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C43123991BA1524E00A991C2 /* ADLocalizedTextViewController.m */; };
+		C4BA04331CA99EE10041643A /* ADAppRater.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4BA04321CA99EE10041643A /* ADAppRater.framework */; };
+		C4BA04341CA99EE10041643A /* ADAppRater.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C4BA04321CA99EE10041643A /* ADAppRater.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C4DEEAB91B6FC84A003A52B2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DEEAB81B6FC84A003A52B2 /* main.m */; };
 		C4DEEABC1B6FC84A003A52B2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DEEABB1B6FC84A003A52B2 /* AppDelegate.m */; };
 		C4DEEAC21B6FC84A003A52B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4DEEAC01B6FC84A003A52B2 /* Main.storyboard */; };
@@ -17,44 +18,28 @@
 		C4DEEAE31B6FC8C0003A52B2 /* ADBasicFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DEEADE1B6FC8C0003A52B2 /* ADBasicFlowViewController.m */; };
 		C4DEEAE41B6FC8C0003A52B2 /* ADCustomFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DEEAE01B6FC8C0003A52B2 /* ADCustomFlowViewController.m */; };
 		C4DEEAE51B6FC8C0003A52B2 /* ADScenariosFlowViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DEEAE21B6FC8C0003A52B2 /* ADScenariosFlowViewController.m */; };
-		C4DEEAF71B6FC8E8003A52B2 /* ADAlertViewRatingDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DEEAE81B6FC8E8003A52B2 /* ADAlertViewRatingDelegate.m */; };
-		C4DEEAF81B6FC8E8003A52B2 /* ADAppRater.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DEEAEA1B6FC8E8003A52B2 /* ADAppRater.m */; };
-		C4DEEAF91B6FC8E8003A52B2 /* ADAppStoreConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DEEAED1B6FC8E8003A52B2 /* ADAppStoreConnector.m */; };
-		C4DEEAFA1B6FC8E8003A52B2 /* ADAppRaterTexts.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DEEAF21B6FC8E8003A52B2 /* ADAppRaterTexts.m */; };
-		C4DEEAFB1B6FC8E8003A52B2 /* ADEventCriteria.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DEEAF41B6FC8E8003A52B2 /* ADEventCriteria.m */; };
-		C4DEEAFC1B6FC8E8003A52B2 /* ADEventScenario.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DEEAF61B6FC8E8003A52B2 /* ADEventScenario.m */; };
-		C4DEEB301B6FF29C003A52B2 /* ADAppStoreConnectorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DEEB1E1B6FF29C003A52B2 /* ADAppStoreConnectorTests.m */; };
-		C4DEEB311B6FF29C003A52B2 /* ADEventCriteriaTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DEEB201B6FF29C003A52B2 /* ADEventCriteriaTests.m */; };
-		C4DEEB321B6FF29C003A52B2 /* ADEventScenarioTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DEEB211B6FF29C003A52B2 /* ADEventScenarioTests.m */; };
-		C4DEEB331B6FF29C003A52B2 /* ADMockingHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DEEB241B6FF29C003A52B2 /* ADMockingHelpers.m */; };
-		C4DEEB341B6FF29C003A52B2 /* ADTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DEEB261B6FF29C003A52B2 /* ADTestCase.m */; };
-		C4DEEB351B6FF29C003A52B2 /* ADBasicFlowViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DEEB281B6FF29C003A52B2 /* ADBasicFlowViewControllerTests.m */; };
-		C4DEEB361B6FF29C003A52B2 /* ADCustomFlowViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DEEB291B6FF29C003A52B2 /* ADCustomFlowViewControllerTests.m */; };
-		C4DEEB371B6FF29C003A52B2 /* ADAppRatingFlowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DEEB2A1B6FF29C003A52B2 /* ADAppRatingFlowTests.m */; };
-		C4DEEB381B6FF29C003A52B2 /* ADAppRaterManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DEEB2C1B6FF29C003A52B2 /* ADAppRaterManagerTests.m */; };
-		C4DEEB391B6FF29C003A52B2 /* ADAppRaterPropertiesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DEEB2D1B6FF29C003A52B2 /* ADAppRaterPropertiesTests.m */; };
-		C4DEEB3A1B6FF29C003A52B2 /* ADARManagerBaseTestCase.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DEEB2F1B6FF29C003A52B2 /* ADARManagerBaseTestCase.m */; };
-		C4DEEB3C1B6FFD4A003A52B2 /* ADAppRater.podspec in Resources */ = {isa = PBXBuildFile; fileRef = C4DEEB3B1B6FFD4A003A52B2 /* ADAppRater.podspec */; };
-		C4DEEB3E1B6FFD68003A52B2 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = C4DEEB3D1B6FFD68003A52B2 /* Podfile */; };
-		C4E4722A1B9FF65D0091AE9B /* ADAppRaterTextsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E472291B9FF65D0091AE9B /* ADAppRaterTextsTests.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		C4DEEACD1B6FC84A003A52B2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C4DEEAAB1B6FC84A003A52B2 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C4DEEAB21B6FC84A003A52B2;
-			remoteInfo = "ADAppRater Demo";
+/* Begin PBXCopyFilesBuildPhase section */
+		C4BA041E1CA99B410041643A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C4BA04341CA99EE10041643A /* ADAppRater.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
 		};
-/* End PBXContainerItemProxy section */
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		12D1BBE296E64BA5E85AB238 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		764FC2F4156BA13641F4BF16 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		A0CFBDD90C6D7665528ED2C1 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C43123981BA1524E00A991C2 /* ADLocalizedTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADLocalizedTextViewController.h; sourceTree = "<group>"; };
 		C43123991BA1524E00A991C2 /* ADLocalizedTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADLocalizedTextViewController.m; sourceTree = "<group>"; };
+		C4BA04291CA99ED50041643A /* ADAppRater.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ADAppRater.xcodeproj; path = ../../ADAppRater.xcodeproj; sourceTree = "<group>"; };
+		C4BA04321CA99EE10041643A /* ADAppRater.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = ADAppRater.framework; path = "/Users/AmirShavit/Library/Developer/Xcode/DerivedData/ADAppRater_Demo-dickayfumukafwbrkswntkbkibzl/Build/Products/Debug-iphoneos/ADAppRater.framework"; sourceTree = "<absolute>"; };
 		C4DEEAB31B6FC84A003A52B2 /* ADAppRater Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ADAppRater Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4DEEAB71B6FC84A003A52B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4DEEAB81B6FC84A003A52B2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -63,48 +48,12 @@
 		C4DEEAC11B6FC84A003A52B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C4DEEAC31B6FC84A003A52B2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		C4DEEAC61B6FC84A003A52B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		C4DEEACC1B6FC84A003A52B2 /* ADAppRater DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ADAppRater DemoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C4DEEAD11B6FC84A003A52B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4DEEADD1B6FC8C0003A52B2 /* ADBasicFlowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADBasicFlowViewController.h; sourceTree = "<group>"; };
 		C4DEEADE1B6FC8C0003A52B2 /* ADBasicFlowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADBasicFlowViewController.m; sourceTree = "<group>"; };
 		C4DEEADF1B6FC8C0003A52B2 /* ADCustomFlowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADCustomFlowViewController.h; sourceTree = "<group>"; };
 		C4DEEAE01B6FC8C0003A52B2 /* ADCustomFlowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADCustomFlowViewController.m; sourceTree = "<group>"; };
 		C4DEEAE11B6FC8C0003A52B2 /* ADScenariosFlowViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADScenariosFlowViewController.h; sourceTree = "<group>"; };
 		C4DEEAE21B6FC8C0003A52B2 /* ADScenariosFlowViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADScenariosFlowViewController.m; sourceTree = "<group>"; };
-		C4DEEAE71B6FC8E8003A52B2 /* ADAlertViewRatingDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADAlertViewRatingDelegate.h; sourceTree = "<group>"; };
-		C4DEEAE81B6FC8E8003A52B2 /* ADAlertViewRatingDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADAlertViewRatingDelegate.m; sourceTree = "<group>"; };
-		C4DEEAE91B6FC8E8003A52B2 /* ADAppRater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADAppRater.h; sourceTree = "<group>"; };
-		C4DEEAEA1B6FC8E8003A52B2 /* ADAppRater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADAppRater.m; sourceTree = "<group>"; };
-		C4DEEAEB1B6FC8E8003A52B2 /* ADAppRater_Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADAppRater_Protected.h; sourceTree = "<group>"; };
-		C4DEEAEC1B6FC8E8003A52B2 /* ADAppStoreConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADAppStoreConnector.h; sourceTree = "<group>"; };
-		C4DEEAED1B6FC8E8003A52B2 /* ADAppStoreConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADAppStoreConnector.m; sourceTree = "<group>"; };
-		C4DEEAEE1B6FC8E8003A52B2 /* ADARCustomViewsDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADARCustomViewsDelegate.h; sourceTree = "<group>"; };
-		C4DEEAEF1B6FC8E8003A52B2 /* ADARDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADARDelegate.h; sourceTree = "<group>"; };
-		C4DEEAF11B6FC8E8003A52B2 /* ADAppRaterTexts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADAppRaterTexts.h; sourceTree = "<group>"; };
-		C4DEEAF21B6FC8E8003A52B2 /* ADAppRaterTexts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADAppRaterTexts.m; sourceTree = "<group>"; };
-		C4DEEAF31B6FC8E8003A52B2 /* ADEventCriteria.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADEventCriteria.h; sourceTree = "<group>"; };
-		C4DEEAF41B6FC8E8003A52B2 /* ADEventCriteria.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADEventCriteria.m; sourceTree = "<group>"; };
-		C4DEEAF51B6FC8E8003A52B2 /* ADEventScenario.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADEventScenario.h; sourceTree = "<group>"; };
-		C4DEEAF61B6FC8E8003A52B2 /* ADEventScenario.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADEventScenario.m; sourceTree = "<group>"; };
-		C4DEEB1D1B6FF29C003A52B2 /* ADAppStoreConnector_TestsInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADAppStoreConnector_TestsInternal.h; sourceTree = "<group>"; };
-		C4DEEB1E1B6FF29C003A52B2 /* ADAppStoreConnectorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADAppStoreConnectorTests.m; sourceTree = "<group>"; };
-		C4DEEB201B6FF29C003A52B2 /* ADEventCriteriaTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADEventCriteriaTests.m; sourceTree = "<group>"; };
-		C4DEEB211B6FF29C003A52B2 /* ADEventScenarioTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADEventScenarioTests.m; sourceTree = "<group>"; };
-		C4DEEB231B6FF29C003A52B2 /* ADMockingHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADMockingHelpers.h; sourceTree = "<group>"; };
-		C4DEEB241B6FF29C003A52B2 /* ADMockingHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADMockingHelpers.m; sourceTree = "<group>"; };
-		C4DEEB251B6FF29C003A52B2 /* ADTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADTestCase.h; sourceTree = "<group>"; };
-		C4DEEB261B6FF29C003A52B2 /* ADTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADTestCase.m; sourceTree = "<group>"; };
-		C4DEEB281B6FF29C003A52B2 /* ADBasicFlowViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADBasicFlowViewControllerTests.m; sourceTree = "<group>"; };
-		C4DEEB291B6FF29C003A52B2 /* ADCustomFlowViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADCustomFlowViewControllerTests.m; sourceTree = "<group>"; };
-		C4DEEB2A1B6FF29C003A52B2 /* ADAppRatingFlowTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADAppRatingFlowTests.m; sourceTree = "<group>"; };
-		C4DEEB2B1B6FF29C003A52B2 /* ADAppRaterManager_TestsInternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADAppRaterManager_TestsInternal.h; sourceTree = "<group>"; };
-		C4DEEB2C1B6FF29C003A52B2 /* ADAppRaterManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADAppRaterManagerTests.m; sourceTree = "<group>"; };
-		C4DEEB2D1B6FF29C003A52B2 /* ADAppRaterPropertiesTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADAppRaterPropertiesTests.m; sourceTree = "<group>"; };
-		C4DEEB2E1B6FF29C003A52B2 /* ADARManagerBaseTestCase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADARManagerBaseTestCase.h; sourceTree = "<group>"; };
-		C4DEEB2F1B6FF29C003A52B2 /* ADARManagerBaseTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADARManagerBaseTestCase.m; sourceTree = "<group>"; };
-		C4DEEB3B1B6FFD4A003A52B2 /* ADAppRater.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ADAppRater.podspec; path = ../../ADAppRater.podspec; sourceTree = "<group>"; };
-		C4DEEB3D1B6FFD68003A52B2 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
-		C4E472291B9FF65D0091AE9B /* ADAppRaterTextsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADAppRaterTextsTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,29 +61,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72E3178D199C633F976E348D /* libPods.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C4DEEAC91B6FC84A003A52B2 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				C4BA04331CA99EE10041643A /* ADAppRater.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		80F94A6966EB1FD3B12D82C2 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				12D1BBE296E64BA5E85AB238 /* Pods.debug.xcconfig */,
-				A0CFBDD90C6D7665528ED2C1 /* Pods.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		B017E7CBF8E530ACFE9B57DD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,13 +79,10 @@
 		C4DEEAAA1B6FC84A003A52B2 = {
 			isa = PBXGroup;
 			children = (
-				C4DEEB3D1B6FFD68003A52B2 /* Podfile */,
-				C4DEEB3B1B6FFD4A003A52B2 /* ADAppRater.podspec */,
-				C4DEEAE61B6FC8E8003A52B2 /* ADAppRater */,
+				C4BA04321CA99EE10041643A /* ADAppRater.framework */,
+				C4BA04291CA99ED50041643A /* ADAppRater.xcodeproj */,
 				C4DEEAB51B6FC84A003A52B2 /* ADAppRater Demo */,
-				C4DEEACF1B6FC84A003A52B2 /* ADAppRater DemoTests */,
 				C4DEEAB41B6FC84A003A52B2 /* Products */,
-				80F94A6966EB1FD3B12D82C2 /* Pods */,
 				B017E7CBF8E530ACFE9B57DD /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -161,7 +91,6 @@
 			isa = PBXGroup;
 			children = (
 				C4DEEAB31B6FC84A003A52B2 /* ADAppRater Demo.app */,
-				C4DEEACC1B6FC84A003A52B2 /* ADAppRater DemoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -189,32 +118,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		C4DEEACF1B6FC84A003A52B2 /* ADAppRater DemoTests */ = {
-			isa = PBXGroup;
-			children = (
-				C4DEEB221B6FF29C003A52B2 /* Test Helpers */,
-				C4DEEB1C1B6FF29C003A52B2 /* AppStore Connector Tests */,
-				C4DEEB1F1B6FF29C003A52B2 /* Model Object Tests */,
-				C4DEEB271B6FF29C003A52B2 /* View Controller Tests */,
-				C4DEEB2A1B6FF29C003A52B2 /* ADAppRatingFlowTests.m */,
-				C4DEEB2B1B6FF29C003A52B2 /* ADAppRaterManager_TestsInternal.h */,
-				C4DEEB2C1B6FF29C003A52B2 /* ADAppRaterManagerTests.m */,
-				C4DEEB2D1B6FF29C003A52B2 /* ADAppRaterPropertiesTests.m */,
-				C4DEEB2E1B6FF29C003A52B2 /* ADARManagerBaseTestCase.h */,
-				C4DEEB2F1B6FF29C003A52B2 /* ADARManagerBaseTestCase.m */,
-				C4DEEAD01B6FC84A003A52B2 /* Supporting Files */,
-			);
-			path = "ADAppRater DemoTests";
-			sourceTree = "<group>";
-		};
-		C4DEEAD01B6FC84A003A52B2 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C4DEEAD11B6FC84A003A52B2 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		C4DEEADC1B6FC8C0003A52B2 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -230,76 +133,6 @@
 			path = "View Controllers";
 			sourceTree = "<group>";
 		};
-		C4DEEAE61B6FC8E8003A52B2 /* ADAppRater */ = {
-			isa = PBXGroup;
-			children = (
-				C4DEEAEF1B6FC8E8003A52B2 /* ADARDelegate.h */,
-				C4DEEAEE1B6FC8E8003A52B2 /* ADARCustomViewsDelegate.h */,
-				C4DEEAE91B6FC8E8003A52B2 /* ADAppRater.h */,
-				C4DEEAEA1B6FC8E8003A52B2 /* ADAppRater.m */,
-				C4DEEAEB1B6FC8E8003A52B2 /* ADAppRater_Protected.h */,
-				C4DEEAEC1B6FC8E8003A52B2 /* ADAppStoreConnector.h */,
-				C4DEEAED1B6FC8E8003A52B2 /* ADAppStoreConnector.m */,
-				C4DEEAE71B6FC8E8003A52B2 /* ADAlertViewRatingDelegate.h */,
-				C4DEEAE81B6FC8E8003A52B2 /* ADAlertViewRatingDelegate.m */,
-				C4DEEAF01B6FC8E8003A52B2 /* Model Layer */,
-			);
-			name = ADAppRater;
-			path = ../../ADAppRater;
-			sourceTree = "<group>";
-		};
-		C4DEEAF01B6FC8E8003A52B2 /* Model Layer */ = {
-			isa = PBXGroup;
-			children = (
-				C4DEEAF11B6FC8E8003A52B2 /* ADAppRaterTexts.h */,
-				C4DEEAF21B6FC8E8003A52B2 /* ADAppRaterTexts.m */,
-				C4DEEAF31B6FC8E8003A52B2 /* ADEventCriteria.h */,
-				C4DEEAF41B6FC8E8003A52B2 /* ADEventCriteria.m */,
-				C4DEEAF51B6FC8E8003A52B2 /* ADEventScenario.h */,
-				C4DEEAF61B6FC8E8003A52B2 /* ADEventScenario.m */,
-			);
-			path = "Model Layer";
-			sourceTree = "<group>";
-		};
-		C4DEEB1C1B6FF29C003A52B2 /* AppStore Connector Tests */ = {
-			isa = PBXGroup;
-			children = (
-				C4DEEB1D1B6FF29C003A52B2 /* ADAppStoreConnector_TestsInternal.h */,
-				C4DEEB1E1B6FF29C003A52B2 /* ADAppStoreConnectorTests.m */,
-			);
-			path = "AppStore Connector Tests";
-			sourceTree = "<group>";
-		};
-		C4DEEB1F1B6FF29C003A52B2 /* Model Object Tests */ = {
-			isa = PBXGroup;
-			children = (
-				C4E472291B9FF65D0091AE9B /* ADAppRaterTextsTests.m */,
-				C4DEEB201B6FF29C003A52B2 /* ADEventCriteriaTests.m */,
-				C4DEEB211B6FF29C003A52B2 /* ADEventScenarioTests.m */,
-			);
-			path = "Model Object Tests";
-			sourceTree = "<group>";
-		};
-		C4DEEB221B6FF29C003A52B2 /* Test Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				C4DEEB231B6FF29C003A52B2 /* ADMockingHelpers.h */,
-				C4DEEB241B6FF29C003A52B2 /* ADMockingHelpers.m */,
-				C4DEEB251B6FF29C003A52B2 /* ADTestCase.h */,
-				C4DEEB261B6FF29C003A52B2 /* ADTestCase.m */,
-			);
-			path = "Test Helpers";
-			sourceTree = "<group>";
-		};
-		C4DEEB271B6FF29C003A52B2 /* View Controller Tests */ = {
-			isa = PBXGroup;
-			children = (
-				C4DEEB281B6FF29C003A52B2 /* ADBasicFlowViewControllerTests.m */,
-				C4DEEB291B6FF29C003A52B2 /* ADCustomFlowViewControllerTests.m */,
-			);
-			path = "View Controller Tests";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -307,11 +140,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C4DEEAD61B6FC84A003A52B2 /* Build configuration list for PBXNativeTarget "ADAppRater Demo" */;
 			buildPhases = (
-				472574B14FA7CE193C95A855 /* Check Pods Manifest.lock */,
 				C4DEEAAF1B6FC84A003A52B2 /* Sources */,
 				C4DEEAB01B6FC84A003A52B2 /* Frameworks */,
 				C4DEEAB11B6FC84A003A52B2 /* Resources */,
-				F37F3B5DE62247AA06972F0B /* Copy Pods Resources */,
+				C4BA041E1CA99B410041643A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -322,39 +154,17 @@
 			productReference = C4DEEAB31B6FC84A003A52B2 /* ADAppRater Demo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C4DEEACB1B6FC84A003A52B2 /* ADAppRater DemoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C4DEEAD91B6FC84A003A52B2 /* Build configuration list for PBXNativeTarget "ADAppRater DemoTests" */;
-			buildPhases = (
-				C4DEEAC81B6FC84A003A52B2 /* Sources */,
-				C4DEEAC91B6FC84A003A52B2 /* Frameworks */,
-				C4DEEACA1B6FC84A003A52B2 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C4DEEACE1B6FC84A003A52B2 /* PBXTargetDependency */,
-			);
-			name = "ADAppRater DemoTests";
-			productName = "ADAppRater DemoTests";
-			productReference = C4DEEACC1B6FC84A003A52B2 /* ADAppRater DemoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		C4DEEAAB1B6FC84A003A52B2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = Autodesk;
 				TargetAttributes = {
 					C4DEEAB21B6FC84A003A52B2 = {
 						CreatedOnToolsVersion = 6.4;
-					};
-					C4DEEACB1B6FC84A003A52B2 = {
-						CreatedOnToolsVersion = 6.4;
-						TestTargetID = C4DEEAB21B6FC84A003A52B2;
 					};
 				};
 			};
@@ -372,7 +182,6 @@
 			projectRoot = "";
 			targets = (
 				C4DEEAB21B6FC84A003A52B2 /* ADAppRater Demo */,
-				C4DEEACB1B6FC84A003A52B2 /* ADAppRater DemoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -382,104 +191,29 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4DEEB3E1B6FFD68003A52B2 /* Podfile in Resources */,
 				C4DEEAC21B6FC84A003A52B2 /* Main.storyboard in Resources */,
 				C4DEEAC71B6FC84A003A52B2 /* LaunchScreen.xib in Resources */,
-				C4DEEB3C1B6FFD4A003A52B2 /* ADAppRater.podspec in Resources */,
 				C4DEEAC41B6FC84A003A52B2 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C4DEEACA1B6FC84A003A52B2 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		472574B14FA7CE193C95A855 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		F37F3B5DE62247AA06972F0B /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C4DEEAAF1B6FC84A003A52B2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4DEEAF71B6FC8E8003A52B2 /* ADAlertViewRatingDelegate.m in Sources */,
 				C4DEEAE31B6FC8C0003A52B2 /* ADBasicFlowViewController.m in Sources */,
-				C4DEEAFB1B6FC8E8003A52B2 /* ADEventCriteria.m in Sources */,
 				C4DEEAE41B6FC8C0003A52B2 /* ADCustomFlowViewController.m in Sources */,
-				C4DEEAFC1B6FC8E8003A52B2 /* ADEventScenario.m in Sources */,
 				C4DEEAE51B6FC8C0003A52B2 /* ADScenariosFlowViewController.m in Sources */,
 				C431239A1BA1524E00A991C2 /* ADLocalizedTextViewController.m in Sources */,
 				C4DEEABC1B6FC84A003A52B2 /* AppDelegate.m in Sources */,
 				C4DEEAB91B6FC84A003A52B2 /* main.m in Sources */,
-				C4DEEAF91B6FC8E8003A52B2 /* ADAppStoreConnector.m in Sources */,
-				C4DEEAF81B6FC8E8003A52B2 /* ADAppRater.m in Sources */,
-				C4DEEAFA1B6FC8E8003A52B2 /* ADAppRaterTexts.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C4DEEAC81B6FC84A003A52B2 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C4DEEB351B6FF29C003A52B2 /* ADBasicFlowViewControllerTests.m in Sources */,
-				C4DEEB311B6FF29C003A52B2 /* ADEventCriteriaTests.m in Sources */,
-				C4DEEB381B6FF29C003A52B2 /* ADAppRaterManagerTests.m in Sources */,
-				C4DEEB331B6FF29C003A52B2 /* ADMockingHelpers.m in Sources */,
-				C4DEEB341B6FF29C003A52B2 /* ADTestCase.m in Sources */,
-				C4DEEB301B6FF29C003A52B2 /* ADAppStoreConnectorTests.m in Sources */,
-				C4DEEB361B6FF29C003A52B2 /* ADCustomFlowViewControllerTests.m in Sources */,
-				C4DEEB321B6FF29C003A52B2 /* ADEventScenarioTests.m in Sources */,
-				C4E4722A1B9FF65D0091AE9B /* ADAppRaterTextsTests.m in Sources */,
-				C4DEEB391B6FF29C003A52B2 /* ADAppRaterPropertiesTests.m in Sources */,
-				C4DEEB3A1B6FF29C003A52B2 /* ADARManagerBaseTestCase.m in Sources */,
-				C4DEEB371B6FF29C003A52B2 /* ADAppRatingFlowTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		C4DEEACE1B6FC84A003A52B2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C4DEEAB21B6FC84A003A52B2 /* ADAppRater Demo */;
-			targetProxy = C4DEEACD1B6FC84A003A52B2 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C4DEEAC01B6FC84A003A52B2 /* Main.storyboard */ = {
@@ -523,6 +257,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -587,61 +322,27 @@
 		};
 		C4DEEAD71B6FC84A003A52B2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 12D1BBE296E64BA5E85AB238 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = ../;
 				INFOPLIST_FILE = "ADAppRater Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.autodesk.apprater;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
 		C4DEEAD81B6FC84A003A52B2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A0CFBDD90C6D7665528ED2C1 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = ../;
 				INFOPLIST_FILE = "ADAppRater Demo/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.autodesk.apprater;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		C4DEEADA1B6FC84A003A52B2 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 12D1BBE296E64BA5E85AB238 /* Pods.debug.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "ADAppRater DemoTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ADAppRater Demo.app/ADAppRater Demo";
-			};
-			name = Debug;
-		};
-		C4DEEADB1B6FC84A003A52B2 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A0CFBDD90C6D7665528ED2C1 /* Pods.release.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "ADAppRater DemoTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ADAppRater Demo.app/ADAppRater Demo";
 			};
 			name = Release;
 		};
@@ -662,15 +363,6 @@
 			buildConfigurations = (
 				C4DEEAD71B6FC84A003A52B2 /* Debug */,
 				C4DEEAD81B6FC84A003A52B2 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C4DEEAD91B6FC84A003A52B2 /* Build configuration list for PBXNativeTarget "ADAppRater DemoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C4DEEADA1B6FC84A003A52B2 /* Debug */,
-				C4DEEADB1B6FC84A003A52B2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
