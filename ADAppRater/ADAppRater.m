@@ -179,7 +179,7 @@ static dispatch_once_t once_token = 0;
 #pragma mark Getters
 
 // Push applicationName to update strings too
--(void)setApplicationName:(NSString *)applicationName
+- (void)setApplicationName:(NSString *)applicationName
 {
     _applicationName = applicationName;
     self.localStrings.applicationName = applicationName;
