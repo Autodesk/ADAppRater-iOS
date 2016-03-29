@@ -1,4 +1,3 @@
-osx_image: xcode7.2
 language: objective-c
 
 podfile: Podfile
@@ -6,10 +5,19 @@ cache: cocoapods
 
 xcode_workspace: ADAppRater.xcworkspace
 xcode_scheme: 'ADAppRater'
-xcode_sdk:
-    - iphonesimulator9.2
-    - iphonesimulator8.2
-    - iphonesimulator7.1
+#xcode_sdk:
+#    - iphonesimulator9.2
+#    - iphonesimulator8.2
+#    - iphonesimulator7.1
+
+env:
+  matrix:
+    - osx_image: xcode7.2
+      xcode_sdk: iphonesimulator9.2
+    - osx_image: xcode6.4
+      xcode_sdk: iphonesimulator8.4
+    - osx_image: xcode6.1
+      xcode_sdk: iphonesimulator7.1
 
 #env:
  # matrix:
