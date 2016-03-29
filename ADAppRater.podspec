@@ -26,6 +26,7 @@ Pod::Spec.new do |s|
   s.source             = { :git => "https://github.com/Autodesk/ADAppRater-iOS.git", :tag => '1.0.5' }
   s.platform           = :ios, '7.0'
   s.source_files       = 'ADAppRater/**/*.{h,m}'
+  s.resources          = 'ADAppRater/ADAppRater.bundle'
   
   s.frameworks         = 'Foundation', 'UIKit'
   s.requires_arc       = true

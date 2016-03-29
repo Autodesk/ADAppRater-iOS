@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C4746D021CAAC15C00C4223F /* ADAppRater.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C4746D011CAAC15C00C4223F /* ADAppRater.bundle */; };
 		C4BA03BB1CA994E70041643A /* ADAppRater.h in Headers */ = {isa = PBXBuildFile; fileRef = C4BA03BA1CA994E70041643A /* ADAppRater.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C4BA03C21CA994E70041643A /* ADAppRater.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4BA03B71CA994E70041643A /* ADAppRater.framework */; };
 		C4BA03E01CA9956E0041643A /* ADAlertViewRatingDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = C4BA03D11CA9956E0041643A /* ADAlertViewRatingDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -53,6 +54,7 @@
 		4205615785E44785658CDB3C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4807113F85FD85D58393EB32 /* libPods-ADAppRaterTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ADAppRaterTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7509B91384CE08FA8C778B24 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		C4746D011CAAC15C00C4223F /* ADAppRater.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ADAppRater.bundle; sourceTree = "<group>"; };
 		C4BA03B71CA994E70041643A /* ADAppRater.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ADAppRater.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4BA03BA1CA994E70041643A /* ADAppRater.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADAppRater.h; sourceTree = "<group>"; };
 		C4BA03BC1CA994E70041643A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				C4BA03D11CA9956E0041643A /* ADAlertViewRatingDelegate.h */,
 				C4BA03D21CA9956E0041643A /* ADAlertViewRatingDelegate.m */,
 				C4BA03D91CA9956E0041643A /* Model Layer */,
+				C4746D011CAAC15C00C4223F /* ADAppRater.bundle */,
 				C4BA03BC1CA994E70041643A /* Info.plist */,
 			);
 			path = ADAppRater;
@@ -333,6 +336,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4746D021CAAC15C00C4223F /* ADAppRater.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

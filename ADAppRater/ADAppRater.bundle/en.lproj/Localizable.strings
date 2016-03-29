@@ -1,0 +1,19 @@
+"localUserSatisfactionAlertMessageFormat" = "Do you find %@ useful?";
+"localUserSatisfactionAlertAnswerYes" = "Yes";
+"localUserSatisfactionAlertAnswerNo" = "No";
+
+"localAppRatingAlertTitle" = "Thank You";
+"localAppRatingAlertMessageFormat" = "We're happy that you find %@ useful! It'd be really helpful if you rated us.";
+"localAppRatingAlertAnswerRateFormat" = "Rate %@";
+"localAppRatingAlertAnswerRemindMe" = "Remind Me Later";
+"localAppRatingAlertAnswerDontRate" = "No, Thanks";
+
+"localUserFeedbackAlertMessageFormat" = "Please let us know how to make %@ better for you!";
+"localUserFeedbackAlertAnswerYes" = "Contact us";
+"localUserFeedbackAlertAnswerNo" = "No thanks";
+
+"localThankUserAlertTitle" = "Thanks!";
+"localThankUserAlertMessage" = "Thank you for your feedback!";
+"localThankUserAlertDismiss" = "Close";
+
+"localFeedbackFormSubject" = "Feedback";
