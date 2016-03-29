@@ -113,68 +113,85 @@
 
 - (void)dismissedUserSatisfactionAlertWithButton:(NSInteger)index
 {
+    ADAppRaterCustomViewBlock performBlock = nil;
     
     if (index == 1)
     {
         if (self.positiveBlock)
-            self.positiveBlock();
+            performBlock = self.positiveBlock;
     }
     else
     {
         if (self.negativeBlock)
-            self.negativeBlock();
+            performBlock = self.negativeBlock;
     }
     
     self.negativeBlock = nil;
     self.positiveBlock = nil;
+    
+    if (performBlock)
+        performBlock();
 }
 
 - (void)dismissedRateRequestAlertWithButton:(NSInteger)index
 {
+    ADAppRaterCustomViewBlock performBlock = nil;
+
     if (index == 0)
     {
         if (self.positiveBlock)
-            self.positiveBlock();
+            performBlock = self.positiveBlock;
     }
     else if (index == 1)
     {
         if (self.otherCompletionBlock)
-            self.otherCompletionBlock();
+            performBlock = self.otherCompletionBlock;
     }
     else
     {
         if (self.negativeBlock)
-            self.negativeBlock();
+            performBlock = self.negativeBlock;
     }
     
     self.positiveBlock = nil;
     self.otherCompletionBlock = nil;
     self.negativeBlock = nil;
+    
+    if (performBlock)
+        performBlock();
 }
 
 - (void)dismissedFeedbackRequestAlertWithButton:(NSInteger)index
 {
+    ADAppRaterCustomViewBlock performBlock = nil;
     if (index == 1)
     {
         if (self.positiveBlock)
-            self.positiveBlock();
+            performBlock = self.positiveBlock;
     }
     else
     {
         if (self.negativeBlock)
-            self.negativeBlock();
+            performBlock = self.negativeBlock;
     }
     
     self.negativeBlock = nil;
     self.positiveBlock = nil;
+    
+    if (performBlock)
+        performBlock();
 }
 
 - (void)dismissedThankYouAlertWithButton:(NSInteger)index
 {
+    ADAppRaterCustomViewBlock performBlock = nil;
     if (self.positiveBlock)
-        self.positiveBlock();
+        performBlock = self.positiveBlock;
 
     self.positiveBlock = nil;
+    
+    if (performBlock)
+        performBlock();
 }
 
 #pragma mark - UIAlertViewDelegate
