@@ -1,8 +1,8 @@
-osx_image: xcode7.3
+osx_image: xcode6.4
 language: objective-c
-xcode_sdk: iphonesimulator9.3
+xcode_sdk: iphonesimulator
 
 xcode_workspace: ADAppRater.xcworkspace
-xcode_scheme: ADAppRater
+xcode_scheme: 'ADAppRater'
 podfile: Podfile
 
