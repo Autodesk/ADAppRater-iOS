@@ -78,14 +78,21 @@
     XCTAssertFalse(shouldPrompt);
 }
 
-- (void)testShouldPromptForRating_RatedAnyVersoinWithPromptForNewVersion_shouldReturnTrue
+- (void)testShouldPromptForRating_RatedAnyVersoinWithPromptForNewVersion_passedFrequent_shouldReturnTrue
 {
     // Arrange
+    NSInteger frequncyLimit = 30;
+    NSDate *lastPrompted = [[NSCalendar currentCalendar] dateByAddingUnit:NSCalendarUnitDay
+                                                                    value:-(frequncyLimit + 5)
+                                                                   toDate:[NSDate date]
+                                                                  options:kNilOptions];
+    
     self.raterManager.promptForNewVersionIfUserRated = YES;
     OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastRatedVersion"]).andReturn(@"someVersion");
+    OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastPromptedDate"]).andReturn(lastPrompted);
     
     // Make sure the min usage is met
-    self.raterManager.limitPromptFrequency = 0;
+    self.raterManager.limitPromptFrequency = frequncyLimit;
     self.raterManager.currentVersionDaysUntilPrompt = 0;
     self.raterManager.currentVersionLaunchesUntilPrompt = 0;
     
