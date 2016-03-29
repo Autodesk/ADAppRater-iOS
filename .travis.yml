@@ -13,9 +13,9 @@ cache: cocoapods
 ## where the script section will be run once for each definition
 ## ISO_DEVICE is not used in the script but is useful to know what OS version is tested and will show up in Travis to make it easer to read
 env:
-  - UDID = "49033364-FE26-443C-9BAE-900BCEE1AFAD", IOS_DEVICE="iPhone 6s Plus (9.2)"
-  - UDID = "8DD75825-BEEB-4180-A123-DA0BA8E6DC71", IOS_DEVICE="iPhone 5 (8.1)"
-  - UDID = "1B0DBCD4-0F31-4DA6-9FCC-AE491CD34CB6", IOS_DEVICE="iPad Air 2 (9.0)"
+  - IOS_DEVICE="iPhone 6s Plus (9.2)", UDID = "49033364-FE26-443C-9BAE-900BCEE1AFAD"
+  - IOS_DEVICE="iPhone 5 (8.1)", UDID = "8DD75825-BEEB-4180-A123-DA0BA8E6DC71"
+  - IOS_DEVICE="iPad Air 2 (9.0)", UDID = "1B0DBCD4-0F31-4DA6-9FCC-AE491CD34CB6"
 
 ### Setting up the simulator for auto-test and running the build via the xcodebuild tool:
 script:
