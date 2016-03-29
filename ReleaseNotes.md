@@ -1,5 +1,8 @@
 # ADAppRater-iOS Release Notes
 
+##### Version 1.0.7
+* Issue #12: Add a localization bundle to component
+
 ##### Version 1.0.6
 * New API: `[ADAppRater appRaterVersion]`
 * iOS 7: Fix bug of broken flow
