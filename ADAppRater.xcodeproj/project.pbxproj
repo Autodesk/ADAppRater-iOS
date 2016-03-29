@@ -11,9 +11,9 @@
 		C4BA03C21CA994E70041643A /* ADAppRater.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4BA03B71CA994E70041643A /* ADAppRater.framework */; };
 		C4BA03E01CA9956E0041643A /* ADAlertViewRatingDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = C4BA03D11CA9956E0041643A /* ADAlertViewRatingDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C4BA03E11CA9956E0041643A /* ADAlertViewRatingDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C4BA03D21CA9956E0041643A /* ADAlertViewRatingDelegate.m */; };
-		C4BA03E21CA9956E0041643A /* ADAppRater_Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = C4BA03D31CA9956E0041643A /* ADAppRater_Protected.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C4BA03E21CA9956E0041643A /* ADAppRater_Protected.h in Headers */ = {isa = PBXBuildFile; fileRef = C4BA03D31CA9956E0041643A /* ADAppRater_Protected.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		C4BA03E31CA9956E0041643A /* ADAppRater.m in Sources */ = {isa = PBXBuildFile; fileRef = C4BA03D41CA9956E0041643A /* ADAppRater.m */; };
-		C4BA03E41CA9956E0041643A /* ADAppStoreConnector.h in Headers */ = {isa = PBXBuildFile; fileRef = C4BA03D51CA9956E0041643A /* ADAppStoreConnector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C4BA03E41CA9956E0041643A /* ADAppStoreConnector.h in Headers */ = {isa = PBXBuildFile; fileRef = C4BA03D51CA9956E0041643A /* ADAppStoreConnector.h */; };
 		C4BA03E51CA9956E0041643A /* ADAppStoreConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = C4BA03D61CA9956E0041643A /* ADAppStoreConnector.m */; };
 		C4BA03E61CA9956E0041643A /* ADARCustomViewsDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = C4BA03D71CA9956E0041643A /* ADARCustomViewsDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C4BA03E71CA9956E0041643A /* ADARDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = C4BA03D81CA9956E0041643A /* ADARDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
