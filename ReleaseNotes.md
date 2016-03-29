@@ -1,5 +1,10 @@
 # ADAppRater-iOS Release Notes
 
+##### Version 1.0.6
+* New API: `[ADAppRater appRaterVersion]`
+* iOS 7: Fix bug of broken flow
+* Code refactor
+
 ##### Version 1.0.5
 * PR #15: Handle case where the view controller has no navigation controller
 

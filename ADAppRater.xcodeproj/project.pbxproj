@@ -54,6 +54,7 @@
 		4205615785E44785658CDB3C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4807113F85FD85D58393EB32 /* libPods-ADAppRaterTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ADAppRaterTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7509B91384CE08FA8C778B24 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		C4746D071CAADB1200C4223F /* ReleaseNotes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = ReleaseNotes.md; sourceTree = "<group>"; };
 		C4746D011CAAC15C00C4223F /* ADAppRater.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ADAppRater.bundle; sourceTree = "<group>"; };
 		C4BA03B71CA994E70041643A /* ADAppRater.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ADAppRater.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4BA03BA1CA994E70041643A /* ADAppRater.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADAppRater.h; sourceTree = "<group>"; };
@@ -128,6 +129,7 @@
 			children = (
 				C4BA04101CA997790041643A /* Podfile */,
 				C4BA03EE1CA9962A0041643A /* ADAppRater.podspec */,
+				C4746D071CAADB1200C4223F /* ReleaseNotes.md */,
 				C4BA03B91CA994E70041643A /* ADAppRater */,
 				C4BA03C51CA994E70041643A /* ADAppRaterTests */,
 				C4BA03B81CA994E70041643A /* Products */,
