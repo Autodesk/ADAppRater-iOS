@@ -29,6 +29,10 @@ static NSString* const kThankUserAlertDismissLocalKey = @"localThankUserAlertDis
 
 static NSString* const kFeedbackFormSubjectLocalKey = @"localFeedbackFormSubject";
 
+@interface ADAppRaterTexts ()
+@property (nonatomic, strong) NSBundle *localizationBundle;
+@end
+
 @implementation ADAppRaterTexts
 
 - (instancetype)init
@@ -168,41 +172,38 @@ static NSString* const kFeedbackFormSubjectLocalKey = @"localFeedbackFormSubject
 
 - (NSString *)localizedStringForKey:(NSString *)key
 {
-    static NSBundle *localizationBundle = nil;
-    if (localizationBundle == nil)
-    {
-        localizationBundle = [self loadLanguageBundle];
-    }
-    
-    return [localizationBundle localizedStringForKey:key value:nil table:nil];
+    return [self.localizationBundle localizedStringForKey:key value:nil table:nil];
 }
 
-- (NSBundle*)loadLanguageBundle
+- (NSBundle *)localizationBundle
 {
-    // Load AppRater resource bundle
-    NSString *bundlePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"ADAppRater" ofType:@"bundle"];
-    NSBundle* bundle = [NSBundle bundleWithPath:bundlePath];
-    
-    // Iterate over languages to find first localized language available
-    for (NSString* lang in [NSLocale preferredLanguages])
+    if (_localizationBundle == nil)
     {
-        NSString* searchString = lang.copy;
-     
-        // If lang string not found - search language only with out locale
-        if (![bundle.localizations containsObject:searchString])
-        {
-            searchString = [searchString componentsSeparatedByString:@"-"][0];
-        }
+        // Load AppRater resource bundle
+        NSString *bundlePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"ADAppRater" ofType:@"bundle"];
+        _localizationBundle = [NSBundle bundleWithPath:bundlePath];
         
-        // Load language localization file if available
-        if ([bundle.localizations containsObject:searchString])
+        // Iterate over languages to find first localized language available
+        for (NSString* lang in [NSLocale preferredLanguages])
         {
-            bundlePath = [bundle pathForResource:searchString ofType:@"lproj"];
-            bundle = [NSBundle bundleWithPath:bundlePath];
-            break;
+            NSString* searchString = lang.copy;
+            
+            // If lang string not found - search language only with out locale
+            if (![_localizationBundle.localizations containsObject:searchString])
+            {
+                searchString = [searchString componentsSeparatedByString:@"-"][0];
+            }
+            
+            // Load language localization file if available
+            if ([_localizationBundle.localizations containsObject:searchString])
+            {
+                bundlePath = [_localizationBundle pathForResource:searchString ofType:@"lproj"];
+                _localizationBundle = [NSBundle bundleWithPath:bundlePath];
+                break;
+            }
         }
     }
-    return bundle;
+    return _localizationBundle;
 }
 
 @end

@@ -11,6 +11,7 @@
 #import "ADAppRater_Protected.h"
 
 @interface ADAppRaterTextsTests : ADTestCase
+@property (nonatomic, strong) id mockLocale;
 @end
 
 @implementation ADAppRaterTextsTests
@@ -18,10 +19,17 @@
 - (void)setUp
 {
     [super setUp];
+    
+    [ADMockingHelpers unmockForClass:[NSLocale class]];
+   self.mockLocale = OCMClassMock([NSLocale class]);
+    OCMStub([self.mockLocale preferredLanguages]).andReturn(@[@"en"]);
 }
 
 - (void)tearDown
 {
+    self.mockLocale = nil;
+    [ADMockingHelpers unmockForClass:[NSLocale class]];
+
     [super tearDown];
 }
 
