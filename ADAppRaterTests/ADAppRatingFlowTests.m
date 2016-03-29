@@ -145,7 +145,7 @@
     OCMVerifyAll(mockRatingManager);
     OCMVerifyAll(self.mockDelegate);
     XCTAssertEqual(self.raterManager.currentAlert.actions.count, 3);
-    XCTAssertEqualObjects(((UIAlertAction*)self.raterManager.currentAlert.actions[0]).title, @"Rate ADAppRater Demo");
+    XCTAssertEqualObjects(((UIAlertAction*)self.raterManager.currentAlert.actions[0]).title, @"Rate ADAppRater");
     XCTAssertEqualObjects(((UIAlertAction*)self.raterManager.currentAlert.actions[1]).title, @"Remind Me Later");
     XCTAssertEqualObjects(((UIAlertAction*)self.raterManager.currentAlert.actions[2]).title, @"No, Thanks");
 }
@@ -272,7 +272,7 @@
     // Assert
     OCMVerifyAll(self.mockDelegate);
     XCTAssertEqual(self.raterManager.currentAlert.actions.count, 3);
-    XCTAssertEqualObjects(((UIAlertAction*)self.raterManager.currentAlert.actions[0]).title, @"Rate ADAppRater Demo");
+    XCTAssertEqualObjects(((UIAlertAction*)self.raterManager.currentAlert.actions[0]).title, @"Rate ADAppRater");
     XCTAssertEqualObjects(((UIAlertAction*)self.raterManager.currentAlert.actions[1]).title, @"Remind Me Later");
     XCTAssertEqualObjects(((UIAlertAction*)self.raterManager.currentAlert.actions[2]).title, @"No, Thanks");
 }
