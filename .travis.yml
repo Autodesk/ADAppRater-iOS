@@ -1,18 +1,30 @@
+
 language: objective-c
+osx_image: xcode7.2
 
 podfile: Podfile
 cache: cocoapods
 
-xcode_workspace: ADAppRater.xcworkspace
-xcode_scheme: 'ADAppRater'
+#xcode_workspace: ADAppRater.xcworkspace
+#xcode_scheme: 'ADAppRater'
 
+## Create a build matrix to execute against multiple simulators/iOS versions
+## The UDID will be used below to determin the destination to test against
+## where the script section will be run once for each definition
+## ISO_DEVICE is not used in the script but is useful to know what OS version is tested and will show up in Travis to make it easer to read
 env:
-  matrix:
-    - osx_image: xcode7.2  xcode_sdk: iphonesimulator9.2
-    - osx_image: xcode6.4  xcode_sdk: iphonesimulator8.4
-    - osx_image: xcode6.1  xcode_sdk: iphonesimulator7.1
+  - UDID="FCBB11B4-D7C8-4085-9067-2CEDA2BFC895", IOS_DEVICE="iPhone 6 Plus (9.0)"
+  # - UDID="363ADE93-270B-4C2E-9286-C3C1FABE3CDD", IOS_DEVICE="iPhone 4s (8.1)"
+  - UDID="BE52C183-B4AF-408D-AE90-278FA4AD89EC", IOS_DEVICE="iPhone 5 (8.3)"
+  - UDID="FCBB11B4-D7C8-4085-9067-2CEDA2BFC895", IOS_DEVICE="iPhone 6 Plus (9.0)"
+  - UDID="BEEA639C-46EB-48EF-8377-A22B781A7EE2", IOS_DEVICE="iPad Air 2 (8.4)"
 
-
-#script:
-#  - xctool test -test-sdk $TEST_SDK -simulator $SIMULATOR
+### Setting up the simulator for auto-test and running the build via the xcodebuild tool:
+script:
+  # The xcrun with devices here will print out a list of available devices you can snag the UDIDs for
+  - xcrun instruments -s devices
+  - echo staring build and test...
+  - open -a "simulator" --args -CurrentDeviceUDID $UDID
+  - xcodebuild test -workspace ADAppRater.xcworkspace -scheme ADAppRater -configuration Debug -sdk iphonesimulator -destination "platform=iOS Simulator,id=$UDID"
+  - osascript -e 'tell app \"Simulator\" to quit'
 
