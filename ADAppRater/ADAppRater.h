@@ -29,6 +29,8 @@
  */
 + (instancetype)sharedInstance;
 
++ (NSString*)appRaterVersion;
+
 /**
  *  Application Details - These are set automatically, but can be overriden if needed
  */

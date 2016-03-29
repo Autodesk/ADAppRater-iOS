@@ -10,6 +10,8 @@
 #import "ADAppStoreConnector.h"
 #import "ADAlertViewRatingDelegate.h"
 
+static NSString *const APP_RATER_VERSION = @"1.0.5";
+
 static NSString *const kADAppRaterLastVersionUsedKey = @"AD_AppRaterLastVersionUsed";
 static NSString *const kADAppRaterVersionFirstUsedKey = @"AD_AppRaterVersionFirstUsed";
 static NSString *const kADAppRaterVersionLaunchCountKey = @"AD_AppRaterVersionLaunchCount";
@@ -42,6 +44,11 @@ static NSString *const kADAppRaterLastRemindedKey = @"AD_AppRaterLastReminded";
 @end
 
 @implementation ADAppRater
+
++ (NSString*)appRaterVersion
+{
+    return APP_RATER_VERSION;
+}
 
 static ADAppRater* sharedAppRater;
 static dispatch_once_t once_token = 0;

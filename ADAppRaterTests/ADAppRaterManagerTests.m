@@ -28,6 +28,17 @@
     [super tearDown];
 }
 
+#pragma mark - App Rater Version
+
+- (void)testAppRaterVersion_shouldReturnConstSameAsPlist
+{
+    // Arrange
+    NSString* plistVersion = [[NSBundle bundleForClass:[ADAppRater class]] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+
+    // Assert
+    XCTAssertEqualObjects([ADAppRater appRaterVersion], plistVersion);
+}
+
 #pragma mark - Should Prompt - Criteria Tests
 
 #ifdef DEBUG
