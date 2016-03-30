@@ -173,8 +173,8 @@ To customize the texts ADAppRater will display, insert your customized strings t
 	@property (nonatomic, strong) NSString* feedbackFormSubject;
 	@property (nonatomic, strong) NSString* feedbackFormBody;
 
-  ### Email Recipient for Feedback Form
-  To set an email address to be used as a recipient in the default feedback form, insert the mail address to `ADAppRaterTexts` property:
+### Email Recipient for Feedback Form
+To set an email address to be used as a recipient in the default feedback form, insert the mail address to `ADAppRaterTexts` property:
 
   	@property (nonatomic, strong) NSString* feedbackFormRecipient;
 
