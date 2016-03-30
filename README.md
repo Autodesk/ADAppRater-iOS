@@ -70,7 +70,7 @@ If you do wish to configure ADAppRater, I suggest doing so *before* the app has 
 
     #import "ADAppRater.h"
 
-	- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+	- (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
     {
       // Override point for customization after application launch.
       [ADAppRater sharedInstance].currentVersionDaysUntilPrompt = 1;
@@ -199,7 +199,7 @@ All delegate methods are __optional__:
     - (void)appRaterUserDidDeclineToSendFeedback;
     
     - (void)appRaterAppStoreDidOpen;
-    - (void)appRaterAppStoreCouldNotConnect:(NSError *)error;
+    - (void)appRaterAppStoreCouldNotConnect:(NSError*)error;
 
 
 ### ADARCustomViewsDelegate Protocol
@@ -213,7 +213,7 @@ This is the first step of the Rater flow. This method is called to first check i
 If you do not implement this method, the default UI and text will be used.
 
 
-    - (void)promptAppRatingAlertFromViewController:(UIViewController *)viewController
+    - (void)promptAppRatingAlertFromViewController:(UIViewController*)viewController
                               userWillRateAppBlock:(ADAppRaterCustomViewBlock)userWillRateAppBlock
                               remindUserLaterBlock:(ADAppRaterCustomViewBlock)remindUserLaterBlock
                                   userRefusedBlock:(ADAppRaterCustomViewBlock)userRefusedBlock;
