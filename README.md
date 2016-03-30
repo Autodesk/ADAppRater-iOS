@@ -1,4 +1,4 @@
-[![ADAppRater-iOS](./Assets/Icons/icon120.png)](https://github.com/Autodesk/ADAppRater-iOS) 
+[![ADAppRater-iOS](./Assets/Icons/icon120.png)](https://github.com/Autodesk/ADAppRater-iOS)
 [![CocoaPods Version](https://img.shields.io/cocoapods/v/ADAppRater.svg)](http://cocoadocs.org/docsets/ADAppRater)
 [![Build Status](https://travis-ci.org/Autodesk/ADAppRater-iOS.svg?branch=master)](https://travis-ci.org/Autodesk/ADAppRater-iOS)
 
@@ -15,9 +15,9 @@ By pinpointing users who regularly engage with and think highly of your app, thi
 * [Configuration](https://github.com/Autodesk/ADAppRater-iOS#configuration)
  * [Advanced Configuration](https://github.com/Autodesk/ADAppRater-iOS#advanced-configuration)
 * [How To Use](https://github.com/Autodesk/ADAppRater-iOS#how-to-use)
-* [Text Customization](https://github.com/Autodesk/ADAppRater-iOS#text-customization)
+* [Text & Localization](https://github.com/Autodesk/ADAppRater-iOS#text--localization)
+ * [Text Customization](https://github.com/Autodesk/ADAppRater-iOS#text-customization)
  * [Email Recipient for Feedback Form](https://github.com/Autodesk/ADAppRater-iOS#email-recipient-for-feedback-form)
- * [Text & Localization](https://github.com/Autodesk/ADAppRater-iOS#text--localization)
 * [Delegate Methods](https://github.com/Autodesk/ADAppRater-iOS#delegate-methods)
  * [ADARDelegate Protocol](https://github.com/Autodesk/ADAppRater-iOS#adardelegate-protocol)
  * [ADARCustomViewsDelegate Protocol](https://github.com/Autodesk/ADAppRater-iOS#adarcustomviewsdelegate-protocol)
@@ -28,22 +28,22 @@ By pinpointing users who regularly engage with and think highly of your app, thi
 * [Special Thanks](https://github.com/Autodesk/ADAppRater-iOS#special-thanks)
 * [Contact](https://github.com/Autodesk/ADAppRater-iOS#contact)
 
-####Support
+#### Support
 * Built for iOS 8
 * Tested on iOS 7 (will most likely work on earlier versions as well)
 * ADAppRater uses ARC
 
-####Rater flow:
+#### Rater flow:
 
 ![](./Assets/Screenshots/Screenshot1_Satisfaction.png "Check user satisfaction") ![](./Assets/Screenshots/Screenshot2_Rate.png "Prompt app rating") ![](./Assets/Screenshots/Screenshot3_Feedback.png "Request user feedback")
 
 * First check user satisfaction
 * Navigate satisfied users to feedback publicly in the app store
-* Navigate dissatisfied users to privately send direct feedback to you 
+* Navigate dissatisfied users to privately send direct feedback to you
 
 
-##Features
-* Target only satisfied users to achieve a higher App Store rating 
+## Features
+* Target only satisfied users to achieve a higher App Store rating
 * Collect valuable feedback and complaints from dissatisfied users
 * Easy to define usage parameters to target only experienced users
 * Supports multiple scenarios of significant events to target users who have completed a flow
@@ -52,25 +52,25 @@ By pinpointing users who regularly engage with and think highly of your app, thi
 * Custom View Delegate to create your own custom UI
 
 
-##Installation
-####Cocoa pod
-`pod 'ADAppRater', '~> 1.0.0' ` 
+## Installation
+#### Cocoa pod
+`pod 'ADAppRater', '~> 1.0.0' `
 
-####Standard installation
+#### Standard installation
 1. Download project to desktop
 2. Drag and drop the ‘ADAppRater’ folder to your project
 3. When prompted - mark ‘Copy items if needed’
 
 Do not forget to add `#import "ADAppRater.h"` where needed
 
-##Configuration
+## Configuration
 ADAppRater requires no configuration and can perform as is, simply using default configuration and the application's current plist details.
 
 If you do wish to configure ADAppRater, I suggest doing so *before* the app has finished launching, i.e. in the AppDelegate's `application: didFinishLaunchingWithOptions:` method, like this:
 
     #import "ADAppRater.h"
 
-	- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
+	- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     {
       // Override point for customization after application launch.
       [ADAppRater sharedInstance].currentVersionDaysUntilPrompt = 1;
@@ -83,15 +83,15 @@ If you do wish to configure ADAppRater, I suggest doing so *before* the app has 
     }
 
 
-* `currentVersionDaysUntilPrompt` is the amount of days since the current app version was first launched to wait before prompting user to rate the app. Defualt is 1.
-* `currentVersionLaunchesUntilPrompt` is the amount of launches of the current app version to wait before prompting user to rate the app. Defualt is 3.
+* `currentVersionDaysUntilPrompt` is the amount of days since the current app version was first launched to wait before prompting user to rate the app. Default is 1.
+* `currentVersionLaunchesUntilPrompt` is the amount of launches of the current app version to wait before prompting user to rate the app. Default is 3.
 * `remindWaitPeriod` is the number of days to wait to re-prompt user to rate the app, in case he asked to be reminded later.
-* `promptForNewVersionIfUserRated` Set YES if user should be prompted to rate the app for a new version, even if he already rated an older version. Defualt is NO.
-* `limitPromptFrequency` is the minimum number of days to wait between prompts (excluding remiders requested by user) Default is 30 days (once a month).
+* `promptForNewVersionIfUserRated` Set YES if user should be prompted to rate the app for a new version, even if he already rated an older version. Default is NO.
+* `limitPromptFrequency` is the minimum number of days to wait between prompts (excluding reminders requested by user) Default is 30 days (once a month).
 
 
 
-###Advanced configuration
+### Advanced configuration
 ADAppRater supports multiple scenarios of significant events to target users who have reached a certain goal.
 
 The user will be prompted to rate the app if he completes any of these scenarios, along with the basic configuration as well.
@@ -112,7 +112,7 @@ The user will be prompted to rate the app if he completes any of these scenarios
     [ADAppRater sharedInstance].eventScenariosUntilPrompt = @[scenario1, scenario2, scenario3];
 
 
-##How To Use
+## How To Use
 
     - (void)startRaterFlowFromViewController:(__weak UIViewController*)viewController;
 Immediately invoke the Rater flow, starting with checking user satisfaction.
@@ -134,8 +134,12 @@ This method also invokes the `startRaterFlowIfCriteriaMetFromViewController:` to
 Immediately prompt user to rate the app, skipping the flow of first checking user satisfaction.
 The only condition checked is that the device is online.
 
-##Text Customization
-ADAppRater is not localized and has only default English strings.
+## Text & Localization
+ADAppRater is localized based on device settings and available translations. The localization infrastructure relates to the default texts, but can be customized (see below).
+If wish to use the default texts and your preferred language is unavailable, you can contribute to the project by duplicating and translating the 'Localizable.strings' file and submitting a pull request (see "Contributing" below).
+
+
+### Text Customization
 All strings used for the default UI flow are bundled in an `ADAppRaterTexts` class. You can either access the default instance or create a new instance and override the new one:
 `[ADAppRater sharedInstance].localStrings`
 Or
@@ -143,12 +147,6 @@ Or
 	ADAppRaterTexts* newStrings = [[ADAppRaterTexts alloc] initWithApplicationName:@"App Name" feedbackRecipientEmail:@"support@your.mail"];
 	[ADAppRater sharedInstance].localStrings = newStrings;
 
-###Email Recipient for Feedback Form
-To set an email address to be used as a recipient in the default feedback form, insert the mail address to `ADAppRaterTexts` property:
-
-	@property (nonatomic, strong) NSString* feedbackFormRecipient;
-
-###Text & Localization
 To customize the texts ADAppRater will display, insert your customized strings to the appropriate `ADAppRaterTexts` property:
 
 	@property (nonatomic, strong) NSString* userSatisfactionAlertTitle;
@@ -175,12 +173,17 @@ To customize the texts ADAppRater will display, insert your customized strings t
 	@property (nonatomic, strong) NSString* feedbackFormSubject;
 	@property (nonatomic, strong) NSString* feedbackFormBody;
 
-##Delegate Methods
+  ### Email Recipient for Feedback Form
+  To set an email address to be used as a recipient in the default feedback form, insert the mail address to `ADAppRaterTexts` property:
+
+  	@property (nonatomic, strong) NSString* feedbackFormRecipient;
+
+## Delegate Methods
 ADAppRater has two different types of protocols that can implemented.
 - Implement `ADARDelegate` to be notified on every step of the Rater flow.
 - Implement `ADARCustomViewsDelegate` to use your own custom views for each step of the Rater flow.
 
-###ADARDelegate Protocol
+### ADARDelegate Protocol
 All delegate methods are __optional__:
 
     - (void)appRaterWillPromptUserSatisfaction;
@@ -199,22 +202,22 @@ All delegate methods are __optional__:
     - (void)appRaterAppStoreCouldNotConnect:(NSError *)error;
 
 
-###ADARCustomViewsDelegate Protocol
+### ADARCustomViewsDelegate Protocol
 All delegate methods are __optional__:
 
     - (void)promptUserSatisfationAlertFromViewController:(UIViewController*)viewController
-                                      userSatisfiedBlock:(ADAppRaterCustomViewBlock)userSatisfiedBlock 
+                                      userSatisfiedBlock:(ADAppRaterCustomViewBlock)userSatisfiedBlock
                                    userNotSatisfiedBlock:(ADAppRaterCustomViewBlock)userNotSatisfiedBlock;
 Implement this method to provide a custom view or custom texts to check user satisfaction within the app.
 This is the first step of the Rater flow. This method is called to first check if the user likes the app.
 If you do not implement this method, the default UI and text will be used.
 
 
-    - (void)promptAppRatingAlertFromViewController:(UIViewController *)viewController 
-                              userWillRateAppBlock:(ADAppRaterCustomViewBlock)userWillRateAppBlock 
-                              remindUserLaterBlock:(ADAppRaterCustomViewBlock)remindUserLaterBlock 
+    - (void)promptAppRatingAlertFromViewController:(UIViewController *)viewController
+                              userWillRateAppBlock:(ADAppRaterCustomViewBlock)userWillRateAppBlock
+                              remindUserLaterBlock:(ADAppRaterCustomViewBlock)remindUserLaterBlock
                                   userRefusedBlock:(ADAppRaterCustomViewBlock)userRefusedBlock;
-Implement this method to provide a custom view or custom texts to ask user to rate the app. 
+Implement this method to provide a custom view or custom texts to ask user to rate the app.
 This method is called if a user answered he is satisfied with app.
 If you do not implement this method, the default UI and text will be used.
 
@@ -226,17 +229,17 @@ Implement this method to provide a custom view or custom texts to request the us
 This method is called if a user answered he is not satisfied with app.
 If you do not implement this method, the default UI and text will be used.
 
-    - (void)displayThankYouAlertFromViewController:(UIViewController*)viewController 
+    - (void)displayThankYouAlertFromViewController:(UIViewController*)viewController
                                    completionBlock:(ADAppRaterCustomViewBlock)completion;
-Implement this method to provide a custom view or custom texts to thank the user for his feedback. 
+Implement this method to provide a custom view or custom texts to thank the user for his feedback.
 This method is called if a user has successfully sent his feedback.
 If you do not implement this method, the default UI and text will be used.
 
 
     - (void)presentFeedbackFormFromViewController:(UIViewController*)viewController
-                            userSentFeedbackBlock:(ADAppRaterCustomViewBlock)userSentFeedbackBlock 
+                            userSentFeedbackBlock:(ADAppRaterCustomViewBlock)userSentFeedbackBlock
                       userDidNotSendFeedbackBlock:(ADAppRaterCustomViewBlock)userDidNotSendFeedbackBlock;
-Implement this method to provide a custom form or custom texts for the feedback email/form. 
+Implement this method to provide a custom form or custom texts for the feedback email/form.
 This method is called if a user has agreed to send feedback after answering he is not satisfied with the app.
 If you do not implement this method, the default email app will be used.
 
@@ -264,7 +267,7 @@ Part of the `ADARDelegate` protocol. Implement this method to provide a custom l
 
 
 
-##Example Project
+## Example Project
 1. Download project to desktop
 2. Open the ‘ADAppRater Demo’ App
 3. The demo app demonstrates 4 ways to use the component:
@@ -274,7 +277,7 @@ Part of the `ADARDelegate` protocol. Implement this method to provide a custom l
   4. Default UI flow with several scenarios of significant events
 
 * __Pay attention to the log console to follow the flow__
-* __In order for the flow to work you must remeber to insert a real bundle Id in each UIViewController, otherwise the demo will act as offline__
+* __In order for the flow to work you must remember to insert a real bundle Id in each UIViewController, otherwise the demo will act as offline__
 
 
 ## Release Notes
@@ -290,12 +293,12 @@ See [Contributing](./Contributing.md) page.
 
 Using ADAppRater? Let me know.
 
-##Special Thanks
+## Special Thanks
 - I'd appreciate a github star if you find this useful.
 - A special thanks to Nick Lockwood and [iRate](https://github.com/nicklockwood/iRate) which was a great inspiration and example for this project.
 
 
-##Contact
+## Contact
 [Amir Shavit](https://github.com/ashavit)
 
 [Twitter](https://twitter.com/ashavit3)

@@ -21,15 +21,15 @@
   * Added `userLastPromptedToRate` property to AppRater to return last time user was prompted
 * Replaced `currentVersionLastReminded` property with `userLastRemindedToRate`.
 * Reminder is no longer related to specific version.
-  * Before: If a user asks to be remined, but during the reminder period - the version was updated and usage reset, user would not be prompted again until he re-reached minimum usage.
-  * Now: If a user asks to be remined, but during the reminder period - the version was updated and usage reset, user will be reminded anyway, disregarding minimum usage.
+  * Before: If a user asks to be reminded, but during the reminder period - the version was updated and usage reset, user would not be prompted again until he re-reached minimum usage.
+  * Now: If a user asks to be reminded, but during the reminder period - the version was updated and usage reset, user will be reminded anyway, disregarding minimum usage.
 
 ##### Version 1.0.2
-* Fixed bug related to localising strings
+* Fixed bug related to localizing strings
 
 ##### Version 1.0.1
 * Add Travis-CI
-* Nicer Cocoapod Description
+* Nicer Cocoa pod Description
 
 ##### Version 1.0.0
 * Initial release.
