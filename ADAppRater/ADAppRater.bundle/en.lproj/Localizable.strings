@@ -1,17 +1,22 @@
+
+// Ask for user satisfation
 "localUserSatisfactionAlertMessageFormat" = "Do you find %@ useful?";
 "localUserSatisfactionAlertAnswerYes" = "Yes";
 "localUserSatisfactionAlertAnswerNo" = "No";
 
+// Request user to rate app
 "localAppRatingAlertTitle" = "Thank You";
 "localAppRatingAlertMessageFormat" = "We're happy that you find %@ useful! It'd be really helpful if you rated us.";
 "localAppRatingAlertAnswerRateFormat" = "Rate %@";
 "localAppRatingAlertAnswerRemindMe" = "Remind Me Later";
 "localAppRatingAlertAnswerDontRate" = "No, Thanks";
 
+// Request user feedback
 "localUserFeedbackAlertMessageFormat" = "Please let us know how to make %@ better for you!";
 "localUserFeedbackAlertAnswerYes" = "Contact us";
 "localUserFeedbackAlertAnswerNo" = "No thanks";
 
+// Thank user for feedback
 "localThankUserAlertTitle" = "Thanks!";
 "localThankUserAlertMessage" = "Thank you for your feedback!";
 "localThankUserAlertDismiss" = "Close";
