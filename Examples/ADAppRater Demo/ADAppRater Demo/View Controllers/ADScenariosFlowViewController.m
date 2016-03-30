@@ -34,7 +34,7 @@
     [ADAppRater sharedInstance].enableLog = YES;
 
     // Insert your domain here to play with the demo:
-    [ADAppRater sharedInstance].applicationBundleID = @"com.your.bundleid";
+    [ADAppRater sharedInstance].applicationBundleID = @"com.clickgamer.AngryBirds";
 
     // Disable minimum days and sessions conditions
     [ADAppRater sharedInstance].currentVersionDaysUntilPrompt = 0;
