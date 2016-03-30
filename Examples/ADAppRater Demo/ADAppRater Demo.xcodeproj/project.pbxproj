@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49EF68CB1CABD49100CD55EE /* ADAppRater.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4746CFE1CAA617900C4223F /* ADAppRater.framework */; };
 		C431239A1BA1524E00A991C2 /* ADLocalizedTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C43123991BA1524E00A991C2 /* ADLocalizedTextViewController.m */; };
-		C4BA04331CA99EE10041643A /* ADAppRater.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4BA04321CA99EE10041643A /* ADAppRater.framework */; };
-		C4BA04341CA99EE10041643A /* ADAppRater.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C4BA04321CA99EE10041643A /* ADAppRater.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C4DEEAB91B6FC84A003A52B2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DEEAB81B6FC84A003A52B2 /* main.m */; };
 		C4DEEABC1B6FC84A003A52B2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DEEABB1B6FC84A003A52B2 /* AppDelegate.m */; };
 		C4DEEAC21B6FC84A003A52B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4DEEAC01B6FC84A003A52B2 /* Main.storyboard */; };
@@ -21,6 +20,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		49EF68C91CABD48B00CD55EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C4BA04291CA99ED50041643A /* ADAppRater.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = C4BA03B61CA994E70041643A;
+			remoteInfo = ADAppRater;
+		};
 		C4746CFD1CAA617900C4223F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C4BA04291CA99ED50041643A /* ADAppRater.xcodeproj */;
@@ -44,7 +50,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C4BA04341CA99EE10041643A /* ADAppRater.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -56,7 +61,6 @@
 		C43123981BA1524E00A991C2 /* ADLocalizedTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADLocalizedTextViewController.h; sourceTree = "<group>"; };
 		C43123991BA1524E00A991C2 /* ADLocalizedTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADLocalizedTextViewController.m; sourceTree = "<group>"; };
 		C4BA04291CA99ED50041643A /* ADAppRater.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ADAppRater.xcodeproj; path = ../../ADAppRater.xcodeproj; sourceTree = "<group>"; };
-		C4BA04321CA99EE10041643A /* ADAppRater.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = ADAppRater.framework; path = "/Users/AmirShavit/Library/Developer/Xcode/DerivedData/ADAppRater_Demo-dickayfumukafwbrkswntkbkibzl/Build/Products/Debug-iphoneos/ADAppRater.framework"; sourceTree = "<absolute>"; };
 		C4DEEAB31B6FC84A003A52B2 /* ADAppRater Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ADAppRater Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4DEEAB71B6FC84A003A52B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4DEEAB81B6FC84A003A52B2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -78,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4BA04331CA99EE10041643A /* ADAppRater.framework in Frameworks */,
+				49EF68CB1CABD49100CD55EE /* ADAppRater.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,7 +109,6 @@
 		C4DEEAAA1B6FC84A003A52B2 = {
 			isa = PBXGroup;
 			children = (
-				C4BA04321CA99EE10041643A /* ADAppRater.framework */,
 				C4BA04291CA99ED50041643A /* ADAppRater.xcodeproj */,
 				C4DEEAB51B6FC84A003A52B2 /* ADAppRater Demo */,
 				C4DEEAB41B6FC84A003A52B2 /* Products */,
@@ -174,6 +177,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				49EF68CA1CABD48B00CD55EE /* PBXTargetDependency */,
 			);
 			name = "ADAppRater Demo";
 			productName = "ADAppRater Demo";
@@ -263,6 +267,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		49EF68CA1CABD48B00CD55EE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ADAppRater;
+			targetProxy = 49EF68C91CABD48B00CD55EE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C4DEEAC01B6FC84A003A52B2 /* Main.storyboard */ = {
