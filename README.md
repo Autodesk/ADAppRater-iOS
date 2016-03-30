@@ -23,7 +23,7 @@ By pinpointing users who regularly engage with and think highly of your app, thi
  * [ADARCustomViewsDelegate Protocol](https://github.com/Autodesk/ADAppRater-iOS#adarcustomviewsdelegate-protocol)
 * [Developer Tools Configuration](https://github.com/Autodesk/ADAppRater-iOS#developer-tools-configuration)
 * [Example Project](https://github.com/Autodesk/ADAppRater-iOS#example-project)
-* [Release Notes](https://github.com/Autodesk/ADAppRater-iOS#release-notes)
+* [Change log](https://github.com/Autodesk/ADAppRater-iOS#change-log)
 * [Contributing](https://github.com/Autodesk/ADAppRater-iOS#contributing)
 * [Special Thanks](https://github.com/Autodesk/ADAppRater-iOS#special-thanks)
 * [Contact](https://github.com/Autodesk/ADAppRater-iOS#contact)
@@ -280,8 +280,8 @@ Part of the `ADARDelegate` protocol. Implement this method to provide a custom l
 * __In order for the flow to work you must remember to insert a real bundle Id in each UIViewController, otherwise the demo will act as offline__
 
 
-## Release Notes
-See [Release Notes](./ReleaseNotes.md) wiki page.
+## Change Log
+See [Change Log](./CHANGELOG.md) page.
 
 
 ## Contributing
