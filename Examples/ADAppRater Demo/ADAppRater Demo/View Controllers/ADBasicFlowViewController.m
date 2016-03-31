@@ -18,7 +18,7 @@
     [ADAppRater sharedInstance].enableLog = YES;
 
     // Insert your domain here to play with the demo:
-    [ADAppRater sharedInstance].applicationBundleID = @"com.your.bundleid";
+    [ADAppRater sharedInstance].applicationBundleID = @"com.autodesk.autocadws";
 }
 
 - (void)didReceiveMemoryWarning

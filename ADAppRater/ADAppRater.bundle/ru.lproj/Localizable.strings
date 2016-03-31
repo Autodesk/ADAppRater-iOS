@@ -1,0 +1,24 @@
+
+// Ask for user satisfation
+"localUserSatisfactionAlertMessageFormat" = "Вам понравилось приложение %@?";
+"localUserSatisfactionAlertAnswerYes" = "Да";
+"localUserSatisfactionAlertAnswerNo" = "Нет";
+
+// Request user to rate app
+"localAppRatingAlertTitle" = "Спасибо";
+"localAppRatingAlertMessageFormat" = "Мы очень рады, что вам понравилось приложение %@! Хотели бы вы поставить оценку приложению?";
+"localAppRatingAlertAnswerRateFormat" = "Оценить %@";
+"localAppRatingAlertAnswerRemindMe" = "Напомнить позже";
+"localAppRatingAlertAnswerDontRate" = "Нет, спасибо";
+
+// Request user feedback
+"localUserFeedbackAlertMessageFormat" = "Пожалуйста напишите, как мы можем улучшить %@?";
+"localUserFeedbackAlertAnswerYes" = "Написать";
+"localUserFeedbackAlertAnswerNo" = "Нет, спасибо";
+
+// Thank user for feedback
+"localThankUserAlertTitle" = "Спасибо!";
+"localThankUserAlertMessage" = "Спасибо за ваш отзыв!";
+"localThankUserAlertDismiss" = "Закрыть";
+
+"localFeedbackFormSubject" = "Отзыв";
