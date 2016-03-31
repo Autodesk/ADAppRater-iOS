@@ -1,5 +1,8 @@
 # ADAppRater-iOS Release Notes
 
+##### Version 1.0.8
+* PR #17: Add a Russian translation for default texts
+
 ##### Version 1.0.7
 * Issue #12: Add a localization bundle to component
 

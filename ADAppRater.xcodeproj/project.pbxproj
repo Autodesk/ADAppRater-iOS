@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C4746D021CAAC15C00C4223F /* ADAppRater.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C4746D011CAAC15C00C4223F /* ADAppRater.bundle */; };
+		C4A7ABA21CAD315300BB354C /* CHANGELOG.md in Sources */ = {isa = PBXBuildFile; fileRef = C4A7ABA11CAD315300BB354C /* CHANGELOG.md */; };
 		C4BA03BB1CA994E70041643A /* ADAppRater.h in Headers */ = {isa = PBXBuildFile; fileRef = C4BA03BA1CA994E70041643A /* ADAppRater.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C4BA03C21CA994E70041643A /* ADAppRater.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4BA03B71CA994E70041643A /* ADAppRater.framework */; };
 		C4BA03E01CA9956E0041643A /* ADAlertViewRatingDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = C4BA03D11CA9956E0041643A /* ADAlertViewRatingDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -55,7 +56,7 @@
 		4807113F85FD85D58393EB32 /* libPods-ADAppRaterTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ADAppRaterTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7509B91384CE08FA8C778B24 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		C4746D011CAAC15C00C4223F /* ADAppRater.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ADAppRater.bundle; sourceTree = "<group>"; };
-		C4746D071CAADB1200C4223F /* ReleaseNotes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = ReleaseNotes.md; sourceTree = "<group>"; };
+		C4A7ABA11CAD315300BB354C /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		C4BA03B71CA994E70041643A /* ADAppRater.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ADAppRater.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4BA03BA1CA994E70041643A /* ADAppRater.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ADAppRater.h; sourceTree = "<group>"; };
 		C4BA03BC1CA994E70041643A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -129,7 +130,7 @@
 			children = (
 				C4BA04101CA997790041643A /* Podfile */,
 				C4BA03EE1CA9962A0041643A /* ADAppRater.podspec */,
-				C4746D071CAADB1200C4223F /* ReleaseNotes.md */,
+				C4A7ABA11CAD315300BB354C /* CHANGELOG.md */,
 				C4BA03B91CA994E70041643A /* ADAppRater */,
 				C4BA03C51CA994E70041643A /* ADAppRaterTests */,
 				C4BA03B81CA994E70041643A /* Products */,
@@ -410,6 +411,7 @@
 				C4BA03E51CA9956E0041643A /* ADAppStoreConnector.m in Sources */,
 				C4BA03EB1CA9956E0041643A /* ADEventCriteria.m in Sources */,
 				C4BA03E11CA9956E0041643A /* ADAlertViewRatingDelegate.m in Sources */,
+				C4A7ABA21CAD315300BB354C /* CHANGELOG.md in Sources */,
 				C4BA03E31CA9956E0041643A /* ADAppRater.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
