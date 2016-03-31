@@ -19,7 +19,7 @@
     [ADAppRater sharedInstance].customViewsDelegate = self;
 
     // Insert your domain here to play with the demo:
-    [ADAppRater sharedInstance].applicationBundleID = @"com.clickgamer.AngryBirds";
+    [ADAppRater sharedInstance].applicationBundleID = @"com.autodesk.autocadws";
 }
 
 - (void)didReceiveMemoryWarning
