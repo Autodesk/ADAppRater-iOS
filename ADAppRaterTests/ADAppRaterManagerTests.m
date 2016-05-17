@@ -489,6 +489,37 @@
     XCTAssertFalse(shouldPrompt);
 }
 
+#pragma mark Complex Conditions
+
+- (void)testShouldPromptForRating_userHadInvalidatedResponse_askedForReminderOnReprompt_shouldReturnTrue
+{
+    // Arrange
+    NSDate *versionFirstUsed = [[NSCalendar currentCalendar] dateByAddingUnit:NSCalendarUnitDay
+                                                                    value:-30
+                                                                   toDate:[NSDate date]
+                                                                  options:kNilOptions];
+    
+    NSDate* twoWeeksAgo = [[NSCalendar currentCalendar] dateByAddingUnit:NSCalendarUnitDay
+                                                                   value:-14
+                                                                  toDate:[NSDate date]
+                                                                 options:NSCalendarWrapComponents];
+    
+    
+    OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastRatedVersion"]).andReturn(@"1.0.0");
+    OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastPromptedDate"]).andReturn(twoWeeksAgo);
+    OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastReminded"]).andReturn(twoWeeksAgo);
+    
+    OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastVersionUsed"]).andReturn(@"1.0.5");
+    OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterVersionFirstUsed"]).andReturn(versionFirstUsed);
+    OCMStub([self.mockUserDefaults integerForKey:@"AD_AppRaterVersionLaunchCount"]).andReturn(15);
+    
+    // Act
+    BOOL shouldPrompt = [self.raterManager shouldPromptForRating];
+    
+    // Assert
+    XCTAssertTrue(shouldPrompt);
+}
+
 #pragma mark Scenarios
 
 - (void)testShouldPromptForRating_singleScenarioComplete_shouldReturnTrue

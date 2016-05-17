@@ -354,6 +354,29 @@ static dispatch_once_t once_token = 0;
         return NO;
     }
     
+    // Check if user asked for a reminder
+    // Check for reminder before checing older responses - to catch case of user's old response was invalidated and then he asked for a reminder on the re-prompt
+    else if (self.userLastRemindedToRate)
+    {
+        // Check if reminder period has passed or not
+        NSDateComponents* delta = [[NSCalendar currentCalendar] components:NSCalendarUnitDay
+                                                                  fromDate:self.userLastRemindedToRate
+                                                                    toDate:[NSDate date]
+                                                                   options:NSCalendarWrapComponents];
+        
+        if (delta.day >= self.remindWaitPeriod)
+        {
+            [ADAppRater AR_logConsole:@"Prompt without further conditions since the user asked to be remenided"];
+            return YES;
+        }
+        else
+        {
+            [ADAppRater AR_logConsole:[NSString stringWithFormat:@"Did not start Rater because the user last asked to be reminded less than %i days ago",
+                                       (int)self.remindWaitPeriod]];
+            return NO;
+        }
+    }
+    
     // Check if user was prompted to rate any version
     else if ((self.ratedAnyVersion || self.declinedAnyVersion) && !self.promptForNewVersionIfUserRated)
     {
@@ -376,28 +399,6 @@ static dispatch_once_t once_token = 0;
         else
         {
             [ADAppRater AR_logConsole:@"Did not start Rater because the user has responded for older version app, and promptForNewVersionIfUserRated is disabled"];
-            return NO;
-        }
-    }
-    
-    // Check if user asked for a reminder
-    else if (self.userLastRemindedToRate)
-    {
-        // Check if reminder period has passed or not
-        NSDateComponents* delta = [[NSCalendar currentCalendar] components:NSCalendarUnitDay
-                                                                  fromDate:self.userLastRemindedToRate
-                                                                    toDate:[NSDate date]
-                                                                   options:NSCalendarWrapComponents];
-        
-        if (delta.day >= self.remindWaitPeriod)
-        {
-            [ADAppRater AR_logConsole:@"Prompt without further conditions since the user asked to be remenided"];
-            return YES;
-        }
-        else
-        {
-            [ADAppRater AR_logConsole:[NSString stringWithFormat:@"Did not start Rater because the user last asked to be reminded less than %i days ago",
-                                       (int)self.remindWaitPeriod]];
             return NO;
         }
     }
