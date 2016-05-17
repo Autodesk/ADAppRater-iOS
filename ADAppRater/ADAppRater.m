@@ -400,7 +400,7 @@ static dispatch_once_t once_token = 0;
                                                                   options:NSCalendarWrapComponents];
         if (delta.day < self.limitPromptFrequency)
         {
-            [ADAppRater AR_logConsole:@"Did not start Rater because the user has declined to rate the app"];
+            [ADAppRater AR_logConsole:@"Did not start Rater because the since frequency wait period is not yet met"];
             return NO;
         }
     }
