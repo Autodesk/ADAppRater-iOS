@@ -367,7 +367,8 @@ static dispatch_once_t once_token = 0;
         }
         
         // Check if reminder period has passed or not, or if user rated before last prompted date was being tracked
-        if (delta.day >= self.invalidateLastResponsePeriod || delta == nil)
+        if (self.invalidateLastResponsePeriod > 0 &&
+            (delta.day >= self.invalidateLastResponsePeriod || delta == nil))
         {
             [ADAppRater AR_logConsole:@"Prompt without further conditions since the user's last response is defined invalid"];
             return YES;

@@ -74,7 +74,8 @@
 /**
  *  @brief Limit the time period of which the user's prompt response is valid.
  *  @discussion In case configuration is set not to prompt user for each version, allow to re-prompt user after a certain amount time, no matter how he responded last time. This is not loose the ratings of high rater users.
- *  @discussion Default is 180 days (about 6 month).
+ *  @discussion Default is 180 days (about 6 month). Set to 0 to disable the invalidation feature.
+ *  @since version 1.0.9
  */
 @property (nonatomic) NSInteger invalidateLastResponsePeriod;
 
