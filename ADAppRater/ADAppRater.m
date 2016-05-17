@@ -346,25 +346,17 @@ static dispatch_once_t once_token = 0;
     }
 #endif
     
-    // Check if we've rated this version
-    if (self.ratedThisVersion)
+    // Check if user was prompted to rate this version
+    if (self.ratedThisVersion || self.declinedThisVersion)
     {
-        [ADAppRater AR_logConsole:@"Did not start Rater because the user has already rated this version"];
+        [ADAppRater AR_logConsole:@"Did not start Rater because the user has already responded for this version"];
         return NO;
     }
     
-    // Check if we've rated any version
-    else if (self.ratedAnyVersion && !self.promptForNewVersionIfUserRated)
+    // Check if user was prompted to rate any version
+    else if ((self.ratedAnyVersion || self.declinedAnyVersion) && !self.promptForNewVersionIfUserRated)
     {
-        [ADAppRater AR_logConsole:@"Did not start Rater because the user has already rated this app, and promptForNewVersionIfUserRated is disabled"];
-        return NO;
-    }
-    
-    // Check if we've declined to rate the app
-    else if (self.declinedThisVersion ||
-             (self.declinedAnyVersion && !self.promptForNewVersionIfUserRated))
-    {
-        [ADAppRater AR_logConsole:@"Did not start Rater because the user has declined to rate the app"];
+        [ADAppRater AR_logConsole:@"Did not start Rater because the user has responded for older version app, and promptForNewVersionIfUserRated is disabled"];
         return NO;
     }
     
