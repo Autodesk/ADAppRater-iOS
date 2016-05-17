@@ -57,7 +57,7 @@
 
 #pragma mark User Previously Responded
 
-- (void)testShouldPromptForRating_RatedThisVersoin_shouldReturnFalse
+- (void)testShouldPromptForRating_RatedThisVersion_shouldReturnFalse
 {
     // Arrange
     OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastRatedVersion"]).andReturn(self.raterManager.applicationVersion);
@@ -73,7 +73,7 @@
     XCTAssertFalse(shouldPrompt);
 }
 
-- (void)testShouldPromptForRating_RatedAnyVersoin_shouldReturnFalse
+- (void)testShouldPromptForRating_RatedAnyVersion_shouldReturnFalse
 {
     // Arrange
     OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastRatedVersion"]).andReturn(@"someVersion");
@@ -89,7 +89,7 @@
     XCTAssertFalse(shouldPrompt);
 }
 
-- (void)testShouldPromptForRating_RatedAnyVersoinWithPromptForNewVersion_passedFrequent_shouldReturnTrue
+- (void)testShouldPromptForRating_RatedAnyVersionWithPromptForNewVersion_passedFrequent_shouldReturnTrue
 {
     // Arrange
     NSInteger frequncyLimit = 30;
@@ -112,6 +112,38 @@
     
     // Assert
     XCTAssertTrue(shouldPrompt);
+}
+
+- (void)testShouldPromptForRating_DeclinedThisVersion_shouldReturnFalse
+{
+    // Arrange
+    OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastDeclinedVersion"]).andReturn(self.raterManager.applicationVersion);
+    
+    // Make sure the min usage is met
+    self.raterManager.currentVersionDaysUntilPrompt = 0;
+    self.raterManager.currentVersionLaunchesUntilPrompt = 0;
+    
+    // Act
+    BOOL shouldPrompt = [self.raterManager shouldPromptForRating];
+    
+    // Assert
+    XCTAssertFalse(shouldPrompt);
+}
+
+- (void)testShouldPromptForRating_DeclinedAnyVersion_shouldReturnFalse
+{
+    // Arrange
+    OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastDeclinedVersion"]).andReturn(@"someVersion");
+    
+    // Make sure the min usage is met
+    self.raterManager.currentVersionDaysUntilPrompt = 0;
+    self.raterManager.currentVersionLaunchesUntilPrompt = 0;
+    
+    // Act
+    BOOL shouldPrompt = [self.raterManager shouldPromptForRating];
+    
+    // Assert
+    XCTAssertFalse(shouldPrompt);
 }
 
 #pragma mark App Usage Stats

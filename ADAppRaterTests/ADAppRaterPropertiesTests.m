@@ -78,6 +78,18 @@
     XCTAssertTrue(self.raterManager.ratedAnyVersion);
 }
 
+- (void)testUserRatedKeyFoundInPersistent_oldVersion_shouldReturnRatedAnyFlagTrue
+{
+    // Arrange
+    OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastRatedVersion"]).andReturn(@"old version");
+    
+    // Act
+    
+    // Assert
+    XCTAssertFalse(self.raterManager.ratedThisVersion);
+    XCTAssertTrue(self.raterManager.ratedAnyVersion);
+}
+
 - (void)testUserRatedKeyNotFoundInPersistent_shouldReturnRatedFlagsFalse
 {
     // Arrange
@@ -112,6 +124,18 @@
     XCTAssertTrue(self.raterManager.declinedAnyVersion);
 }
 
+- (void)testUserDeclinedKeyFoundInPersistent_oldVersion_shouldReturnDeclinedAnyFlagTrue
+{
+    // Arrange
+    OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastDeclinedVersion"]).andReturn(@"old version");
+
+    // Act
+    
+    // Assert
+    XCTAssertFalse(self.raterManager.declinedThisVersion);
+    XCTAssertTrue(self.raterManager.declinedAnyVersion);
+}
+
 - (void)testUserDeclinedKeyFoundInPersistent_shouldReturnDeclinedFlagsFalse
 {
     // Arrange
@@ -122,6 +146,5 @@
     XCTAssertFalse(self.raterManager.declinedThisVersion);
     XCTAssertFalse(self.raterManager.declinedAnyVersion);
 }
-
 
 @end
