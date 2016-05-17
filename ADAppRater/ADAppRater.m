@@ -134,6 +134,7 @@ static dispatch_once_t once_token = 0;
     self.remindWaitPeriod = 5;
     self.promptForNewVersionIfUserRated = NO;
     self.limitPromptFrequency = 30;
+    self.invalidateLastResponsePeriod = 180;
     self.enableLog = NO;
 
 #ifdef DEBUG
@@ -356,8 +357,26 @@ static dispatch_once_t once_token = 0;
     // Check if user was prompted to rate any version
     else if ((self.ratedAnyVersion || self.declinedAnyVersion) && !self.promptForNewVersionIfUserRated)
     {
-        [ADAppRater AR_logConsole:@"Did not start Rater because the user has responded for older version app, and promptForNewVersionIfUserRated is disabled"];
-        return NO;
+        NSDateComponents* delta = nil;
+        if (self.userLastPromptedToRate)
+        {
+            delta = [[NSCalendar currentCalendar] components:NSCalendarUnitDay
+                                                    fromDate:self.userLastPromptedToRate
+                                                      toDate:[NSDate date]
+                                                     options:NSCalendarWrapComponents];
+        }
+        
+        // Check if reminder period has passed or not, or if user rated before last prompted date was being tracked
+        if (delta.day >= self.invalidateLastResponsePeriod || delta == nil)
+        {
+            [ADAppRater AR_logConsole:@"Prompt without further conditions since the user's last response is defined invalid"];
+            return YES;
+        }
+        else
+        {
+            [ADAppRater AR_logConsole:@"Did not start Rater because the user has responded for older version app, and promptForNewVersionIfUserRated is disabled"];
+            return NO;
+        }
     }
     
     // Check if user asked for a reminder

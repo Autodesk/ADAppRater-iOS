@@ -45,6 +45,7 @@
     XCTAssertEqual(self.raterManager.currentVersionLaunchesUntilPrompt, 3);
     XCTAssertEqual(self.raterManager.remindWaitPeriod, 5);
     XCTAssertEqual(self.raterManager.limitPromptFrequency, 30);
+    XCTAssertEqual(self.raterManager.invalidateLastResponsePeriod, 180);
     XCTAssertFalse(self.raterManager.promptForNewVersionIfUserRated);
     XCTAssertFalse(self.raterManager.enableLog);
     

@@ -72,6 +72,13 @@
 @property (nonatomic) NSInteger limitPromptFrequency;
 
 /**
+ *  @brief Limit the time period of which the user's prompt response is valid.
+ *  @discussion In case configuration is set not to prompt user for each version, allow to re-prompt user after a certain amount time, no matter how he responded last time. This is not loose the ratings of high rater users.
+ *  @discussion Default is 180 days (about 6 month).
+ */
+@property (nonatomic) NSInteger invalidateLastResponsePeriod;
+
+/**
  *  Array of ADEventScenario Objects, each describes a scenario to prompt user to rate app if completed.
  *  @see ADEventScenario
  */
