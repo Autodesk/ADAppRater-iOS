@@ -54,7 +54,7 @@ By pinpointing users who regularly engage with and think highly of your app, thi
 
 ## Installation
 #### Cocoa pod
-`pod 'ADAppRater', '~> 1.0.8' `
+`pod 'ADAppRater', '~> 1.0.9' `
 
 #### Standard installation
 1. Download project to desktop

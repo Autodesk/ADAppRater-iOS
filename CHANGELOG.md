@@ -1,5 +1,11 @@
 # ADAppRater-iOS Release Notes
 
+##### Version 1.0.9
+_Released on May XX, 2016_
+* Issue #18: Add option to re-prompt users to rate the app after a certain period, by invalidating their previous response
+* Improve documentation
+* Improve unit testing to cover missing scenarios
+
 ##### Version 1.0.8
 _Released on March 31, 2016_
 * PR #17: Add a Russian translation for default texts
