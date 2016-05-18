@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ *  @brief `ADAppRaterTexts` class bunles the text strings used for the default UI flow.
+ *  @discussion To change the default strings, you can either access the default instance: `[ADAppRater sharedInstance].localStrings`
+ *  @discussion Or create a new instance `[ADAppRater sharedInstance].localStrings = [[ADAppRaterTexts alloc] initWithApplicationName:@"App Name" feedbackRecipientEmail:@"support@your.mail"]`
+ *  @discussion To customize the texts ADAppRater will display, insert your customized strings to the appropriate `ADAppRaterTexts` property.
+ *  @discussion If you have implemented every method of the `ADARCustomViewsDelegate` protocol, you do not have to set your strings to this class, as your custom view will handle the texts.
+ *  @warning Leaving this class unchanged will use the default strings (localized to available laguages).
+ */
 @interface ADAppRaterTexts : NSObject
 
 @property (nonatomic, strong) NSString* applicationName;

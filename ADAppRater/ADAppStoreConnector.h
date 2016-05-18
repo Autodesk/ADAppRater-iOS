@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "ADARDelegate.h"
 
+/**
+ *  @brief `ADAppStoreConnector` class is used privatly by the `ADAppRater` class, to handle communication with the App Store.
+ */
 @interface ADAppStoreConnector : NSObject
 
 @property (nonatomic, weak) id<ADARDelegate> delegate;

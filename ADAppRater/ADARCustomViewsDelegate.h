@@ -11,6 +11,11 @@
 
 typedef void (^ADAppRaterCustomViewBlock)();
 
+/**
+ *  @brief `ADARCustomViewsDelegate` protocol defines methods to support presentation of custom views for the rating flow, instead of using the default iOS `UIAlertController` (or `UIAlertView`).
+ *  @discussion These are called by the `ADAppRater` class according the the advancment of the rating flow.
+ *  @discussion All protocol methods are optional.
+ */
 @protocol ADARCustomViewsDelegate <NSObject>
 
 @optional
