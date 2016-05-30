@@ -404,7 +404,7 @@ static dispatch_once_t once_token = 0;
     }
     
     // Check if user should be prompted for each version, but with a rate limit
-    else if (self.promptForNewVersionIfUserRated)
+    else if (self.promptForNewVersionIfUserRated && self.userLastPromptedToRate)
     {
         // Check if minimum frequency has passed yet
         NSDateComponents* delta = [[NSCalendar currentCalendar] components:NSCalendarUnitDay
