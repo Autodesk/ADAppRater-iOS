@@ -18,42 +18,76 @@
 #import "ADEventScenario.h"
 #import "ADAppRaterTexts.h"
 
+/**
+ *  @brief `ADAppRater` is a component intended to help you promote your apps in the App Store by targeting satisfied users and asking them to rate your app.
+ *  @discussion `ADAppRater` requires no configuration and can perform as is, simply using default configuration and the application's current plist details.
+ *  Configuring custom values for the parameter is optional, and recommended to do so before the app has finished launching, i.e. in the AppDelegate's `application: didFinishLaunchingWithOptions:` method.
+ */
 @interface ADAppRater : NSObject <MFMailComposeViewControllerDelegate>
 
 @property (nonatomic, weak) id<ADARDelegate> delegate;
 
 @property (nonatomic, weak) id<ADARCustomViewsDelegate> customViewsDelegate;
 
+///---------------------
+/// @name Initialization
+///---------------------
+
 /**
  *  Singlton instanciation
  */
 + (instancetype)sharedInstance;
 
+/**
+ *  @return Version of ADAppRater component
+ *  @since v1.0.3
+ */
 + (NSString*)appRaterVersion;
 
 /**
- *  Application Details - These are set automatically, but can be overriden if needed
+ *  @brief Application Details
+ *  @discussion This is set automatically, but can be overriden if needed
+ *  @since v1.0.0
  */
 @property (nonatomic, copy) NSString *applicationName;
+
+/**
+ *  @brief Application Details
+ *  @discussion This is set automatically, but can be overriden if needed
+ *  @since v1.0.0
+ */
 @property (nonatomic, copy) NSString *applicationVersion;
+
+/**
+ *  @brief Application Details
+ *  @discussion This is set automatically, but can be overriden if needed
+ *  @since v1.0.0
+ */
 @property (nonatomic, copy) NSString *applicationBundleID;
 
 #pragma mark - Usage Configuration
 
+///---------------------
+/// @name Usage Configuration
+///---------------------
+
 /**
  *  The amount of days since the current app version was first launched to wait before prompting user to rate the app
  *  Defualt is 1.
+ *  @since v1.0.0
  */
 @property (nonatomic) NSInteger currentVersionDaysUntilPrompt;
 
 /**
  *  The amount of launches of the current app version to wait before prompting user to rate the app
  *  Defualt is 3.
+ *  @since v1.0.0
  */
 @property (nonatomic) NSInteger currentVersionLaunchesUntilPrompt;
 
 /**
  *  The number of days to wait to re-prompt user to rate the app, in case he asked to be reminded later.
+ *  @since v1.0.0
  */
 @property (nonatomic) NSInteger remindWaitPeriod;
 
@@ -61,19 +95,30 @@
  *  Set YES if user should be prompted to rate the app for a new version, even if he already rated an older version.
  *  @discussion When set to NO, the Rater does not reset the list of significant events, in order to keep progress of the event scenarios.
  *  Defualt is NO.
- */
+ *  @since v1.0.0
+*/
 @property (nonatomic) BOOL promptForNewVersionIfUserRated;
 
 /**
  *  @brief Limit the frequency where the user is prompted to rate the app.
  *  @discussion In case configuration is set to prompt user for each version, limit prompt occurency in days to prvent annoying users.
  *  Default is 30 days (once a month).
+ *  @since v1.0.3
  */
 @property (nonatomic) NSInteger limitPromptFrequency;
 
 /**
+ *  @brief Limit the time period of which the user's prompt response is valid.
+ *  @discussion In case configuration is set not to prompt user for each version, allow to re-prompt user after a certain amount time, no matter how he responded last time. This is not loose the ratings of high rater users.
+ *  @discussion Default is 180 days (about 6 month). Set to 0 to disable the invalidation feature.
+ *  @since v1.0.9
+ */
+@property (nonatomic) NSInteger invalidateLastResponsePeriod;
+
+/**
  *  Array of ADEventScenario Objects, each describes a scenario to prompt user to rate app if completed.
  *  @see ADEventScenario
+ *  @since v1.0.0
  */
 @property (nonatomic, strong) NSArray* eventScenariosUntilPrompt;
 
@@ -84,17 +129,28 @@
  *  @discussion ADAppRater is not localized and has only default English strings. 
  *  All strings used for the default UI flow are bundled in an ADAppRaterTexts class.
  *  You can either access the default instance or create a new instance and override the new one
+ *  @since v1.0.2
  */
 @property (nonatomic, strong) ADAppRaterTexts* localStrings;
 
 #pragma mark - App Usage History
 
+///---------------------
+/// @name App Usage History
+///---------------------
+
 @property (nonatomic, readonly) NSDate *currentVersionFirstLaunch;
 
 /**
- * userLastRemindedToRate replaces previous `currentVersionLastReminded`. Reminder is no longer limited to a version.
+ *  @brief Replaces previous `currentVersionLastReminded`.
+ *  @discussion Reminder is no longer limited to a version.
+ *  @since v1.0.3
  */
 @property (nonatomic, readonly) NSDate *userLastRemindedToRate;
+
+/**
+ *  @since v1.0.3
+ */
 @property (nonatomic, readonly) NSDate *userLastPromptedToRate;
 @property (nonatomic, readonly) NSDictionary* persistEventCounters;
 @property (nonatomic, readonly) NSUInteger currentVersionCountLaunches;
@@ -105,6 +161,10 @@
 @property (nonatomic, readonly) BOOL declinedAnyVersion;
 
 #pragma mark - Flow Methods
+
+///---------------------
+/// @name Flow Methods
+///---------------------
 
 /**
  *  Immediately invoke the Rater flow, starting with checking user satisfaction.
@@ -143,6 +203,10 @@
 - (void)promptDirectRatingFromViewController:(__weak UIViewController*)viewController;
 
 #pragma mark - Developer Tools
+
+///---------------------
+/// @name Developer Tools
+///---------------------
 
 /**
  *  @brief Enable / Disable looging to console.

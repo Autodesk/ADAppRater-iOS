@@ -54,7 +54,7 @@ By pinpointing users who regularly engage with and think highly of your app, thi
 
 ## Installation
 #### Cocoa pod
-`pod 'ADAppRater', '~> 1.0.0' `
+`pod 'ADAppRater', '~> 1.0.9' `
 
 #### Standard installation
 1. Download project to desktop
@@ -87,7 +87,8 @@ If you do wish to configure ADAppRater, I suggest doing so *before* the app has 
 * `currentVersionLaunchesUntilPrompt` is the amount of launches of the current app version to wait before prompting user to rate the app. Default is 3.
 * `remindWaitPeriod` is the number of days to wait to re-prompt user to rate the app, in case he asked to be reminded later.
 * `promptForNewVersionIfUserRated` Set YES if user should be prompted to rate the app for a new version, even if he already rated an older version. Default is NO.
-* `limitPromptFrequency` is the minimum number of days to wait between prompts (excluding reminders requested by user) Default is 30 days (once a month).
+* `limitPromptFrequency` is the minimum number of days to wait between prompts (excluding reminders requested by user). Default is 30 days (once a month).
+* `invalidateLastResponsePeriod` is the max number of days to wait between prompts, to allow re-prompting satisfied users after a certain amount of time. Default is 180 days (about 6 month). Set to 0 to disable the feature.
 
 
 

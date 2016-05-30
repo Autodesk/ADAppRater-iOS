@@ -57,7 +57,7 @@
 
 #pragma mark User Previously Responded
 
-- (void)testShouldPromptForRating_ratedThisVersoin_shouldReturnFalse
+- (void)testShouldPromptForRating_ratedThisVersion_shouldReturnFalse
 {
     // Arrange
     OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastRatedVersion"]).andReturn(self.raterManager.applicationVersion);
@@ -73,10 +73,18 @@
     XCTAssertFalse(shouldPrompt);
 }
 
-- (void)testShouldPromptForRating_ratedAnyVersoin_shouldReturnFalse
+- (void)testShouldPromptForRating_ratedAnyVersion_responseStillValid_shouldReturnFalse
 {
     // Arrange
+    NSInteger invalidatePeriod = 120;
+    NSDate *lastPrompted = [[NSCalendar currentCalendar] dateByAddingUnit:NSCalendarUnitDay
+                                                                    value:-(invalidatePeriod - 15)
+                                                                   toDate:[NSDate date]
+                                                                  options:kNilOptions];
+
+    self.raterManager.invalidateLastResponsePeriod = invalidatePeriod;
     OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastRatedVersion"]).andReturn(@"someVersion");
+    OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastPromptedDate"]).andReturn(lastPrompted);
     
     // Make sure the min usage is met
     self.raterManager.currentVersionDaysUntilPrompt = 0;
@@ -89,7 +97,73 @@
     XCTAssertFalse(shouldPrompt);
 }
 
-- (void)testShouldPromptForRating_ratedAnyVersoinWithPromptForNewVersion_passedFrequent_shouldReturnTrue
+- (void)testShouldPromptForRating_ratedAnyVersion_disabledInvalidation_shouldReturnFalse
+{
+    // Arrange
+    NSDate *lastPrompted = [[NSCalendar currentCalendar] dateByAddingUnit:NSCalendarUnitYear
+                                                                    value:-1
+                                                                   toDate:[NSDate date]
+                                                                  options:kNilOptions];
+
+    self.raterManager.invalidateLastResponsePeriod = 0;
+    OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastRatedVersion"]).andReturn(@"someVersion");
+    OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastPromptedDate"]).andReturn(lastPrompted);
+    
+    // Make sure the min usage is met
+    self.raterManager.currentVersionDaysUntilPrompt = 0;
+    self.raterManager.currentVersionLaunchesUntilPrompt = 0;
+    
+    // Act
+    BOOL shouldPrompt = [self.raterManager shouldPromptForRating];
+    
+    // Assert
+    XCTAssertFalse(shouldPrompt);
+}
+
+- (void)testShouldPromptForRating_ratedAnyVersion_responseInvalid_shouldReturnTrue
+{
+    // Arrange
+    NSInteger invalidatePeriod = 120;
+    NSDate *lastPrompted = [[NSCalendar currentCalendar] dateByAddingUnit:NSCalendarUnitDay
+                                                                    value:-(invalidatePeriod + 5)
+                                                                   toDate:[NSDate date]
+                                                                  options:kNilOptions];
+    
+    self.raterManager.invalidateLastResponsePeriod = invalidatePeriod;
+    OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastRatedVersion"]).andReturn(@"someVersion");
+    OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastPromptedDate"]).andReturn(lastPrompted);
+    
+    // Make sure the min usage is met
+    self.raterManager.currentVersionDaysUntilPrompt = 0;
+    self.raterManager.currentVersionLaunchesUntilPrompt = 0;
+    
+    // Act
+    BOOL shouldPrompt = [self.raterManager shouldPromptForRating];
+    
+    // Assert
+    XCTAssertTrue(shouldPrompt);
+}
+
+- (void)testShouldPromptForRating_ratedAnyVersion_nilLastResponseDate_shouldReturnTrue
+{
+    // Arrange
+    NSInteger invalidatePeriod = 120;
+    self.raterManager.invalidateLastResponsePeriod = invalidatePeriod;
+    
+    OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastRatedVersion"]).andReturn(@"someVersion");
+    
+    // Make sure the min usage is met
+    self.raterManager.currentVersionDaysUntilPrompt = 0;
+    self.raterManager.currentVersionLaunchesUntilPrompt = 0;
+    
+    // Act
+    BOOL shouldPrompt = [self.raterManager shouldPromptForRating];
+    
+    // Assert
+    XCTAssertTrue(shouldPrompt);
+}
+
+- (void)testShouldPromptForRating_ratedAnyVersionWithPromptForNewVersion_passedFrequent_shouldReturnTrue
 {
     // Arrange
     NSInteger frequncyLimit = 30;
@@ -104,6 +178,107 @@
     
     // Make sure the min usage is met
     self.raterManager.limitPromptFrequency = frequncyLimit;
+    self.raterManager.currentVersionDaysUntilPrompt = 0;
+    self.raterManager.currentVersionLaunchesUntilPrompt = 0;
+    
+    // Act
+    BOOL shouldPrompt = [self.raterManager shouldPromptForRating];
+    
+    // Assert
+    XCTAssertTrue(shouldPrompt);
+}
+
+- (void)testShouldPromptForRating_declinedThisVersion_shouldReturnFalse
+{
+    // Arrange
+    OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastDeclinedVersion"]).andReturn(self.raterManager.applicationVersion);
+    
+    // Make sure the min usage is met
+    self.raterManager.currentVersionDaysUntilPrompt = 0;
+    self.raterManager.currentVersionLaunchesUntilPrompt = 0;
+    
+    // Act
+    BOOL shouldPrompt = [self.raterManager shouldPromptForRating];
+    
+    // Assert
+    XCTAssertFalse(shouldPrompt);
+}
+
+- (void)testShouldPromptForRating_declinedAnyVersion_responseStillValid_shouldReturnFalse
+{
+    // Arrange
+    NSInteger invalidatePeriod = 120;
+    NSDate *lastPrompted = [[NSCalendar currentCalendar] dateByAddingUnit:NSCalendarUnitDay
+                                                                    value:-(invalidatePeriod - 15)
+                                                                   toDate:[NSDate date]
+                                                                  options:kNilOptions];
+    
+    self.raterManager.invalidateLastResponsePeriod = invalidatePeriod;
+    OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastDeclinedVersion"]).andReturn(@"someVersion");
+    OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastPromptedDate"]).andReturn(lastPrompted);
+
+    // Make sure the min usage is met
+    self.raterManager.currentVersionDaysUntilPrompt = 0;
+    self.raterManager.currentVersionLaunchesUntilPrompt = 0;
+    
+    // Act
+    BOOL shouldPrompt = [self.raterManager shouldPromptForRating];
+    
+    // Assert
+    XCTAssertFalse(shouldPrompt);
+}
+
+- (void)testShouldPromptForRating_declinedAnyVersion_disabledInvalidation_shouldReturnFalse
+{
+    // Arrange
+    self.raterManager.invalidateLastResponsePeriod = 0;
+    
+    OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastDeclinedVersion"]).andReturn(@"someVersion");
+    
+    // Make sure the min usage is met
+    self.raterManager.currentVersionDaysUntilPrompt = 0;
+    self.raterManager.currentVersionLaunchesUntilPrompt = 0;
+    
+    // Act
+    BOOL shouldPrompt = [self.raterManager shouldPromptForRating];
+    
+    // Assert
+    XCTAssertFalse(shouldPrompt);
+}
+
+- (void)testShouldPromptForRating_declinedAnyVersion_responseInvalid_shouldReturnTrue
+{
+    // Arrange
+    NSInteger invalidatePeriod = 120;
+    NSDate *lastPrompted = [[NSCalendar currentCalendar] dateByAddingUnit:NSCalendarUnitDay
+                                                                    value:-(invalidatePeriod + 5)
+                                                                   toDate:[NSDate date]
+                                                                  options:kNilOptions];
+    
+    self.raterManager.invalidateLastResponsePeriod = invalidatePeriod;
+    OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastDeclinedVersion"]).andReturn(@"someVersion");
+    OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastPromptedDate"]).andReturn(lastPrompted);
+
+    // Make sure the min usage is met
+    self.raterManager.currentVersionDaysUntilPrompt = 0;
+    self.raterManager.currentVersionLaunchesUntilPrompt = 0;
+    
+    // Act
+    BOOL shouldPrompt = [self.raterManager shouldPromptForRating];
+    
+    // Assert
+    XCTAssertTrue(shouldPrompt);
+}
+
+- (void)testShouldPromptForRating_declinedAnyVersion_nilLastResponseDate_shouldReturnTrue
+{
+    // Arrange
+    NSInteger invalidatePeriod = 120;
+    self.raterManager.invalidateLastResponsePeriod = invalidatePeriod;
+    
+    OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastDeclinedVersion"]).andReturn(@"someVersion");
+    
+    // Make sure the min usage is met
     self.raterManager.currentVersionDaysUntilPrompt = 0;
     self.raterManager.currentVersionLaunchesUntilPrompt = 0;
     
@@ -328,6 +503,37 @@
     
     // Assert
     XCTAssertFalse(shouldPrompt);
+}
+
+#pragma mark Complex Conditions
+
+- (void)testShouldPromptForRating_userHadInvalidatedResponse_askedForReminderOnReprompt_shouldReturnTrue
+{
+    // Arrange
+    NSDate *versionFirstUsed = [[NSCalendar currentCalendar] dateByAddingUnit:NSCalendarUnitDay
+                                                                    value:-30
+                                                                   toDate:[NSDate date]
+                                                                  options:kNilOptions];
+    
+    NSDate* twoWeeksAgo = [[NSCalendar currentCalendar] dateByAddingUnit:NSCalendarUnitDay
+                                                                   value:-14
+                                                                  toDate:[NSDate date]
+                                                                 options:NSCalendarWrapComponents];
+    
+    
+    OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastRatedVersion"]).andReturn(@"1.0.0");
+    OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastPromptedDate"]).andReturn(twoWeeksAgo);
+    OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastReminded"]).andReturn(twoWeeksAgo);
+    
+    OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastVersionUsed"]).andReturn(@"1.0.5");
+    OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterVersionFirstUsed"]).andReturn(versionFirstUsed);
+    OCMStub([self.mockUserDefaults integerForKey:@"AD_AppRaterVersionLaunchCount"]).andReturn(15);
+    
+    // Act
+    BOOL shouldPrompt = [self.raterManager shouldPromptForRating];
+    
+    // Assert
+    XCTAssertTrue(shouldPrompt);
 }
 
 #pragma mark Scenarios

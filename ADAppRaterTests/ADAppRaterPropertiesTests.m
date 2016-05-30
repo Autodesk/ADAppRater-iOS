@@ -45,6 +45,7 @@
     XCTAssertEqual(self.raterManager.currentVersionLaunchesUntilPrompt, 3);
     XCTAssertEqual(self.raterManager.remindWaitPeriod, 5);
     XCTAssertEqual(self.raterManager.limitPromptFrequency, 30);
+    XCTAssertEqual(self.raterManager.invalidateLastResponsePeriod, 180);
     XCTAssertFalse(self.raterManager.promptForNewVersionIfUserRated);
     XCTAssertFalse(self.raterManager.enableLog);
     
@@ -75,6 +76,18 @@
     
     // Assert
     XCTAssertTrue(self.raterManager.ratedThisVersion);
+    XCTAssertTrue(self.raterManager.ratedAnyVersion);
+}
+
+- (void)testUserRatedKeyFoundInPersistent_oldVersion_shouldReturnRatedAnyFlagTrue
+{
+    // Arrange
+    OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastRatedVersion"]).andReturn(@"old version");
+    
+    // Act
+    
+    // Assert
+    XCTAssertFalse(self.raterManager.ratedThisVersion);
     XCTAssertTrue(self.raterManager.ratedAnyVersion);
 }
 
@@ -112,6 +125,18 @@
     XCTAssertTrue(self.raterManager.declinedAnyVersion);
 }
 
+- (void)testUserDeclinedKeyFoundInPersistent_oldVersion_shouldReturnDeclinedAnyFlagTrue
+{
+    // Arrange
+    OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastDeclinedVersion"]).andReturn(@"old version");
+
+    // Act
+    
+    // Assert
+    XCTAssertFalse(self.raterManager.declinedThisVersion);
+    XCTAssertTrue(self.raterManager.declinedAnyVersion);
+}
+
 - (void)testUserDeclinedKeyFoundInPersistent_shouldReturnDeclinedFlagsFalse
 {
     // Arrange
@@ -122,6 +147,5 @@
     XCTAssertFalse(self.raterManager.declinedThisVersion);
     XCTAssertFalse(self.raterManager.declinedAnyVersion);
 }
-
 
 @end

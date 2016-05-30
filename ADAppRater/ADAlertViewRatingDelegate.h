@@ -9,6 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "ADARCustomViewsDelegate.h"
 
+/**
+ *  @brief `ADAlertViewRatingDelegate` class is used privatly by the `ADAppRater` class, to support devices using iOS 7 and older.
+ *  @discussion This class is used to display prompt alerts to users using the `UIAlertView` objects, instead of objects available on newer operating systems.
+ */
 @interface ADAlertViewRatingDelegate : NSObject
 
 - (void)promptUserSatisfationAlertFromViewController:(UIViewController*)viewController

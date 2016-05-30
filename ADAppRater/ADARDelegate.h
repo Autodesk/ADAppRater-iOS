@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ *  @brief `ADARDelegate` protocol defines methods that are called by the `ADAppRater` class in response to events in the rating prompt flow.
+ *  @discussion All protocol methods are optional.
+ */
 @protocol ADARDelegate <NSObject>
 
 @optional

@@ -10,7 +10,7 @@
 #import "ADAppStoreConnector.h"
 #import "ADAlertViewRatingDelegate.h"
 
-static NSString *const APP_RATER_VERSION = @"1.0.8";
+static NSString *const APP_RATER_VERSION = @"1.0.9";
 
 static NSString *const kADAppRaterLastVersionUsedKey = @"AD_AppRaterLastVersionUsed";
 static NSString *const kADAppRaterVersionFirstUsedKey = @"AD_AppRaterVersionFirstUsed";
@@ -134,6 +134,7 @@ static dispatch_once_t once_token = 0;
     self.remindWaitPeriod = 5;
     self.promptForNewVersionIfUserRated = NO;
     self.limitPromptFrequency = 30;
+    self.invalidateLastResponsePeriod = 180;
     self.enableLog = NO;
 
 #ifdef DEBUG
@@ -346,29 +347,15 @@ static dispatch_once_t once_token = 0;
     }
 #endif
     
-    // Check if we've rated this version
-    if (self.ratedThisVersion)
+    // Check if user was prompted to rate this version
+    if (self.ratedThisVersion || self.declinedThisVersion)
     {
-        [ADAppRater AR_logConsole:@"Did not start Rater because the user has already rated this version"];
-        return NO;
-    }
-    
-    // Check if we've rated any version
-    else if (self.ratedAnyVersion && !self.promptForNewVersionIfUserRated)
-    {
-        [ADAppRater AR_logConsole:@"Did not start Rater because the user has already rated this app, and promptForNewVersionIfUserRated is disabled"];
-        return NO;
-    }
-    
-    // Check if we've declined to rate the app
-    else if (self.declinedThisVersion ||
-             (self.declinedAnyVersion && !self.promptForNewVersionIfUserRated))
-    {
-        [ADAppRater AR_logConsole:@"Did not start Rater because the user has declined to rate the app"];
+        [ADAppRater AR_logConsole:@"Did not start Rater because the user has already responded for this version"];
         return NO;
     }
     
     // Check if user asked for a reminder
+    // Check for reminder before checing older responses - to catch case of user's old response was invalidated and then he asked for a reminder on the re-prompt
     else if (self.userLastRemindedToRate)
     {
         // Check if reminder period has passed or not
@@ -390,6 +377,32 @@ static dispatch_once_t once_token = 0;
         }
     }
     
+    // Check if user was prompted to rate any version
+    else if ((self.ratedAnyVersion || self.declinedAnyVersion) && !self.promptForNewVersionIfUserRated)
+    {
+        NSDateComponents* delta = nil;
+        if (self.userLastPromptedToRate)
+        {
+            delta = [[NSCalendar currentCalendar] components:NSCalendarUnitDay
+                                                    fromDate:self.userLastPromptedToRate
+                                                      toDate:[NSDate date]
+                                                     options:NSCalendarWrapComponents];
+        }
+        
+        // Check if reminder period has passed or not, or if user rated before last prompted date was being tracked
+        if (self.invalidateLastResponsePeriod > 0 &&
+            (delta.day >= self.invalidateLastResponsePeriod || delta == nil))
+        {
+            [ADAppRater AR_logConsole:@"Prompt without further conditions since the user's last response is defined invalid"];
+            return YES;
+        }
+        else
+        {
+            [ADAppRater AR_logConsole:@"Did not start Rater because the user has responded for older version app, and promptForNewVersionIfUserRated is disabled"];
+            return NO;
+        }
+    }
+    
     // Check if user should be prompted for each version, but with a rate limit
     else if (self.promptForNewVersionIfUserRated && self.userLastPromptedToRate)
     {
@@ -400,7 +413,7 @@ static dispatch_once_t once_token = 0;
                                                                   options:NSCalendarWrapComponents];
         if (delta.day < self.limitPromptFrequency)
         {
-            [ADAppRater AR_logConsole:@"Did not start Rater because the user has declined to rate the app"];
+            [ADAppRater AR_logConsole:@"Did not start Rater because the since frequency wait period is not yet met"];
             return NO;
         }
     }
