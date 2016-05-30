@@ -42,7 +42,7 @@
 #pragma mark - Should Prompt - Criteria Tests
 
 #ifdef DEBUG
-- (void)testShouldPromptForRating_PreviewMode_shouldReturnTrue
+- (void)testShouldPromptForRating_previewMode_shouldReturnTrue
 {
     // Arrange
     self.raterManager.previewMode = YES;
@@ -57,7 +57,7 @@
 
 #pragma mark User Previously Responded
 
-- (void)testShouldPromptForRating_RatedThisVersoin_shouldReturnFalse
+- (void)testShouldPromptForRating_ratedThisVersoin_shouldReturnFalse
 {
     // Arrange
     OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastRatedVersion"]).andReturn(self.raterManager.applicationVersion);
@@ -73,7 +73,7 @@
     XCTAssertFalse(shouldPrompt);
 }
 
-- (void)testShouldPromptForRating_RatedAnyVersoin_shouldReturnFalse
+- (void)testShouldPromptForRating_ratedAnyVersoin_shouldReturnFalse
 {
     // Arrange
     OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastRatedVersion"]).andReturn(@"someVersion");
@@ -89,7 +89,7 @@
     XCTAssertFalse(shouldPrompt);
 }
 
-- (void)testShouldPromptForRating_RatedAnyVersoinWithPromptForNewVersion_passedFrequent_shouldReturnTrue
+- (void)testShouldPromptForRating_ratedAnyVersoinWithPromptForNewVersion_passedFrequent_shouldReturnTrue
 {
     // Arrange
     NSInteger frequncyLimit = 30;
@@ -116,7 +116,7 @@
 
 #pragma mark App Usage Stats
 
-- (void)testShouldPromptForRating_UsedLongerThenMinDaysRequired_shouldReturnTrue
+- (void)testShouldPromptForRating_usedLongerThenMinDaysRequired_shouldReturnTrue
 {
     // Arrange
     NSInteger minDays = 3;
@@ -134,7 +134,7 @@
     XCTAssertTrue(shouldPrompt);
 }
 
-- (void)testShouldPromptForRating_UseExactDaysRequired_shouldReturnTrue
+- (void)testShouldPromptForRating_useExactDaysRequired_shouldReturnTrue
 {
     // Arrange
     NSInteger minDays = 3;
@@ -152,7 +152,7 @@
     XCTAssertTrue(shouldPrompt);
 }
 
-- (void)testShouldPromptForRating_UsedLessThenMinDaysRequired_shouldReturnFalse
+- (void)testShouldPromptForRating_usedLessThenMinDaysRequired_shouldReturnFalse
 {
     // Arrange
     NSInteger minDays = 3;
@@ -170,7 +170,7 @@
     XCTAssertFalse(shouldPrompt);
 }
 
-- (void)testShouldPromptForRating_UsedMoreLaunchesThanMinRequired_shouldReturnTrue
+- (void)testShouldPromptForRating_usedMoreLaunchesThanMinRequired_shouldReturnTrue
 {
     // Arrange
     NSInteger minLaunches = 3;
@@ -187,7 +187,7 @@
     XCTAssertTrue(shouldPrompt);
 }
 
-- (void)testShouldPromptForRating_UsedExactLaunchesThanMinRequired_shouldReturnTrue
+- (void)testShouldPromptForRating_usedExactLaunchesThanMinRequired_shouldReturnTrue
 {
     // Arrange
     NSInteger minLaunches = 3;
@@ -204,7 +204,7 @@
     XCTAssertTrue(shouldPrompt);
 }
 
-- (void)testShouldPromptForRating_UsedLessLaunchesThanMinRequired_shouldReturnFalse
+- (void)testShouldPromptForRating_usedLessLaunchesThanMinRequired_shouldReturnFalse
 {
     // Arrange
     NSInteger minLaunches = 3;
@@ -223,7 +223,7 @@
 
 #pragma mark Reminder
 
-- (void)testShouldPromptForRating_PassedMoreDaysSinceLastReminded_shouldReturnTrue
+- (void)testShouldPromptForRating_passedMoreDaysSinceLastReminded_shouldReturnTrue
 {
     // Arrange
     NSInteger remindDays = 3;
@@ -246,7 +246,7 @@
     XCTAssertTrue(shouldPrompt);
 }
 
-- (void)testShouldPromptForRating_PassedExactDaysSinceLastReminded_shouldReturnTrue
+- (void)testShouldPromptForRating_passedExactDaysSinceLastReminded_shouldReturnTrue
 {
     // Arrange
     NSInteger remindDays = 3;
@@ -269,7 +269,7 @@
     XCTAssertTrue(shouldPrompt);
 }
 
-- (void)testShouldPromptForRating_PassedLessDaysSinceLastReminded_shouldReturnFalse
+- (void)testShouldPromptForRating_passedLessDaysSinceLastReminded_shouldReturnFalse
 {
     // Arrange
     NSInteger remindDays = 3;
@@ -294,7 +294,7 @@
 
 #pragma mark Frequency
 
-- (void)testShouldPromptForRating_PassedLessDaysSinceLastPrompted_shouldReturnFalse
+- (void)testShouldPromptForRating_passedLessDaysSinceLastPrompted_shouldReturnFalse
 {
     // Arrange
     NSInteger frequncyLimit = 30;
