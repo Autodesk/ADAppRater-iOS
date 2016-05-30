@@ -114,6 +114,22 @@
     XCTAssertTrue(shouldPrompt);
 }
 
+- (void)testShouldPromptForRating_neverRatedAnyVersoinWithPromptForNewVersion_shouldReturnTrue
+{
+    // Arrange
+    self.raterManager.promptForNewVersionIfUserRated = YES;
+    
+    // Make sure the min usage is met
+    self.raterManager.currentVersionDaysUntilPrompt = 0;
+    self.raterManager.currentVersionLaunchesUntilPrompt = 0;
+    
+    // Act
+    BOOL shouldPrompt = [self.raterManager shouldPromptForRating];
+    
+    // Assert
+    XCTAssertTrue(shouldPrompt);
+}
+
 #pragma mark App Usage Stats
 
 - (void)testShouldPromptForRating_usedLongerThenMinDaysRequired_shouldReturnTrue
