@@ -53,7 +53,7 @@
     XCTAssertEqualObjects(textObject.userSatisfactionAlertMessage, @"Do you find someName useful?");
     XCTAssertEqualObjects(textObject.userSatisfactionAlertAnswerYes, @"Yes");
     XCTAssertEqualObjects(textObject.userSatisfactionAlertAnswerNo, @"No");
-    XCTAssertNil(textObject.userSatisfactionAlertTitle);
+    XCTAssertEqualObjects(textObject.userSatisfactionAlertTitle, @"");
 }
 
 - (void)testAppRater_SatisfactionAlert_CustomTexts
@@ -124,7 +124,7 @@
     ADAppRaterTexts* textObject = [[ADAppRaterTexts alloc] initWithApplicationName:appName feedbackRecipientEmail:@"someMail"];
     
     // Assert
-    XCTAssertNil(textObject.userFeedbackAlertTitle);
+    XCTAssertEqualObjects(textObject.userFeedbackAlertTitle, @"");
     XCTAssertEqualObjects(textObject.userFeedbackAlertMessage, @"Please let us know how to make someName better for you!");
     XCTAssertEqualObjects(textObject.userFeedbackAlertAnswerYes, @"Contact us");
     XCTAssertEqualObjects(textObject.userFeedbackAlertAnswerNo, @"No thanks");
