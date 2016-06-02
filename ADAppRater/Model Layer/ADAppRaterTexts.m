@@ -68,7 +68,8 @@ static NSString* const kFeedbackFormSubjectLocalKey = @"localFeedbackFormSubject
 
 - (NSString*)userSatisfactionAlertTitle
 {
-    return (_userSatisfactionAlertTitle ? _userSatisfactionAlertTitle : nil);
+    // Empty string if no title to fix Alert controller UI issue
+    return (_userSatisfactionAlertTitle ? _userSatisfactionAlertTitle : @"");
 }
 
 - (NSString*)userSatisfactionAlertMessage;
@@ -116,7 +117,8 @@ static NSString* const kFeedbackFormSubjectLocalKey = @"localFeedbackFormSubject
 
 - (NSString*)userFeedbackAlertTitle
 {
-    return (_userFeedbackAlertTitle ? _userFeedbackAlertTitle : nil);
+    // Empty string if no title to fix Alert controller UI issue
+    return (_userFeedbackAlertTitle ? _userFeedbackAlertTitle : @"");
 }
 
 - (NSString*)userFeedbackAlertMessage
