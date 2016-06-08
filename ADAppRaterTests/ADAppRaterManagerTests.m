@@ -513,12 +513,12 @@
     NSDate *versionFirstUsed = [[NSCalendar currentCalendar] dateByAddingUnit:NSCalendarUnitDay
                                                                     value:-30
                                                                    toDate:[NSDate date]
-                                                                  options:kNilOptions];
+                                                                  options:NSCalendarSearchBackwards];
     
     NSDate* twoWeeksAgo = [[NSCalendar currentCalendar] dateByAddingUnit:NSCalendarUnitDay
                                                                    value:-14
                                                                   toDate:[NSDate date]
-                                                                 options:NSCalendarWrapComponents];
+                                                                 options:NSCalendarSearchBackwards];
     
     
     OCMStub([self.mockUserDefaults objectForKey:@"AD_AppRaterLastRatedVersion"]).andReturn(@"1.0.0");
