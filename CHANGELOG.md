@@ -4,6 +4,7 @@
 _Released on ??_
 * Now supporting iOS 8 and newer. (For older iOS versions, use version 1.0.9)
 * PR #23: Fix issue - setting a nil title the alert message
+* Add translations for German, Spanish, French, Italian, Portuguese, Japanese, Korean, Chinese
 
 ##### Version 1.0.9
 _Released on May 30, 2016_

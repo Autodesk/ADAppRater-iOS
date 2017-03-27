@@ -1,0 +1,24 @@
+
+// Ask for user satisfation
+"localUserSatisfactionAlertMessageFormat" = "Achou %@ útil?";
+"localUserSatisfactionAlertAnswerYes" = "Sim";
+"localUserSatisfactionAlertAnswerNo" = "Não";
+
+// Request user to rate app
+"localAppRatingAlertTitle" = "Obrigado";
+"localAppRatingAlertMessageFormat" = "Ficamos satisfeitos por achar %@ útil! Seria muito útil para nós receber a sua avaliação.";
+"localAppRatingAlertAnswerRateFormat" = "Avaliar %@";
+"localAppRatingAlertAnswerRemindMe" = "Lembrar mais tarde";
+"localAppRatingAlertAnswerDontRate" = "Não, obrigado";
+
+// Request user feedback
+"localUserFeedbackAlertMessageFormat" = "Diga-nos de que forma podemos melhorar %@ para você!";
+"localUserFeedbackAlertAnswerYes" = "Entre em contato conosco";
+"localUserFeedbackAlertAnswerNo" = "Não, obrigado";
+
+// Thank user for feedback
+"localThankUserAlertTitle" = "Obrigado!";
+"localThankUserAlertMessage" = "Obrigado pelos seus comentários!";
+"localThankUserAlertDismiss" = "Fechar";
+
+"localFeedbackFormSubject" = "Comentários";

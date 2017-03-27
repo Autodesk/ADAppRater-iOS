@@ -1,0 +1,24 @@
+
+// Ask for user satisfation
+"localUserSatisfactionAlertMessageFormat" = "Hai trovato utile %@?";
+"localUserSatisfactionAlertAnswerYes" = "Sì";
+"localUserSatisfactionAlertAnswerNo" = "No";
+
+// Request user to rate app
+"localAppRatingAlertTitle" = "Grazie";
+"localAppRatingAlertMessageFormat" = "Autodesk è lieta di ricevere il tuo apprezzamento per %@. La tua valutazione sarà molto utile.";
+"localAppRatingAlertAnswerRateFormat" = "Valuta %@";
+"localAppRatingAlertAnswerRemindMe" = "Ricordamelo in seguito";
+"localAppRatingAlertAnswerDontRate" = "No, grazie";
+
+// Request user feedback
+"localUserFeedbackAlertMessageFormat" = "Invia commenti per migliorare %@.";
+"localUserFeedbackAlertAnswerYes" = "Contatta Autodesk";
+"localUserFeedbackAlertAnswerNo" = "No, grazie";
+
+// Thank user for feedback
+"localThankUserAlertTitle" = "Grazie";
+"localThankUserAlertMessage" = "Grazie per il contributo.";
+"localThankUserAlertDismiss" = "Chiudi";
+
+"localFeedbackFormSubject" = "Commenti";

@@ -137,6 +137,17 @@ The only condition checked is that the device is online.
 ADAppRater is localized based on device settings and available translations. The localization infrastructure relates to the default texts, but can be customized (see below).
 If wish to use the default texts and your preferred language is unavailable, you can contribute to the project by duplicating and translating the 'Localizable.strings' file and submitting a pull request (see "Contributing" below).
 
+#### Available translations
+ * English
+ * Russian
+ * German
+ * Spanish
+ * French
+ * Italian
+ * Portuguese
+ * Japanese
+ * Korean
+ * Chinese
 
 ### Text Customization
 All strings used for the default UI flow are bundled in an `ADAppRaterTexts` class. You can either access the default instance or create a new instance and override the new one:

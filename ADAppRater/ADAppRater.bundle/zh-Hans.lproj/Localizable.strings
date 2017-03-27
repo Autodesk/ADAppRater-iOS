@@ -1,0 +1,24 @@
+
+// Ask for user satisfation
+"localUserSatisfactionAlertMessageFormat" = "您觉得 %@ 有用吗？";
+"localUserSatisfactionAlertAnswerYes" = "有用";
+"localUserSatisfactionAlertAnswerNo" = "无用";
+
+// Request user to rate app
+"localAppRatingAlertTitle" = "谢谢！";
+"localAppRatingAlertMessageFormat" = "我们很高兴您觉得 %@ 有用！如果您提供评分，会对我们非常有帮助。";
+"localAppRatingAlertAnswerRateFormat" = "对 %@ 评分";
+"localAppRatingAlertAnswerRemindMe" = "稍后提醒我";
+"localAppRatingAlertAnswerDontRate" = "不，谢谢";
+
+// Request user feedback
+"localUserFeedbackAlertMessageFormat" = "请让我们了解如何使 %@ 更好地为您服务！";
+"localUserFeedbackAlertAnswerYes" = "联系我们";
+"localUserFeedbackAlertAnswerNo" = "不，谢谢";
+
+// Thank user for feedback
+"localThankUserAlertTitle" = "谢谢！";
+"localThankUserAlertMessage" = "感谢您的反馈！";
+"localThankUserAlertDismiss" = "关闭";
+
+"localFeedbackFormSubject" = "反馈";

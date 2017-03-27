@@ -1,0 +1,24 @@
+
+// Ask for user satisfation
+"localUserSatisfactionAlertMessageFormat" = "%@ は役立ちますか?";
+"localUserSatisfactionAlertAnswerYes" = "はい";
+"localUserSatisfactionAlertAnswerNo" = "いいえ";
+
+// Request user to rate app
+"localAppRatingAlertTitle" = "ありがとうございます";
+"localAppRatingAlertMessageFormat" = "%@ の良さを見つけてくださり、ありがとうございます。私たちを評価してくださると幸いです。";
+"localAppRatingAlertAnswerRateFormat" = "評価 %@";
+"localAppRatingAlertAnswerRemindMe" = "後で通知する";
+"localAppRatingAlertAnswerDontRate" = "いいえ、遠慮します";
+
+// Request user feedback
+"localUserFeedbackAlertMessageFormat" = "%@ についてのフィードバックをお寄せください。";
+"localUserFeedbackAlertAnswerYes" = "お問い合わせ";
+"localUserFeedbackAlertAnswerNo" = "いいえ結構です";
+
+// Thank user for feedback
+"localThankUserAlertTitle" = "ありがとうございます。";
+"localThankUserAlertMessage" = "フィードバックをいただき、ありがとうございます!";
+"localThankUserAlertDismiss" = "閉じる";
+
+"localFeedbackFormSubject" = "フィードバック";

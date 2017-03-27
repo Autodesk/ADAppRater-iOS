@@ -1,0 +1,24 @@
+
+// Ask for user satisfation
+"localUserSatisfactionAlertMessageFormat" = "%@이(가) 도움이 되셨습니까?";
+"localUserSatisfactionAlertAnswerYes" = "예";
+"localUserSatisfactionAlertAnswerNo" = "아니오";
+
+// Request user to rate app
+"localAppRatingAlertTitle" = "감사합니다.";
+"localAppRatingAlertMessageFormat" = "%@이(가) 도움이 되셨다니 다행입니다. Autodek에 대한 평가를 해 주시면 큰 도움이 될 것입니다.";
+"localAppRatingAlertAnswerRateFormat" = "%@ 평가하기";
+"localAppRatingAlertAnswerRemindMe" = "나중에 알리기";
+"localAppRatingAlertAnswerDontRate" = "참여하지 않음";
+
+// Request user feedback
+"localUserFeedbackAlertMessageFormat" = "%@을(를) 사용자에게 더욱 유용하게 개선할 수 있는 방법을 알려 주십시오.";
+"localUserFeedbackAlertAnswerYes" = "Autodesk에 연락";
+"localUserFeedbackAlertAnswerNo" = "참여하지 않음";
+
+// Thank user for feedback
+"localThankUserAlertTitle" = "감사합니다!";
+"localThankUserAlertMessage" = "의견을 주셔서 감사합니다!";
+"localThankUserAlertDismiss" = "닫기";
+
+"localFeedbackFormSubject" = "피드백";
