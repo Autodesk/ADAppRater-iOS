@@ -8,7 +8,6 @@
 
 #import "ADAppRater.h"
 #import "ADAppStoreConnector.h"
-#import "ADAlertViewRatingDelegate.h"
 
 static NSString *const APP_RATER_VERSION = @"1.0.9";
 
@@ -29,7 +28,6 @@ static NSString *const kADAppRaterLastRemindedKey = @"AD_AppRaterLastReminded";
 
 @property (nonatomic, strong) UIAlertController* currentAlert;
 @property (nonatomic, strong) ADAppStoreConnector* appStoreConnector;
-@property (nonatomic, strong) ADAlertViewRatingDelegate* olderIosStyleDelegate;
 
 // Extend Capabilities of public read only properties
 @property (nonatomic, strong) NSDate *currentVersionFirstLaunch;
@@ -298,15 +296,6 @@ static dispatch_once_t once_token = 0;
     return _appStoreConnector;
 }
 
-- (ADAlertViewRatingDelegate *)olderIosStyleDelegate
-{
-    if (_olderIosStyleDelegate == nil)
-    {
-        _olderIosStyleDelegate = [ADAlertViewRatingDelegate new];
-    }
-    return _olderIosStyleDelegate;
-}
-
 #pragma mark - Public Methods
 
 - (void)startRaterFlowFromViewController:(__weak UIViewController*)viewController
@@ -513,40 +502,26 @@ static dispatch_once_t once_token = 0;
     }
     else
     {
-        if ([UIAlertController class])
-        {
-            UIAlertController* userSatisfationAlert = [UIAlertController
-                                                       alertControllerWithTitle:self.localStrings.userSatisfactionAlertTitle
-                                                       message:self.localStrings.userSatisfactionAlertMessage
-                                                       preferredStyle:UIAlertControllerStyleAlert];
-            [userSatisfationAlert addAction:[UIAlertAction
-                                             actionWithTitle:self.localStrings.userSatisfactionAlertAnswerNo
-                                             style:UIAlertActionStyleDefault
-                                             handler:^(UIAlertAction *action)
-                                             {
-                                                 userNotSatisfiedBlock();
-                                             }]];
-            [userSatisfationAlert addAction:[UIAlertAction
-                                             actionWithTitle:self.localStrings.userSatisfactionAlertAnswerYes
-                                             style:UIAlertActionStyleDefault
-                                             handler:^(UIAlertAction *action)
-                                             {
-                                                 userSatisfiedBlock();
-                                             }]];
-            
-            [self presentAlert:userSatisfationAlert fromViewController:viewController];
-        }
-        else
-        {
-            // Compatibilty for iOS 7 and older
-            [self.olderIosStyleDelegate promptUserSatisfationAlertFromViewController:viewController
-                                                                               title:self.localStrings.userSatisfactionAlertTitle
-                                                                             message:self.localStrings.userSatisfactionAlertMessage
-                                                                satisfiedButtonTitle:self.localStrings.userSatisfactionAlertAnswerYes
-                                                             notSatisfiedButtonTitle:self.localStrings.userSatisfactionAlertAnswerNo
-                                                                  userSatisfiedBlock:userSatisfiedBlock
-                                                               userNotSatisfiedBlock:userNotSatisfiedBlock];
-        }
+        UIAlertController* userSatisfationAlert = [UIAlertController
+                                                   alertControllerWithTitle:self.localStrings.userSatisfactionAlertTitle
+                                                   message:self.localStrings.userSatisfactionAlertMessage
+                                                   preferredStyle:UIAlertControllerStyleAlert];
+        [userSatisfationAlert addAction:[UIAlertAction
+                                         actionWithTitle:self.localStrings.userSatisfactionAlertAnswerNo
+                                         style:UIAlertActionStyleDefault
+                                         handler:^(UIAlertAction *action)
+                                         {
+                                             userNotSatisfiedBlock();
+                                         }]];
+        [userSatisfationAlert addAction:[UIAlertAction
+                                         actionWithTitle:self.localStrings.userSatisfactionAlertAnswerYes
+                                         style:UIAlertActionStyleDefault
+                                         handler:^(UIAlertAction *action)
+                                         {
+                                             userSatisfiedBlock();
+                                         }]];
+        
+        [self presentAlert:userSatisfationAlert fromViewController:viewController];
     }
 }
 
@@ -580,49 +555,33 @@ static dispatch_once_t once_token = 0;
     }
     else
     {
-        if ([UIAlertController class])
-        {
-            UIAlertController* feedbackRequestAlert = [UIAlertController
-                                                       alertControllerWithTitle:self.localStrings.appRatingAlertTitle
-                                                       message:self.localStrings.appRatingAlertMessage
-                                                       preferredStyle:UIAlertControllerStyleAlert];
-            [feedbackRequestAlert addAction:[UIAlertAction
-                                             actionWithTitle:self.localStrings.appRatingAlertAnswerRate
-                                             style:UIAlertActionStyleDefault
-                                             handler:^(UIAlertAction *action)
-                                             {
-                                                 userWillRateAppBlock();
-                                             }]];
-            [feedbackRequestAlert addAction:[UIAlertAction
-                                             actionWithTitle:self.localStrings.appRatingAlertAnswerRemindMe
-                                             style:UIAlertActionStyleDefault
-                                             handler:^(UIAlertAction *action)
-                                             {
-                                                 remindUserLaterBlock();
-                                             }]];
-            [feedbackRequestAlert addAction:[UIAlertAction
-                                             actionWithTitle:self.localStrings.appRatingAlertAnswerDontRate
-                                             style:UIAlertActionStyleDefault
-                                             handler:^(UIAlertAction *action)
-                                             {
-                                                 userRefusedBlock();
-                                             }]];
-            
-            [self presentAlert:feedbackRequestAlert fromViewController:viewController];
-        }
-        else
-        {
-            // Compatibilty for iOS 7 and older
-            [self.olderIosStyleDelegate promptAppRatingAlertFromViewController:viewController
-                                                                         title:self.localStrings.appRatingAlertTitle
-                                                                       message:self.localStrings.appRatingAlertMessage
-                                                               rateButtonTitle:self.localStrings.appRatingAlertAnswerRate
-                                                             remindButtonTitle:self.localStrings.appRatingAlertAnswerRemindMe
-                                                             refuseButtonTitle:self.localStrings.appRatingAlertAnswerDontRate
-                                                          userWillRateAppBlock:userWillRateAppBlock
-                                                          remindUserLaterBlock:remindUserLaterBlock
-                                                              userRefusedBlock:userRefusedBlock];
-        }
+        UIAlertController* feedbackRequestAlert = [UIAlertController
+                                                   alertControllerWithTitle:self.localStrings.appRatingAlertTitle
+                                                   message:self.localStrings.appRatingAlertMessage
+                                                   preferredStyle:UIAlertControllerStyleAlert];
+        [feedbackRequestAlert addAction:[UIAlertAction
+                                         actionWithTitle:self.localStrings.appRatingAlertAnswerRate
+                                         style:UIAlertActionStyleDefault
+                                         handler:^(UIAlertAction *action)
+                                         {
+                                             userWillRateAppBlock();
+                                         }]];
+        [feedbackRequestAlert addAction:[UIAlertAction
+                                         actionWithTitle:self.localStrings.appRatingAlertAnswerRemindMe
+                                         style:UIAlertActionStyleDefault
+                                         handler:^(UIAlertAction *action)
+                                         {
+                                             remindUserLaterBlock();
+                                         }]];
+        [feedbackRequestAlert addAction:[UIAlertAction
+                                         actionWithTitle:self.localStrings.appRatingAlertAnswerDontRate
+                                         style:UIAlertActionStyleDefault
+                                         handler:^(UIAlertAction *action)
+                                         {
+                                             userRefusedBlock();
+                                         }]];
+        
+        [self presentAlert:feedbackRequestAlert fromViewController:viewController];
     }
 }
 
@@ -650,40 +609,26 @@ static dispatch_once_t once_token = 0;
     }
     else
     {
-        if ([UIAlertController class])
-        {
-            UIAlertController* feedbackRequestAlert = [UIAlertController
-                                                       alertControllerWithTitle:self.localStrings.userFeedbackAlertTitle
-                                                       message:self.localStrings.userFeedbackAlertMessage
-                                                       preferredStyle:UIAlertControllerStyleAlert];
-            [feedbackRequestAlert addAction:[UIAlertAction
-                                             actionWithTitle:self.localStrings.userFeedbackAlertAnswerYes
-                                             style:UIAlertActionStyleDefault
-                                             handler:^(UIAlertAction *action)
-                                             {
-                                                 userWillSendFeedbackBlock();
-                                             }]];
-            [feedbackRequestAlert addAction:[UIAlertAction
-                                             actionWithTitle:self.localStrings.userFeedbackAlertAnswerNo
-                                             style:UIAlertActionStyleDefault
-                                             handler:^(UIAlertAction *action)
-                                             {
-                                                 userWillNotSendFeedbackBlock();
-                                             }]];
-            
-            [self presentAlert:feedbackRequestAlert fromViewController:viewController];
-        }
-        else
-        {
-            // Compatibilty for iOS 7 and older
-            [self.olderIosStyleDelegate promptFeedbackRequestAlertFromViewController:viewController
-                                                                               title:self.localStrings.userFeedbackAlertTitle
-                                                                             message:self.localStrings.userFeedbackAlertMessage
-                                                                     sendButtonTitle:self.localStrings.userFeedbackAlertAnswerYes
-                                                                  declineButtonTitle:self.localStrings.userFeedbackAlertAnswerNo
-                                                           userWillSendFeedbackBlock:userWillSendFeedbackBlock
-                                                        userWillNotSendFeedbackBlock:userWillNotSendFeedbackBlock];
-        }
+        UIAlertController* feedbackRequestAlert = [UIAlertController
+                                                   alertControllerWithTitle:self.localStrings.userFeedbackAlertTitle
+                                                   message:self.localStrings.userFeedbackAlertMessage
+                                                   preferredStyle:UIAlertControllerStyleAlert];
+        [feedbackRequestAlert addAction:[UIAlertAction
+                                         actionWithTitle:self.localStrings.userFeedbackAlertAnswerYes
+                                         style:UIAlertActionStyleDefault
+                                         handler:^(UIAlertAction *action)
+                                         {
+                                             userWillSendFeedbackBlock();
+                                         }]];
+        [feedbackRequestAlert addAction:[UIAlertAction
+                                         actionWithTitle:self.localStrings.userFeedbackAlertAnswerNo
+                                         style:UIAlertActionStyleDefault
+                                         handler:^(UIAlertAction *action)
+                                         {
+                                             userWillNotSendFeedbackBlock();
+                                         }]];
+        
+        [self presentAlert:feedbackRequestAlert fromViewController:viewController];
     }
 }
 
@@ -704,31 +649,19 @@ static dispatch_once_t once_token = 0;
     }
     else
     {
-        if ([UIAlertController class])
-        {
-            UIAlertController* thanksAlert = [UIAlertController
-                                              alertControllerWithTitle:self.localStrings.thankUserAlertTitle
-                                              message:self.localStrings.thankUserAlertMessage
-                                              preferredStyle:UIAlertControllerStyleAlert];
-            [thanksAlert addAction:[UIAlertAction
-                                    actionWithTitle:self.localStrings.thankUserAlertDismiss
-                                    style:UIAlertActionStyleDefault
-                                    handler:^(UIAlertAction *action)
-                                    {
-                                        completionBlock();
-                                    }]];
-            
-            [self presentAlert:thanksAlert fromViewController:viewController];
-        }
-        else
-        {
-            // Compatibilty for iOS 7 and older
-            [self.olderIosStyleDelegate displayThankYouAlertFromViewController:viewController
-                                                                         title:self.localStrings.thankUserAlertTitle
-                                                                       message:self.localStrings.thankUserAlertMessage
-                                                            dismissButtonTitle:self.localStrings.thankUserAlertDismiss
-                                                               completionBlock:completionBlock];
-        }
+        UIAlertController* thanksAlert = [UIAlertController
+                                          alertControllerWithTitle:self.localStrings.thankUserAlertTitle
+                                          message:self.localStrings.thankUserAlertMessage
+                                          preferredStyle:UIAlertControllerStyleAlert];
+        [thanksAlert addAction:[UIAlertAction
+                                actionWithTitle:self.localStrings.thankUserAlertDismiss
+                                style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction *action)
+                                {
+                                    completionBlock();
+                                }]];
+        
+        [self presentAlert:thanksAlert fromViewController:viewController];
     }
 }
 

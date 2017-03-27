@@ -12,7 +12,6 @@
 
 #import "ADARDelegate.h"
 #import "ADARCustomViewsDelegate.h"
-#import "ADAlertViewRatingDelegate.h"
 
 // Model Objects
 #import "ADEventScenario.h"

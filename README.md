@@ -30,7 +30,6 @@ By pinpointing users who regularly engage with and think highly of your app, thi
 
 #### Support
 * Built for iOS 8
-* Tested on iOS 7 (will most likely work on earlier versions as well)
 * ADAppRater uses ARC
 
 #### Rater flow:
@@ -48,7 +47,6 @@ By pinpointing users who regularly engage with and think highly of your app, thi
 * Easy to define usage parameters to target only experienced users
 * Supports multiple scenarios of significant events to target users who have completed a flow
 * Based on UIAlertController class (iOS 8 and later)
-* Supports fallback to UIAlertView (iOS 7 and earlier)
 * Custom View Delegate to create your own custom UI
 
 

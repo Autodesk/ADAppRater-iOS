@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
   s.license            = { :type => "MIT", :file => "LICENCE.md" }
 
   s.source             = { :git => "https://github.com/Autodesk/ADAppRater-iOS.git", :tag => '1.0.9' }
-  s.platform           = :ios, '7.0'
+  s.platform           = :ios, '8.0'
   s.source_files       = 'ADAppRater/**/*.{h,m}'
   s.resources          = 'ADAppRater/ADAppRater.bundle'
   

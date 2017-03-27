@@ -1,5 +1,10 @@
 # ADAppRater-iOS Release Notes
 
+##### Next Release
+_Released on ??_
+* Now supporting iOS 8 and newer. (For older iOS versions, use version 1.0.9)
+* PR #23: Fix issue - setting a nil title the alert message
+
 ##### Version 1.0.9
 _Released on May 30, 2016_
 * Issue #18: Add option to re-prompt users to rate the app after a certain period, by invalidating their previous response
