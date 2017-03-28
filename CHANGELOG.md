@@ -3,8 +3,9 @@
 ##### Version 1.1.0
 _Released on March 28, 2017_
 * Now supporting iOS 8 and newer. (For older iOS versions, use version 1.0.9)
-* PR #23: Fix issue - setting a nil title the alert message
 * Add translations for German, Spanish, French, Italian, Portuguese, Japanese, Korean, Chinese
+* PR #23: Fix issue - setting a nil title the alert message
+* PR #24: Updated App Review URL - Directly open the "Write Review" screen
 
 ##### Version 1.0.9
 _Released on May 30, 2016_
