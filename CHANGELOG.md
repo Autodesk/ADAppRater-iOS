@@ -1,7 +1,7 @@
 # ADAppRater-iOS Release Notes
 
-##### Next Release
-_Released on ??_
+##### Version 1.1.0
+_Released on March 28, 2017_
 * Now supporting iOS 8 and newer. (For older iOS versions, use version 1.0.9)
 * PR #23: Fix issue - setting a nil title the alert message
 * Add translations for German, Spanish, French, Italian, Portuguese, Japanese, Korean, Chinese
