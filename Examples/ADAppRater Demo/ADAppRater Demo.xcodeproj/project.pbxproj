@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		49EF68CB1CABD49100CD55EE /* ADAppRater.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4746CFE1CAA617900C4223F /* ADAppRater.framework */; };
+		C41823D31E8A924E00D01718 /* ADAppRater.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C4746CFE1CAA617900C4223F /* ADAppRater.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C431239A1BA1524E00A991C2 /* ADLocalizedTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C43123991BA1524E00A991C2 /* ADLocalizedTextViewController.m */; };
 		C4DEEAB91B6FC84A003A52B2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DEEAB81B6FC84A003A52B2 /* main.m */; };
 		C4DEEABC1B6FC84A003A52B2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DEEABB1B6FC84A003A52B2 /* AppDelegate.m */; };
@@ -21,6 +22,13 @@
 
 /* Begin PBXContainerItemProxy section */
 		49EF68C91CABD48B00CD55EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C4BA04291CA99ED50041643A /* ADAppRater.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = C4BA03B61CA994E70041643A;
+			remoteInfo = ADAppRater;
+		};
+		C41823D41E8A924E00D01718 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C4BA04291CA99ED50041643A /* ADAppRater.xcodeproj */;
 			proxyType = 1;
@@ -50,6 +58,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				C41823D31E8A924E00D01718 /* ADAppRater.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -178,6 +187,7 @@
 			);
 			dependencies = (
 				49EF68CA1CABD48B00CD55EE /* PBXTargetDependency */,
+				C41823D51E8A924E00D01718 /* PBXTargetDependency */,
 			);
 			name = "ADAppRater Demo";
 			productName = "ADAppRater Demo";
@@ -273,6 +283,11 @@
 			isa = PBXTargetDependency;
 			name = ADAppRater;
 			targetProxy = 49EF68C91CABD48B00CD55EE /* PBXContainerItemProxy */;
+		};
+		C41823D51E8A924E00D01718 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ADAppRater;
+			targetProxy = C41823D41E8A924E00D01718 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
