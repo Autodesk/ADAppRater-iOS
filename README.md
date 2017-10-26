@@ -299,7 +299,7 @@ See [Contributing](./Contributing.md) page.
 
 
 ## Apps using ADAppRater
-[![AutoCAD 360](./Assets/Apps Using/AutoCAD360@2x.png)](https://itunes.apple.com/us/app/autocad-360/id393149734)
+[![AutoCAD Mobile](./Assets/AppsUsing/acad_128x128.png)](https://itunes.apple.com/us/app/autocad-360/id393149734)
 
 Using ADAppRater? Let me know.
 
