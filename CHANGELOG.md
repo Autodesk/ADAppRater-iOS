@@ -1,5 +1,9 @@
 # ADAppRater-iOS Release Notes
 
+##### Version 1.1.1
+_Released on October 26, 2017_
+* PR #26: Fixed App Store link for iOS 11
+
 ##### Version 1.1.0
 _Released on March 28, 2017_
 * Now supporting iOS 8 and newer. (For older iOS versions, use version 1.0.9)

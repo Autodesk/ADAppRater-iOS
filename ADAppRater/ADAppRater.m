@@ -9,7 +9,7 @@
 #import "ADAppRater.h"
 #import "ADAppStoreConnector.h"
 
-static NSString *const APP_RATER_VERSION = @"1.1.0";
+static NSString *const APP_RATER_VERSION = @"1.1.1";
 
 static NSString *const kADAppRaterLastVersionUsedKey = @"AD_AppRaterLastVersionUsed";
 static NSString *const kADAppRaterVersionFirstUsedKey = @"AD_AppRaterVersionFirstUsed";
