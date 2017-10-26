@@ -1,0 +1,6 @@
+framework module Pods_ADAppRater {
+  umbrella header "Pods-ADAppRater-umbrella.h"
+
+  export *
+  module * { export * }
+}

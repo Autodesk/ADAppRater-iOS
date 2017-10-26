@@ -465,7 +465,6 @@
     id mockMailComposer = OCMClassMock([MFMailComposeViewController class]);
     [[[mockMailComposer stub] andReturnValue:@YES] canSendMail];
     [[[mockMailComposer stub] andReturn:mockMailComposer] alloc];
-    (void)[[[mockMailComposer stub] andReturn:mockMailComposer] init];
     
     UIViewController* vc = [UIViewController new];
     
