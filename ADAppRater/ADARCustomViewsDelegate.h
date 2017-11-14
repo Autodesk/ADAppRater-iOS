@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 @class UIViewController;
 
-typedef void (^ADAppRaterCustomViewBlock)();
+typedef void (^ADAppRaterCustomViewBlock)(void);
 
 /**
  *  @brief `ADARCustomViewsDelegate` protocol defines methods to support presentation of custom views for the rating flow, instead of using the default iOS `UIAlertController` (or `UIAlertView`).

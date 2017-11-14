@@ -767,7 +767,7 @@ static dispatch_once_t once_token = 0;
           didFinishWithResult:(MFMailComposeResult)result
                         error:(NSError *)error
 {
-    void (^dismissCompletion)();
+    void (^dismissCompletion)(void) = ^() { };
     
     if (result == MFMailComposeResultSent)
     {
