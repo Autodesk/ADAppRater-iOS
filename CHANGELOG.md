@@ -1,5 +1,11 @@
 # ADAppRater-iOS Release Notes
 
+##### Version 1.1.2
+_Released on November 14, 2017_
+* PR #27: Add ability for direct route to AppStore
+* Issue #28: EXC_BAD_ACCESS crash when canceling email
+* Issue #29: Doesn't work in some countries
+
 ##### Version 1.1.1
 _Released on October 26, 2017_
 * PR #26: Fixed App Store link for iOS 11
