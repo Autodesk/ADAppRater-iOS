@@ -465,6 +465,14 @@ static dispatch_once_t once_token = 0;
                    });
 }
 
+- (void)directUserToAppStore
+{
+    dispatch_async(dispatch_get_main_queue(), ^
+                   {
+                       [self.appStoreConnector openRatingsPageInAppStore];
+                   });
+}
+
 #ifdef DEBUG
 - (void)resetUsageHistory
 {

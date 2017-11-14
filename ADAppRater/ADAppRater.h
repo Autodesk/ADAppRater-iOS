@@ -201,6 +201,12 @@
  */
 - (void)promptDirectRatingFromViewController:(__weak UIViewController*)viewController;
 
+/**
+ * Immediately take user to the AppStore ratings page
+ * @discussion No condition is checked
+ */
+-(void)directUserToAppStore;
+
 #pragma mark - Developer Tools
 
 ///---------------------
