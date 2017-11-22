@@ -53,18 +53,6 @@
     XCTAssertEqual([self.appstoreConnector appStoreID], storeId);
 }
 
-- (void)testSetAppStoreCountry_shouldUpdatePrivateProperty
-{
-    // Arrange
-    NSString* country = @"The Bset Country";
-    
-    // Act
-    [self.appstoreConnector setAppStoreCountry:country];
-    
-    // Assert
-    XCTAssertEqual([self.appstoreConnector appStoreCountry], country);
-}
-
 #pragma mark Open Ratings Page
 
 - (void)testIsAppStoreAvailable_shouldReturnTrue

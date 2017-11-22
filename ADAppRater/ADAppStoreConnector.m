@@ -79,11 +79,6 @@ static NSString *const kARiOS11AppStoreURLFormat = @"itms-apps://itunes.apple.co
     _appStoreID = appStoreID;
 }
 
-- (void)setAppStoreCountry:(NSString *)appStoreCountry
-{
-    _appStoreCountry = appStoreCountry;
-}
-
 - (BOOL)isAppStoreAvailable
 {
     //first check iTunes

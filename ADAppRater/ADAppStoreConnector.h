@@ -18,7 +18,6 @@
 
 - (void)setApplicationBundleID:(NSString *)applicationBundleID;
 - (void)setAppStoreID:(NSUInteger)appStoreID;
-- (void)setAppStoreCountry:(NSString *)appStoreCountry;
 
 - (BOOL)isAppStoreAvailable;
 - (void)openRatingsPageInAppStore;
