@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A64EAA84B840869F876FB1B4 /* Pods_ADAppRaterTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3396C2DA07E765404EFFB24 /* Pods_ADAppRaterTests.framework */; };
-		AE43182C183D9B3A7819F01C /* Pods_ADAppRater.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00F6FE2DF8760479F28E6DA0 /* Pods_ADAppRater.framework */; };
 		C4746D021CAAC15C00C4223F /* ADAppRater.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C4746D011CAAC15C00C4223F /* ADAppRater.bundle */; };
 		C4BA03BB1CA994E70041643A /* ADAppRater.h in Headers */ = {isa = PBXBuildFile; fileRef = C4BA03BA1CA994E70041643A /* ADAppRater.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C4BA03C21CA994E70041643A /* ADAppRater.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4BA03B71CA994E70041643A /* ADAppRater.framework */; };
@@ -48,7 +46,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00F6FE2DF8760479F28E6DA0 /* Pods_ADAppRater.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ADAppRater.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		430AF2EF39D9D35DB3B05F1F /* Pods-ADAppRaterTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADAppRaterTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ADAppRaterTests/Pods-ADAppRaterTests.debug.xcconfig"; sourceTree = "<group>"; };
 		719CF4D6177CFF0391E0A957 /* Pods-ADAppRater.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADAppRater.release.xcconfig"; path = "Pods/Target Support Files/Pods-ADAppRater/Pods-ADAppRater.release.xcconfig"; sourceTree = "<group>"; };
 		A57CD2A849D3EAFC90213EC0 /* Pods-ADAppRater.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADAppRater.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ADAppRater/Pods-ADAppRater.debug.xcconfig"; sourceTree = "<group>"; };
@@ -90,7 +87,6 @@
 		C4BA04011CA996EA0041643A /* ADTestCase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADTestCase.m; sourceTree = "<group>"; };
 		C4BA04101CA997790041643A /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		CBCA03E2B247DECE6D0493CE /* Pods-ADAppRaterTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ADAppRaterTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ADAppRaterTests/Pods-ADAppRaterTests.release.xcconfig"; sourceTree = "<group>"; };
-		E3396C2DA07E765404EFFB24 /* Pods_ADAppRaterTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ADAppRaterTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +94,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE43182C183D9B3A7819F01C /* Pods_ADAppRater.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,7 +102,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4BA03C21CA994E70041643A /* ADAppRater.framework in Frameworks */,
-				A64EAA84B840869F876FB1B4 /* Pods_ADAppRaterTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,8 +111,6 @@
 		2B7BFB86D48A5C5AB10D2F33 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				00F6FE2DF8760479F28E6DA0 /* Pods_ADAppRater.framework */,
-				E3396C2DA07E765404EFFB24 /* Pods_ADAppRaterTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
