@@ -3,6 +3,10 @@
 [![Build Status](https://travis-ci.org/Autodesk/ADAppRater-iOS.svg?branch=master)](https://travis-ci.org/Autodesk/ADAppRater-iOS)
 
 # ADAppRater
+
+_** Please Note!!! Version 1.1.3 uses updated URLs to the store. **
+To use previous APIs see `useOldApiFlow` in **Developer Tools** below._
+
 ADAppRater is a component intended to help you promote your apps in the App Store by targeting satisfied users and asking them to rate your app.
 
 By pinpointing users who regularly engage with and think highly of your app, this approach is one of the best ways to earn positive app reviews. Following a simple installation process, you can see drastic improvements in your store rating in a matter of weeks.
@@ -52,7 +56,7 @@ By pinpointing users who regularly engage with and think highly of your app, thi
 
 ## Installation
 #### Cocoa pod
-`pod 'ADAppRater', '~> 1.1.2' `
+`pod 'ADAppRater', '~> 1.1.3' `
 
 #### Standard installation
 1. Download project to desktop
@@ -265,6 +269,10 @@ Default is `NO` (for production environments). Set to `YES` to start printing lo
 If set to `YES`, ADAppRater will always start the prompt flow for any interaction, regardless of how it is configured or significant events logged. Use this to proofread your texts during testing.
 This property is wrapped with *__`DEBUG`__* compilation flags so it won’t appear in Release compilation.
 __Make sure__ any call your app makes to the property is also wrapped with compilation flags or deleted before submission.
+
+    - (void)useOldApiFlow;
+A developer method to revert workflow to use old URLs.
+**Use this as a toggle only.** _Old URLs are soon to be removed, along with this function._
 
     - (void)resetUsageHistory;
 A developer method to reset saved usage of significant events to start over.

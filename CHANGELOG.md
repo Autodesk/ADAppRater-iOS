@@ -1,5 +1,11 @@
 # ADAppRater-iOS Release Notes
 
+##### Version 1.1.3
+_Released on November 22, 2017_
+* Issue #29: AppStore Connector: Lookup app id regardless to user's locale country
+* Issue #30: AppStore Connector: Use unified AppStore URL to rate apps
+* Added `useOldApiFlow` method to keep old flows (in case new APIs break functionality)
+
 ##### Version 1.1.2
 _Released on November 14, 2017_
 * PR #27: Add ability for direct route to AppStore
