@@ -24,11 +24,13 @@ static NSString *const kARAppStoreIDKey = @"AppRaterAppStoreID";
 
 static NSString *const kARAppLookupURLFormat = @"https://itunes.apple.com/%@/lookup";
 static NSString *const kARAppLookupURLFormatNew = @"https://itunes.apple.com/lookup";
-static BOOL ignoreCountryForAppLookup = true;
+static BOOL ignoreCountryForAppLookup = YES;
 
 static NSString *const kARiOSAppStoreURLScheme = @"itms-apps";
 static NSString *const kARiOSAppStoreURLFormat = @"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@&pageNumber=0&sortOrdering=1&onlyLatestVersion=true&action=write-review";
 static NSString *const kARiOS11AppStoreURLFormat = @"itms-apps://itunes.apple.com/app/apple-store/id%@?mt=8&action=write-review";
+static BOOL unifyStoreUrls = YES;
+
 
 #define REQUEST_TIMEOUT 60.0
 
@@ -84,6 +86,8 @@ static NSString *const kARiOS11AppStoreURLFormat = @"itms-apps://itunes.apple.co
 - (void)useOldApiFlow
 {
     ignoreCountryForAppLookup = false;
+    unifyStoreUrls = false;
+    _ratingsURL = NULL;
 }
 
 - (BOOL)isAppStoreAvailable
@@ -166,7 +170,7 @@ static NSString *const kARiOS11AppStoreURLFormat = @"itms-apps://itunes.apple.co
         NSString *URLString;
         
         float iOSVersion = [[UIDevice currentDevice].systemVersion floatValue];
-        if (iOSVersion >= 11.0f)
+        if (unifyStoreUrls || iOSVersion >= 11.0f)
         {
             URLString = kARiOS11AppStoreURLFormat;
         }
