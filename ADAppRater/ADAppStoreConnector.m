@@ -26,7 +26,6 @@ static NSString *const kARAppLookupURLFormat = @"https://itunes.apple.com/%@/loo
 
 static NSString *const kARiOSAppStoreURLScheme = @"itms-apps";
 static NSString *const kARiOSAppStoreURLFormat = @"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@&pageNumber=0&sortOrdering=1&onlyLatestVersion=true&action=write-review";
-static NSString *const kARiOS7AppStoreURLFormat = @"itms-apps://itunes.apple.com/app/id%@";
 static NSString *const kARiOS11AppStoreURLFormat = @"itms-apps://itunes.apple.com/app/apple-store/id%@?mt=8&action=write-review";
 
 #define REQUEST_TIMEOUT 60.0
@@ -168,10 +167,6 @@ static NSString *const kARiOS11AppStoreURLFormat = @"itms-apps://itunes.apple.co
         if (iOSVersion >= 11.0f)
         {
             URLString = kARiOS11AppStoreURLFormat;
-        }
-        else if (iOSVersion >= 7.0f && iOSVersion < 7.1f)
-        {
-            URLString = kARiOS7AppStoreURLFormat;
         }
         else
         {
