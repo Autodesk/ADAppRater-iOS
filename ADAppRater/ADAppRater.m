@@ -473,6 +473,11 @@ static dispatch_once_t once_token = 0;
                    });
 }
 
+- (void)useOldApiFlow
+{
+    [self.appStoreConnector useOldApiFlow];
+}
+
 #ifdef DEBUG
 - (void)resetUsageHistory
 {

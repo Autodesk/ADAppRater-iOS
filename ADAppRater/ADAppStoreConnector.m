@@ -23,6 +23,8 @@ static NSString *const kARAppStoreIDKey = @"AppRaterAppStoreID";
 
 
 static NSString *const kARAppLookupURLFormat = @"https://itunes.apple.com/%@/lookup";
+static NSString *const kARAppLookupURLFormatNew = @"https://itunes.apple.com/lookup";
+static BOOL ignoreCountryForAppLookup = true;
 
 static NSString *const kARiOSAppStoreURLScheme = @"itms-apps";
 static NSString *const kARiOSAppStoreURLFormat = @"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=%@&pageNumber=0&sortOrdering=1&onlyLatestVersion=true&action=write-review";
@@ -77,6 +79,11 @@ static NSString *const kARiOS11AppStoreURLFormat = @"itms-apps://itunes.apple.co
 - (void)setAppStoreID:(NSUInteger)appStoreID
 {
     _appStoreID = appStoreID;
+}
+
+- (void)useOldApiFlow
+{
+    ignoreCountryForAppLookup = false;
 }
 
 - (BOOL)isAppStoreAvailable
@@ -337,14 +344,15 @@ static NSString *const kARiOS11AppStoreURLFormat = @"itms-apps://itunes.apple.co
 
 - (NSInteger)checkForConnectivity:(NSError **)error;
 {
-    NSString *iTunesServiceURL = [NSString stringWithFormat:kARAppLookupURLFormat, self.appStoreCountry];
+    NSMutableString *iTunesServiceURL = (ignoreCountryForAppLookup ? kARAppLookupURLFormatNew.mutableCopy :
+                                         [NSMutableString stringWithFormat:kARAppLookupURLFormat, self.appStoreCountry]);
     if (_appStoreID) //important that we check ivar and not getter in case it has changed
     {
-        iTunesServiceURL = [iTunesServiceURL stringByAppendingFormat:@"?id=%@", @(_appStoreID)];
+        [iTunesServiceURL appendFormat:@"?id=%@", @(_appStoreID)];
     }
     else
     {
-        iTunesServiceURL = [iTunesServiceURL stringByAppendingFormat:@"?bundleId=%@", self.applicationBundleID];
+        [iTunesServiceURL appendFormat:@"?bundleId=%@", self.applicationBundleID];
     }
     
     NSLog(@"ADAppRater is checking %@ to retrieve the App Store details...", iTunesServiceURL);

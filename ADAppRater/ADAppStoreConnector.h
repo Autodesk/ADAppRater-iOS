@@ -19,6 +19,13 @@
 - (void)setApplicationBundleID:(NSString *)applicationBundleID;
 - (void)setAppStoreID:(NSUInteger)appStoreID;
 
+/**
+ *  @brief ADAppStoreConnector uses updated store urls by default.
+ *  @discussion Use this to revert to old URLs, if functionality is broken.
+ *  @deprecated Use this as a toggle only. Old URLs are soon to be removed, along with this function.
+ */
+- (void)useOldApiFlow DEPRECATED_MSG_ATTRIBUTE("Use this as a toggle only. Old URLs are soon to be removed, along with this function.");
+
 - (BOOL)isAppStoreAvailable;
 - (void)openRatingsPageInAppStore;
 
